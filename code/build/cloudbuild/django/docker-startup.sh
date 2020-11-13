@@ -2,7 +2,7 @@
 set -e
 
 sed -i \
-    -e "s/^DEBUG\s*=.*$/DEBUG = False/" \
+    -e "s/^DEBUG\s*=.*$/DEBUG = True/" \
     -e "s/^SECRET_KEY\s*=.*$/SECRET_KEY = ['${SECRET_KEY}']/" \
     -e "s/^NEP_USERNAME\s*=.*$/NEP_USERNAME = '${NEP_USERNAME}'/" \
     -e "s/^NEP_PASSWORD\s*=.*$/NEP_PASSWORD = '${NEP_PASSWORD}'/" \
