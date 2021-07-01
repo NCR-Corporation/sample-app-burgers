@@ -19,6 +19,6 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: {{ $.Release.Namespace }}-service
+              serviceName: {{ $.Release.Name }}-service
               servicePort: 8080
 {{- end}}
