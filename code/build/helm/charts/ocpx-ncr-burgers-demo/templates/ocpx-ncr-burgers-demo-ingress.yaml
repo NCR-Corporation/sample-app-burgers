@@ -1,5 +1,5 @@
 {{- if .Values.Ingress.Burgers }}
-apiVersion: extensions/v1beta11
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $.Release.Name }}-ingress
