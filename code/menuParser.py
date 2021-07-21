@@ -4,15 +4,11 @@ file = open('currentMenu.json')
 data = json.load(file)
 file.close()
 
-
 def getLinkedGroupContents(linkgroup):
-
-   
     for items in data['linkGroups']:
 
         if items['id'] == linkgroup:
             return items
-
 
 def getLinkedGoupContentsIds(toppingsList):
     priceList = []
@@ -24,29 +20,21 @@ def getLinkedGoupContentsIds(toppingsList):
     print(priceList)
     return priceList
 
-
-
 def menuParsing():
-    
-     lunchMenuItems = []
-     groupToppingsList = ['Sandwich-Toppings']
-     #dinnerMenuItems = []
+    lunchMenuItems = []
+    groupToppingsList = ['Sandwich-Toppings']
+    #dinnerMenuItems = []
 
+    lunchID = 0
+    dinnerID = 0
 
-
-     lunchID = 0
-     dinnerID = 0
-
-     for item in data['salesItems']:
+    for item in data['salesItems']:
 
         uniqueToppingsWithPrices = []
         groupToppingsWithPrices = []
         sharedToppingsWithPrices = []
            
-
         if len(item['linkGroupIds'])!= 0:
-
-         
 
             for linkgroup in item['linkGroupIds']:
 
@@ -61,35 +49,10 @@ def menuParsing():
                 else:
                     groupToppings = getLinkedGroupContents(linkgroup)
                     groupToppingsWithPrices = getLinkedGoupContentsIds(groupToppings)
-                
-
-               
+                              
         iteminfo = {"id":lunchID ,"displayName":item['displayName'],'description':item['description'] , 'price': item['currentPrice'],
                     'tags': item['tags'],'uniqueToppings':uniqueToppingsWithPrices,'sharedToppings':sharedToppingsWithPrices, 'groupToppings':groupToppingsWithPrices}
         lunchID += 1
         lunchMenuItems.append((iteminfo))
 
-
-     return lunchMenuItems
-
-print(menuParsing())
-
-                      
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-    
-    
+    return lunchMenuItems
