@@ -17,16 +17,12 @@ def getLinkedGoupContentsIds(toppingsList):
             if ids['posName'] == items['displayName']:
                    price = items['prices'][0]['price']
                    priceList.append({'displayName':items['displayName'],'price':price})
-    print(priceList)
     return priceList
 
 def menuParsing():
     lunchMenuItems = []
     groupToppingsList = ['Sandwich-Toppings']
-    #dinnerMenuItems = []
-
     lunchID = 0
-    dinnerID = 0
 
     for item in data['salesItems']:
 
@@ -34,7 +30,7 @@ def menuParsing():
         groupToppingsWithPrices = []
         sharedToppingsWithPrices = []
            
-        if len(item['linkGroupIds'])!= 0:
+        if bool(item['linkGroupIds']):
 
             for linkgroup in item['linkGroupIds']:
 
@@ -50,8 +46,14 @@ def menuParsing():
                     groupToppings = getLinkedGroupContents(linkgroup)
                     groupToppingsWithPrices = getLinkedGoupContentsIds(groupToppings)
                               
-        iteminfo = {"id":lunchID ,"displayName":item['displayName'],'description':item['description'] , 'price': item['currentPrice'],
-                    'tags': item['tags'],'uniqueToppings':uniqueToppingsWithPrices,'sharedToppings':sharedToppingsWithPrices, 'groupToppings':groupToppingsWithPrices}
+        iteminfo = {'id':lunchID ,
+                    'displayName':item['displayName'],
+                    'description':item['description'],
+                    'price': item['currentPrice'],
+                    'tags': item['tags'],
+                    'uniqueToppings':uniqueToppingsWithPrices,
+                    'sharedToppings':sharedToppingsWithPrices,
+                    'groupToppings':groupToppingsWithPrices}
         lunchID += 1
         lunchMenuItems.append((iteminfo))
 
