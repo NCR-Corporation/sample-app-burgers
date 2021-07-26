@@ -45,11 +45,11 @@ def findResturantsInRange(coordinates, radius):
     temp = r.json()
     rjson = json.dumps(temp)
     rjson = json.loads(rjson)
+
     sites = []
 
     for site in rjson['sites']:
-        sites.append(site['siteName'])
-        print(site['siteName'])
+        sites.append(site)
 
     return sites
 

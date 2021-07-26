@@ -1,3 +1,41 @@
+let map
+ 
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: new google.maps.LatLng(33.777714, -84.38879),
+    zoom: 12,
+  });
+  const icons = {
+    store: {
+      icon: "../static/images/Location-Tooltip.svg",
+    }
+  };
+  const features = [
+    {
+      position: new google.maps.LatLng(33.777714, -84.38879),
+      type: "store",
+    },
+    {
+      position: new google.maps.LatLng(33.766137, -84.337588),
+      type: "store",
+    },
+    {
+      position: new google.maps.LatLng(33.735645, -84.370725),
+      type: "store",
+    }
+  ];
+
+  // Create markers.
+  for (let i = 0; i < features.length; i++) {
+    const marker = new google.maps.Marker({
+      position: features[i].position,
+      icon: icons[features[i].type].icon,
+      map: map,
+    });
+  }
+}
+
+
 $(document).ready(function () {
   $('input[rel="inputAddress"]').popover();
 });

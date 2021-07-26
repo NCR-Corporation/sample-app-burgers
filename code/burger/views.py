@@ -12,7 +12,6 @@ import auxMethods
 import catalogMaker
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
-import json
 
 HIGHLANDS = settings.LOCATIONS['Burgers Unlimited Highlands']
 SOUTHLAND = settings.LOCATIONS['Burgers Unlimited Southland']
@@ -20,7 +19,16 @@ MIDTOWN = settings.LOCATIONS['Burgers Unlimited Midtown']
 
 
 def index(request):
-    return render(request, 'index.html')
+    results = auxMethods.findResturantsInRange({'x': -84.38879, 'y': 33.777714}, 20)
+    sites = []
+
+    for i in range (0,3):
+        sites.append(results[i])
+    
+    context = {
+        'results': sites
+    }
+    return render(request, 'index.html', context)
 
 
 def findRestaurant(request):
@@ -84,13 +92,6 @@ def confirmation(request):
 
     userCart = request.POST.getlist('cart')
 
-    # print(cart)
-    print(userCart)
-    print(type(userCart))
-    # print(request.body)
-
-    #dict = json.loads(request.POST.get("cart"))
-    # print(dict)
 
     context = {'cart': userCart}
 
