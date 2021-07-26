@@ -1,9 +1,3 @@
-import json
- 
-file = open('currentMenu.json')
-data = json.load(file)
-file.close()
-
 def getLinkedGroupContents(linkgroup):
     for items in data['linkGroups']:
 
