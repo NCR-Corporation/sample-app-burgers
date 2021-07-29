@@ -20,8 +20,7 @@ a.navbar-brand > img {
 }
 
 .container-row {
-    margin-top: 125px;
-    margin-left: 5%;
+    padding: 125px 5% 0px 5% ;
 }
 
 .home-page-fluid-container {
@@ -33,7 +32,6 @@ a.navbar-brand > img {
     align-items: center;
     width: 300px;
 }
-
 
 .row-card {
     margin-bottom: 20px;
@@ -55,13 +53,14 @@ a.navbar-brand > img {
     font-weight: 200;
 }
 
-.about-icon {
-    font-size: 50px;
-    padding: 20px 30px 20px 10px;
+.card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#about-container {
-    width: 94%
+.about-icon {
+    font-size: 50px;
 }
 
 .about-card-body {
@@ -82,8 +81,8 @@ a.navbar-brand > img {
 
 .about-card {
     margin-top: 24px;
-    width: 380px;
-    height: 150px;
+    width: 95%;
+    height: 100%;
 }
 
 .p-text-header {
@@ -292,8 +291,8 @@ a {
 }
 
 .card-text {
-    padding-right: 5px;
-    padding-left: 5px;
+    justify-content: center;
+    align-items: center;
 }
 
 body, html {
