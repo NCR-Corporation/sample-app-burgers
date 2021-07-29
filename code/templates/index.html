@@ -1,4 +1,4 @@
-<div class="container-fluid" id="home-page-fluid-container">
+<div class="container-fluid home-page-fluid-container ">
     {% extends 'base.html' %} {% load static %}
     <div class="burgers-nav-bar">
         {% block title %}
@@ -8,7 +8,7 @@
 
     {% block content %}
 
-    <div class="jumbotron jumbotron-fluid" id="homepage-jumbotron">
+    <div class="homepage-jumbotron jumbotron jumbotron-fluid">
         <div class="home-container">
             <div class="p-home-text">
                 <h2 class="p-text-header">Peachtree Burger</h2>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="container">
-        <div class="row" id="container-row">
+        <div class="row container-row">
             <div class="col-md-auto mr-5" align="center">
                 <img class="burger-icon-image" src="../static/images/Burger-logo.png" />
             </div>
@@ -49,12 +49,12 @@
                     <div class="row">
                         <div class="col-md">
                             <div class="card about-card">
-                                <div class="card-body" id="about-card-body">
+                                <div class="card-body about-card-body">
                                     <div class="card-icon">
-                                        <i class="fas fa-project-diagram about-icon" id="about-icon"></i>
+                                        <i class="fas fa-project-diagram about-icon"></i>
                                     </div>
                                     <div class="card-text">
-                                        <h5 class="card-title" id="about-card-title">
+                                        <h5 class="card-title about-card-title">
                                             Built with NCR APIs
                                         </h5>
                                         <p class="card-text">
@@ -67,12 +67,12 @@
                         </div>
                         <div class="col-md">
                             <div class="card justify-content-center about-card">
-                                <div class="card-body" id="about-card-body">
+                                <div class="card-body about-card-body">
                                     <div class="card-icon">
-                                        <i class="fas fa-code about-icon" id="about-icon"></i>
+                                        <i class="fas fa-code about-icon"></i>
                                     </div>
                                     <div class="card-text">
-                                        <h5 class="card-title" id="about-card-title">Open Sourced</h5>
+                                        <h5 class="card-title about-card-title">Open Sourced</h5>
                                         <p class="card-text">
                                             View the code, clone the repository, and get started on your own.
                                         </p>
@@ -82,12 +82,12 @@
                         </div>
                         <div class="col-md">
                             <div class="card justify-content-end about-card">
-                                <div class="card-body" id="about-card-body">
+                                <div class="card-body about-card-body">
                                     <div class="card-icon">
-                                        <i class="fas fa-user-alt about-icon" id="about-icon"></i>
+                                        <i class="fas fa-user-alt about-icon"></i>
                                     </div>
                                     <div class="card-text">
-                                        <h5 class="card-title" id="about-card-title">Customer Focused</h5>
+                                        <h5 class="card-title about-card-title">Customer Focused</h5>
                                         <p class="card-text">
                                             Built to showcase real examples of what NCR customers can do
                                         </p>
@@ -100,17 +100,17 @@
             </div>
         </div>
 
-        <div class="row" id="container-row">
-            <div class="col-4" id="card-column">
-                <div class="row pl-5" id="row-card">
+        <div class="row container-row">
+            <div class="col-4">
+                <div class="row pl-5 row-card">
                     <h2 class="map-title-text">Our Burger Joints</h2>
                 </div>
                 {% for instance in results %}
-                <div class="row pl-5" id="row-card">
+                <div class="row pl-5 row-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="store-header-text">
-                                <h5 class="card-title" id="store-name">{{instance.siteName}}</h5>
+                                <h5 class="card-title store-name">{{instance.siteName}}</h5>
                             </div>
                             <div class="store-info-text">
                                 <div class="store-address-block">
@@ -121,7 +121,7 @@
                                         <br />
                                         Atlanta, GA 30308
                                     </p>
-                                    <button type="button" class="btn btn-info" id="order-button">
+                                    <button type="button" class="btn btn-info order-button">
                                         View Menu
                                     </button>
                                 </div>
