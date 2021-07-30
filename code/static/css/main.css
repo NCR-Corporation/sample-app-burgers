@@ -130,6 +130,12 @@ a.navbar-brand > img {
     margin-left: 15px;
 }
 
+@media (min-width: 1300px) {
+    .store-card{
+        width: 75%
+    }
+}
+
 .homepage-jumbotron {
     background-image: url(../images/HomePageImage.jpg);
     background-repeat: no-repeat;
@@ -170,8 +176,8 @@ a.navbar-brand > img {
 }
 
 .order-button {
-    width: 150px;
-    height: 40px;
+    width: 100%;
+    height: 30%;
     background-color: #008D9B;
     border-color: #008D9B;
     color: white;
