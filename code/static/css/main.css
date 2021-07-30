@@ -30,7 +30,7 @@ a.navbar-brand > img {
 .p-home-text {
     color: black;
     align-items: center;
-    width: 300px;
+    width: 50%;
 }
 
 .row-card {
@@ -43,12 +43,14 @@ a.navbar-brand > img {
 }
 
 .about-info-header {
+    font-family: "Open Sans", sans-serif;
     color: black;
     font-size: 35pt;
     font-weight: bold;
 }
 
 .about-info-text {
+    font-family: "Open Sans", sans-serif;
     color: black;
     font-weight: 200;
 }
@@ -86,13 +88,16 @@ a.navbar-brand > img {
 }
 
 .p-text-header {
+    font-family: "Open Sans", sans-serif;
     font-weight: bold;
     font-size: 75pt;
     color: white;
 }
 
 .p-text-home {
+    font-family: "Open Sans", sans-serif;
     color: white;
+    width: ;
     font-size: 20pt;
 }
 
@@ -113,6 +118,7 @@ a.navbar-brand > img {
 }
 
 .about-card-title {
+    font-family: "Open Sans", sans-serif;
     font-size: 18px;
 }
 
@@ -122,6 +128,7 @@ a.navbar-brand > img {
 
 
 .map-title-text {
+    font-family: "Open Sans", sans-serif;
     font-size: 48px;
 }
 
@@ -158,9 +165,11 @@ a.navbar-brand > img {
 .store-header {
     font-weight: bold;
     font-size: 12px;
+    font-family: "Open Sans", sans-serif;
 }
 
 .card-info{
+    font-family: "Open Sans", sans-serif;
     display: block;
 }
 
@@ -185,7 +194,7 @@ a.navbar-brand > img {
     background-color: #008D9B;
     border-color: #008D9B;
     color: white;
-    margin-top: 35px;
+    margin-top: 20px;
 }
 
 .store-name {
@@ -282,13 +291,13 @@ a.navbar-brand > img {
 
 #map {
     height: 100%;
-    width: 95%;
+    width: 92%;
 }
 
 @media (min-width: 1300px) {
     #map {
         height: 100%;
-        width: 86%;
+        width: 85%;
     }
 }
 
@@ -334,6 +343,7 @@ a {
 }
 
 .card-text {
+    font-family: "Open Sans", sans-serif;
     justify-content: center;
     align-items: center;
 }
