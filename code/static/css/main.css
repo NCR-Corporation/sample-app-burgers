@@ -160,6 +160,10 @@ a.navbar-brand > img {
     font-size: 12px;
 }
 
+.card-info{
+    display: block;
+}
+
 .address-text {
     font-size: 12px;
 }
@@ -177,7 +181,7 @@ a.navbar-brand > img {
 
 .order-button {
     width: 100%;
-    height: 30%;
+    height: 50px;
     background-color: #008D9B;
     border-color: #008D9B;
     color: white;
