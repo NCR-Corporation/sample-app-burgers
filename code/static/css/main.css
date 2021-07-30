@@ -20,7 +20,7 @@ a.navbar-brand > img {
 }
 
 .container-row {
-    padding: 125px 5% 0px 5% ;
+    padding: 0px 5% 0px 5% ;
 }
 
 .home-page-fluid-container {
@@ -116,6 +116,11 @@ a.navbar-brand > img {
     font-size: 18px;
 }
 
+.map-block{
+    padding-left: 3%;
+}
+
+
 .map-title-text {
     font-size: 48px;
 }
@@ -126,8 +131,22 @@ a.navbar-brand > img {
 }
 
 .homepage-jumbotron {
+    background-image: url(../images/HomePageImage.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: "Open Sans", sans-serif;
     align-items: center;
     display: flex;
+}
+
+@media (min-width: 1200px) {
+    .homepage-jumbotron{
+        height: 100vh;
+    }
+}
+
+.map-container {
+    margin-top: 5%;
 }
 
 .store-header {
@@ -253,7 +272,14 @@ a.navbar-brand > img {
 
 #map {
     height: 100%;
-    width: 90%;
+    width: 95%;
+}
+
+@media (min-width: 1300px) {
+    #map {
+        height: 100%;
+        width: 86%;
+    }
 }
 
 /* General Styles */
@@ -288,6 +314,13 @@ a {
     padding-bottom: 0.25rem;
     font-weight: 600;
     color: #333333;
+}
+
+
+@media (min-width: 1200px) {
+    .card-column {
+        padding-left: 6%;
+    }
 }
 
 .card-text {

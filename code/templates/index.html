@@ -19,32 +19,33 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row container-row">
-    <div class="col-md-auto" align="center">
+    <div class="col-12 col-lg-12 col-xl-3 my-3" align="center">
       <img class="burger-icon-image" src="../static/images/Burger-logo.png" />
     </div>
-    <div class="col-9">
-      <div class="container">
-        <div class="row">
-          <div class="about-text pl-5">
-            <h2 class="about-info-header">About Peachtree Burger</h2>
-            <br />
-            <!-- Description -->
-            <h4 class="about-info-text">
-              This open-source, interactive demo showcases how to build a
-              digital purchasing flow for your business that's backed entirely
-              by NCR platform APIs.
-            </h4>
-            <br />
-            <h4 class="about-info-text">
-              Browse the sample app to see the Catalog, Order, Menu, and Sites
-              APIs in action.
-            </h4>
-          </div>
+    <div class="col-xl-8 col-lg-12 col-md-12">
+        <div class="col">
+            <div class="row">
+                <div class="about-text pl-4">
+                    <h2 class="about-info-header">About Peachtree Burger</h2>
+                    <br />
+                    <!-- Description -->
+                    <h4 class="about-info-text">
+                        This open-source, interactive demo showcases how to build a
+                        digital purchasing flow for your business that's backed entirely
+                        by NCR platform APIs.
+                    </h4>
+                    <br />
+                    <h4 class="about-info-text">
+                        Browse the sample app to see the Catalog, Order, Menu, and Sites
+                        APIs in action.
+                    </h4>
+                </div>
+            </div>
         </div>
-        <div class="row pl-5">
-          <div class="col-md">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-4 mt-3">
             <div class="card about-card">
               <div class="card-body about-card-body">
                 <div class="card-icon">
@@ -62,7 +63,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md">
+          <div class="col-12 col-md-12 col-xl-4 mt-3">
             <div class="card justify-content-center about-card">
               <div class="card-body about-card-body">
                 <div class="card-icon">
@@ -78,7 +79,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md">
+          <div class="col-12 col-md-12 col-xl-4 mt-3">
             <div class="card justify-content-end about-card">
               <div class="card-body about-card-body">
                 <div class="card-icon">
@@ -94,17 +95,16 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 
-  <div class="row container-row">
-    <div class="col-4">
-      <div class="row pl-5 row-card">
+  <div class="row map-container container-row">
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 card-column">
+      <div class="row row-card">
         <h2 class="map-title-text">Our Burger Joints</h2>
       </div>
       {% for instance in results %}
-      <div class="row pl-5 row-card">
+      <div class="row row-card">
         <div class="card">
           <div class="card-body">
             <div class="store-header-text">
@@ -124,7 +124,7 @@
                 </button>
               </div>
               <div class="store-hours-block">
-                <p class="hours-text">
+                <p class="hours-text pl-4">
                   <span class="store-header">Hours</span>
                   <br />
                   Monday - 11AM-10PM
@@ -149,7 +149,7 @@
       </div>
       {% endfor %}
     </div>
-    <div class="col map-block">
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 map-block">
       <div id="map"></div>
       <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOeae3mJn5fjVDyk6lW4cdYHdF0VVkrkE&callback=initMap&libraries=&v=weekly"
