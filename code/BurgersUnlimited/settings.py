@@ -177,15 +177,14 @@ DEBUG_TOOLBAR_CONFIG = {
 DEBUG_TOOLBAR_PANELS = ['requests_panel.panel.RequestsDebugPanel']
 
 # DO NOT COMMIT THESE VALUES
-NEP_USERNAME = 'acct:burgers-unlimited@burgers-unlimited-service-account'
-NEP_PASSWORD = 'ncr1sB3st!'
-NEP_APPLICATION_KEY = 'a5c9267189f249a9b91c44c61d7a4b3f'
-NEP_ORGANIZATION = 'burgers-unlimited'
-NEP_SHARED_KEY = '236720bb9bbb4fbcab77ceba8d1678f1'
-CENSUS_API_KEY = 'a24172508f28a6e7933932141b888e1bd85e30ff'
-HMAC_SHARED_KEY='993b86ce5a76454eb8e4d39922fe2e2a'
-HMAC_SECRET_KEY='93095d71df7a44c6ad349d9c6544799d'
-# Locations of the resturants saved in a id, site name pattern
-LOCATIONS = {'Burgers Unlimited Highlands': 'a6c0b9c5ed4c40f8bf584dca562b47eb',
-    'Burgers Unlimited Midtown': '5b0c5bec0a1b46ab86182cf3e612dd5b',
-    'Burgers Unlimited Southland' :'dc10bef242fb4ef993729e5e74f39b9b'}
+NEP_USERNAME = ''
+NEP_PASSWORD = ''
+NEP_APPLICATION_KEY = ''
+NEP_ORGANIZATION = ''
+NEP_SHARED_KEY = ''
+HMAC_SHARED_KEY = ''
+HMAC_SECRET_KEY = ''
+CENSUS_API_KEY = ''
+
+# Locations of the restaurants saved in a id, site name pattern
+LOCATIONS = {}
