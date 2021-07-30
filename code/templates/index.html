@@ -1,90 +1,148 @@
-{% extends 'base.html' %} {% load static %} {% block title %}<title>
-  NCR Burger Demo
-</title>
-{% endblock %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+<div class="burgers-nav-bar">
+  {% block title %}
+  <title>NCR Burger Demo</title>
+  {% endblock %}
+</div>
 
-<!-------------------------------------------- Overlay for Homepage --------------------------------------------------->
-<div id="intro" class="view">
-  <div class="mask rgba-black-strong" style="height: 100%">
-    <div
-      class="container d-flex align-items-center justify-content-center h-100 bg-custom"
-      style="height: 50%"
-    >
-      <div class="row d-flex justify-content-center text-center">
-        <div class="col-md-10">
-          <!-- Heading -->
-          <h2 class="p-text" style="font-weight: bold; font-size: 50pt">
-            Yummylicious
-          </h2>
+{% block content %}
 
-          <!-- Divider -->
-          <hr />
+<div class="homepage-jumbotron jumbotron jumbotron-fluid">
+  <div class="home-container">
+    <div class="p-home-text">
+      <h2 class="p-text-header pb-4">Peachtree Burger</h2>
+      <h4 class="p-text-home pb-4">The #1 burger in your belly.</h4>
+      <button type="button" class="btn btn-warning start-order">
+        Start your order
+      </button>
+    </div>
+  </div>
+</div>
 
-          <!-- Description -->
-          <h4 class="p-text">
-            A word we made up to describe how wonderful our burgers are. We
-            don't just make burgers. We are burgers.
-          </h4>
-
-          <!-------------------------------------------- Form  ------------------------------------------------------------------>
-
-          <form
-            class="col form-group justify-items-center"
-            id="address_form"
-            action="findRestaurant"
-            method="post"
-          >
-            <div class="row justify-items-center">
-              {% csrf_token %}
-              <div class="col-auto">
-                <label class="p-text text-center" style="font-size: 25pt"
-                  >Enter Address:</label
-                >
-                <input
-                  type="search"
-                  name="address"
-                  id="restaurant-search"
-                  class="form-control-sm"
-                  placeholder="Enter Address"
-                  required
-                  aria-label="Search for nearby restaurants"
-                  style="border-radius: 1rem"
-                  data-toggle="popover"
-                  data-placement="bottom"
-                  rel="inputAddress"
-                  data-content="A valid address consists of a street number, street name, city, state and optional zipcode."
-                  data-trigger="popover"
-                  value="864 Spring St Nw, Atlanta, GA"
-                  oninvalid="this.setCustomValidity(' ')"
-                  onchange="this.setCustomValidity('')"
-                  pattern="\d{1,5}-?\d{1,5}\s\w{1,}.?\w{0,}\s?\w{0,}\s?\w{0,}\.?\s?\d{0,}\s?,\s\w{1,}\s?\w{0,},\s\w{2},?\s?\d{0,5}"
-                />
-              </div>
-              <br />
-
-              <div class="col-auto">
-                <label class="p-text text-center" style="font-size: 25pt"
-                  >Search Radius:</label
-                >
-                <select id="radius" class="form-control-sm" name="radius">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20" selected>20</option>
-                </select>
+<div class="container-fluid">
+  <div class="row container-row">
+    <div class="col-12 col-lg-12 col-xl-3 my-3" align="center">
+      <img class="burger-icon-image" src="../static/images/Burger-logo.png" />
+    </div>
+    <div class="col-xl-8 col-lg-12 col-md-12">
+        <div class="col">
+            <div class="row">
+                <div class="about-text pl-4">
+                    <h2 class="about-info-header mb-3">About Peachtree Burger</h2>
+                    <!-- Description -->
+                    <h4 class="about-info-text mb-3">
+                        This open-source, interactive demo showcases how to build a
+                        digital purchasing flow for your business that's backed entirely
+                        by NCR platform APIs.
+                    </h4>
+                    <h4 class="about-info-text">
+                        Browse the sample app to see the Catalog, Order, Menu, and Sites
+                        APIs in action.
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-4 mt-3">
+            <div class="card about-card">
+              <div class="card-body about-card-body">
+                <div class="card-icon">
+                  <i class="fas fa-project-diagram about-icon"></i>
+                </div>
+                <div class="card-text pl-5 pt-2">
+                  <h5 class="card-title about-card-title">
+                    Built with NCR APIs
+                  </h5>
+                  <p class="card-text">
+                    Integrated with Catalog, Sites, Order, Selling,
+                    Provisioning, Security, and more.
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="row justify-content-center">
-              <br />
-              <input
-                type="submit"
-                value="Search"
-                class="btn btn-custom btn-lg"
-              />
+          </div>
+          <div class="col-12 col-md-12 col-xl-4 mt-3">
+            <div class="card justify-content-center about-card">
+              <div class="card-body about-card-body">
+                <div class="card-icon">
+                  <i class="fas fa-code about-icon"></i>
+                </div>
+                <div class="card-text pl-5 pt-2">
+                  <h5 class="card-title about-card-title">Open Sourced</h5>
+                  <p class="card-text">
+                    View the code, clone the repository, and get started on your
+                    own.
+                  </p>
+                </div>
+              </div>
             </div>
-          </form>
+          </div>
+          <div class="col-12 col-md-12 col-xl-4 mt-3">
+            <div class="card justify-content-end about-card">
+              <div class="card-body about-card-body">
+                <div class="card-icon">
+                  <i class="fas fa-user-alt about-icon"></i>
+                </div>
+                <div class="card-text pl-5 pt-2">
+                  <h5 class="card-title about-card-title">Customer Focused</h5>
+                  <p class="card-text">
+                    Built to showcase real examples of what NCR customers can do
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="row map-container container-row">
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 card-column">
+      <div class="row">
+        <h2 class="map-title-text">Our Burger Joints</h2>
+      </div>
+      {% for instance in results %}
+      <div class="row row-card">
+        <div class="card store-card">
+          <div class="card-body">
+            <div class="store-header-text">
+              <h5 class="card-title store-name">{{instance.siteName}}</h5>
+            </div>
+            <div class="store-info-text">
+              <div class="store-address-block">
+                <p class="address-text">
+                    <span class="store-header">Address</span>
+                    <span class="card-info">864 Spring St NW,</span>
+                    <span class="card-info">Atlanta, GA 30308</span>
+                </p>
+                <button type="button" class="btn btn-info order-button">
+                   View Menu
+                </button>
+              </div>
+              <div class="store-hours-block">
+                <p class="hours-text pl-4">
+                    <span class="store-header">Hours</span>
+                    <span class="card-info">Monday - 11AM-10PM</span>
+                    <span class="card-info">Tuesday - 11AM-10PM</span>
+                    <span class="card-info">Wednesday - 11AM-10PM</span>
+                    <span class="card-info">Thursday - 11AM-10PM</span>
+                    <span class="card-info">Friday - 11AM-10PM</span>
+                    <span class="card-info">Saturday - 11AM-10PM</span>
+                    <span class="card-info">Sunday - 11AM-10PM</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      {% endfor %}
+    </div>
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 map-block">
+      <div id="map"></div>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOeae3mJn5fjVDyk6lW4cdYHdF0VVkrkE&callback=initMap&libraries=&v=weekly"
+        async
+      ></script>
     </div>
   </div>
 </div>
