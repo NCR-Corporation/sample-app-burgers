@@ -70,7 +70,7 @@ a.navbar-brand > img {
     padding: 0px 1.25rem 0px 1.25rem;
     justify-content: center;
     background-color: #EFEFF4;
-    box-shadow: 2px 3px 10px rgb(0 0 0 / 0.2);
+    box-shadow: 1px 4px 4px rgb(0, 0, 0, 0.25);
 }
 
 .about-text {
