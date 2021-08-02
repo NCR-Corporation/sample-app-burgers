@@ -67,8 +67,9 @@ a.navbar-brand > img {
 
 .about-card-body {
     display: flex;
+    padding: 0px 1.25rem 0px 1.25rem;
     justify-content: center;
-    background-color: #d3d3d36e;
+    background-color: #EFEFF4;
     box-shadow: 2px 3px 10px rgb(0 0 0 / 0.2);
 }
 
@@ -97,7 +98,6 @@ a.navbar-brand > img {
 .p-text-home {
     font-family: "Open Sans", sans-serif;
     color: white;
-    width: ;
     font-size: 20pt;
 }
 
@@ -120,6 +120,13 @@ a.navbar-brand > img {
 .about-card-title {
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
+    font-weight: bold;
+}
+
+
+.about-card-text{
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
 }
 
 .map-block{
@@ -191,8 +198,8 @@ a.navbar-brand > img {
 .order-button {
     width: 100%;
     height: 50px;
-    background-color: #008D9B;
-    border-color: #008D9B;
+    background-color: #158D9B;
+    border-color: #158D9B;
     color: white;
     margin-top: 20px;
 }
@@ -344,8 +351,6 @@ a {
 
 .card-text {
     font-family: "Open Sans", sans-serif;
-    justify-content: center;
-    align-items: center;
 }
 
 body, html {
