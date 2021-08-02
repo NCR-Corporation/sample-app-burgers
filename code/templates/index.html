@@ -46,14 +46,14 @@
           <div class="col-12 col-md-12 col-lg-12 col-xl-4 mt-3">
             <div class="card about-card">
               <div class="card-body about-card-body">
-                <div class="card-icon">
+                <div class="card-icon pb-3">
                   <i class="fas fa-project-diagram about-icon"></i>
                 </div>
-                <div class="card-text pl-5 pt-2">
-                  <h5 class="card-title about-card-title">
+                <div class="card-text pl-4">
+                  <h5 class="card-title about-card-title pt-4">
                     Built with NCR APIs
                   </h5>
-                  <p class="card-text">
+                  <p class="about-card-text">
                     Integrated with Catalog, Sites, Order, Selling,
                     Provisioning, Security, and more.
                   </p>
@@ -64,12 +64,12 @@
           <div class="col-12 col-md-12 col-xl-4 mt-3">
             <div class="card justify-content-center about-card">
               <div class="card-body about-card-body">
-                <div class="card-icon">
+                <div class="card-icon pb-3">
                   <i class="fas fa-code about-icon"></i>
                 </div>
-                <div class="card-text pl-5 pt-2">
-                  <h5 class="card-title about-card-title">Open Sourced</h5>
-                  <p class="card-text">
+                <div class="card-text pl-4">
+                  <h5 class="card-title about-card-title pt-4">Open Sourced</h5>
+                  <p class="about-card-text">
                     View the code, clone the repository, and get started on your
                     own.
                   </p>
@@ -80,12 +80,12 @@
           <div class="col-12 col-md-12 col-xl-4 mt-3">
             <div class="card justify-content-end about-card">
               <div class="card-body about-card-body">
-                <div class="card-icon">
+                <div class="card-icon pb-3">
                   <i class="fas fa-user-alt about-icon"></i>
                 </div>
-                <div class="card-text pl-5 pt-2">
-                  <h5 class="card-title about-card-title">Customer Focused</h5>
-                  <p class="card-text">
+                <div class="card-text pl-4">
+                  <h5 class="card-title about-card-title pt-4">Customer Focused</h5>
+                  <p class="about-card-text">
                     Built to showcase real examples of what NCR customers can do
                   </p>
                 </div>
@@ -99,41 +99,47 @@
   <div class="row map-container container-row">
     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 card-column">
       <div class="row">
-        <h2 class="map-title-text">Our Burger Joints</h2>
+        <h2 class="map-title-text pl-3">Our Burger Joints</h2>
       </div>
       {% for instance in results %}
       <div class="row row-card">
-        <div class="card store-card">
-          <div class="card-body">
-            <div class="store-header-text">
-              <h5 class="card-title store-name">{{instance.siteName}}</h5>
-            </div>
-            <div class="store-info-text">
-              <div class="store-address-block">
-                <p class="address-text">
-                    <span class="store-header">Address</span>
-                    <span class="card-info">864 Spring St NW,</span>
-                    <span class="card-info">Atlanta, GA 30308</span>
-                </p>
-                <button type="button" class="btn btn-info order-button">
-                   View Menu
-                </button>
+          <div class="col">
+              <div class="card store-card">
+                  <div class="card-body">
+                      <div class="store-header-text">
+                          <h5 class="card-title store-name">{{instance.siteName}}</h5>
+                      </div>
+                      <div class="store-info-text">
+                          <div class="col">
+                              <div class="store-address-block">
+                                  <p class="address-text">
+                                      <span class="store-header">Address</span>
+                                      <span class="card-info">864 Spring St NW,</span>
+                                      <span class="card-info">Atlanta, GA 30308</span>
+                                  </p>
+                                  <button type="button" class="btn btn-info order-button mt-3">
+                                      View Menu
+                                  </button>
+                              </div>
+                          </div>
+                          <div class="col">
+                              <div class="store-hours-block">
+                                  <p class="hours-text">
+                                      <span class="store-header">Hours</span>
+                                      <span class="card-info">Monday - 11AM-10PM</span>
+                                      <span class="card-info">Tuesday - 11AM-10PM</span>
+                                      <span class="card-info">Wednesday - 11AM-10PM</span>
+                                      <span class="card-info">Thursday - 11AM-10PM</span>
+                                      <span class="card-info">Friday - 11AM-10PM</span>
+                                      <span class="card-info">Saturday - 11AM-10PM</span>
+                                      <span class="card-info">Sunday - 11AM-10PM</span>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div class="store-hours-block">
-                <p class="hours-text pl-4">
-                    <span class="store-header">Hours</span>
-                    <span class="card-info">Monday - 11AM-10PM</span>
-                    <span class="card-info">Tuesday - 11AM-10PM</span>
-                    <span class="card-info">Wednesday - 11AM-10PM</span>
-                    <span class="card-info">Thursday - 11AM-10PM</span>
-                    <span class="card-info">Friday - 11AM-10PM</span>
-                    <span class="card-info">Saturday - 11AM-10PM</span>
-                    <span class="card-info">Sunday - 11AM-10PM</span>
-                </p>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
       {% endfor %}
     </div>
