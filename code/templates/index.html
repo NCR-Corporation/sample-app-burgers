@@ -99,41 +99,47 @@
   <div class="row map-container container-row">
     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 card-column">
       <div class="row">
-        <h2 class="map-title-text">Our Burger Joints</h2>
+        <h2 class="map-title-text pl-3">Our Burger Joints</h2>
       </div>
       {% for instance in results %}
       <div class="row row-card">
-        <div class="card store-card">
-          <div class="card-body">
-            <div class="store-header-text">
-              <h5 class="card-title store-name">{{instance.siteName}}</h5>
-            </div>
-            <div class="store-info-text">
-              <div class="store-address-block">
-                <p class="address-text">
-                    <span class="store-header">Address</span>
-                    <span class="card-info">864 Spring St NW,</span>
-                    <span class="card-info">Atlanta, GA 30308</span>
-                </p>
-                <button type="button" class="btn btn-info order-button">
-                   View Menu
-                </button>
+          <div class="col">
+              <div class="card store-card">
+                  <div class="card-body">
+                      <div class="store-header-text">
+                          <h5 class="card-title store-name">{{instance.siteName}}</h5>
+                      </div>
+                      <div class="store-info-text">
+                          <div class="col">
+                              <div class="store-address-block">
+                                  <p class="address-text">
+                                      <span class="store-header">Address</span>
+                                      <span class="card-info">864 Spring St NW,</span>
+                                      <span class="card-info">Atlanta, GA 30308</span>
+                                  </p>
+                                  <button type="button" class="btn btn-info order-button mt-3">
+                                      View Menu
+                                  </button>
+                              </div>
+                          </div>
+                          <div class="col">
+                              <div class="store-hours-block">
+                                  <p class="hours-text">
+                                      <span class="store-header">Hours</span>
+                                      <span class="card-info">Monday - 11AM-10PM</span>
+                                      <span class="card-info">Tuesday - 11AM-10PM</span>
+                                      <span class="card-info">Wednesday - 11AM-10PM</span>
+                                      <span class="card-info">Thursday - 11AM-10PM</span>
+                                      <span class="card-info">Friday - 11AM-10PM</span>
+                                      <span class="card-info">Saturday - 11AM-10PM</span>
+                                      <span class="card-info">Sunday - 11AM-10PM</span>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div class="store-hours-block">
-                <p class="hours-text pl-4">
-                    <span class="store-header">Hours</span>
-                    <span class="card-info">Monday - 11AM-10PM</span>
-                    <span class="card-info">Tuesday - 11AM-10PM</span>
-                    <span class="card-info">Wednesday - 11AM-10PM</span>
-                    <span class="card-info">Thursday - 11AM-10PM</span>
-                    <span class="card-info">Friday - 11AM-10PM</span>
-                    <span class="card-info">Saturday - 11AM-10PM</span>
-                    <span class="card-info">Sunday - 11AM-10PM</span>
-                </p>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
       {% endfor %}
     </div>

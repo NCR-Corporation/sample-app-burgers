@@ -142,10 +142,8 @@ a.navbar-brand > img {
     margin-left: 15px;
 }
 
-@media (min-width: 1300px) {
-    .store-card{
-        width: 75%
-    }
+.store-card{
+    width: 100%;
 }
 
 .homepage-jumbotron {
@@ -184,7 +182,6 @@ a.navbar-brand > img {
 
 .hours-text {
     font-size: 12px;
-    padding-left: 50px;
 }
 
 .store-info-text {
@@ -195,11 +192,16 @@ a.navbar-brand > img {
 
 .order-button {
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: #158D9B;
     border-color: #158D9B;
     color: white;
-    margin-top: 20px;
+}
+
+@media (min-width: 1300px) {
+    .order-button{
+        width: 80%;
+    }
 }
 
 .store-name {
@@ -343,7 +345,7 @@ a {
 
 @media (min-width: 1200px) {
     .card-column {
-        padding-left: 6%;
+        padding-left: 3%;
     }
 }
 
