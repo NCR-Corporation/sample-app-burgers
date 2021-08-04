@@ -1,3 +1,5 @@
+from menuParser import menuParsing
+from HMACAuth import HMACAuth
 from django.shortcuts import render
 
 # Create your views here.
@@ -14,16 +16,20 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 import json
 
-HIGHLANDS = settings.LOCATIONS['Burgers Unlimited Highlands']
-SOUTHLAND = settings.LOCATIONS['Burgers Unlimited Southland']
-MIDTOWN = settings.LOCATIONS['Burgers Unlimited Midtown']
+#HIGHLANDS = settings.LOCATIONS['Burgers Unlimited Highlands']
+#SOUTHLAND = settings.LOCATIONS['Burgers Unlimited Southland']
+#MIDTOWN = settings.LOCATIONS['Burgers Unlimited Midtown']
+HIGHLANDS = settings.LOCATIONS['Peachtree Burger Highland']
+SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
+MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
+
 
 
 def index(request):
     return render(request, 'index.html')
 
 
-def findRestaurant(request):
+'''def findRestaurant(request):
     address = request.POST['address']
     radius = int(request.POST['radius'])
 
@@ -69,8 +75,44 @@ def highlandsMenu(request):
         return render(request, 'error.html')
     context = {'items': items_prices}
 
-    return render(request, 'highlandsMenu.html', context)
+    return render(request, 'highlandsMenu.html', context)'''
 
+
+def highlandsLunch(request):
+
+    try:
+        url = 'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/1626399748035'
+        conn = requests.get(url,auth=(HMACAuth(HIGHLANDS)))
+        
+        results = menuParsing(conn.json())
+        #print(results)
+
+        return HttpResponse (results)
+       
+
+    except:
+        return HttpResponse ("Error")
+
+
+
+
+def highlandsDinner(request):
+    return HttpResponse ("Highlands Dinner Menu")
+
+'''
+def midtownLunch(request):
+    return HttpResponse ("Midtown Lunch Menu")
+
+def midtownDinner(request):
+    return HttpResponse ("Midtown Dinner Menu")
+
+def southlandLunch(request):
+    return HttpResponse ("Southland Lunch Menu")
+
+def southlandDinner(request):
+    return HttpResponse ("Southland Dinner Menu")            
+
+'''
 
 def payment(request):
     return render(request, 'payment.html')
@@ -83,15 +125,6 @@ def viewCart(request):
 def confirmation(request):
 
     userCart = request.POST.getlist('cart')
-
-    # print(cart)
-    print(userCart)
-    print(type(userCart))
-    # print(request.body)
-
-    #dict = json.loads(request.POST.get("cart"))
-    # print(dict)
-
     context = {'cart': userCart}
 
     return render(request, 'confirmation.html', context)
