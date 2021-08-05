@@ -23,11 +23,8 @@ function updateCart(cost, itemName) {
     var size = cart.length;
     //TODO Update this method. Last week we rewrote the logic to include the session variable. We are having using pushing changes to this session variable
     for (let i = 0; i < size; i++) {
-      //console.log("i = "+ i +", cart.[i].name = " + cart[i].item + " ,itemName: " + itemName);
-
       if (cart[i].item == itemName) {
         cart[i].qty = cart[i].qty + 1;
-        console.log("reached if ---> " + cart[i].item);
         break;
       } else if (i == size - 1) {
         var newItems = {
@@ -38,8 +35,12 @@ function updateCart(cost, itemName) {
         cart.push(newItems);
       }
     }
+  
+    document.getElementById('cart-number').innerHTML = itemNumber;
+
     sessionStorage.setItem("Cart", JSON.stringify(cart));
   }
+
   displayCart();
 }
 
@@ -65,20 +66,23 @@ function displayCart() {
     );
   }
 
-  if (cart[0].item == "0") {
-  } else {
+  if (cart[0].item !== "0") {
     var tHolder = document.getElementById("total");
     var total = 0.0;
+    var itemNumber = 0;
+
     lst.innerHTML = "";
+
     for (let i = 0; i < cart.length; i++) {
       var li = document.createElement("li");
-      li.appendChild(
-        document.createTextNode(cart[i].item + ": " + cart[i].qty)
-      );
+      li.appendChild(document.createTextNode(cart[i].item + ": " + cart[i].qty));
       lst.appendChild(li);
       total = total + cart[i].price * cart[i].qty;
       tHolder.innerHTML = total;
+      itemNumber = itemNumber + cart[i].qty;
     }
+
+    document.getElementById('cart-number').innerHTML = itemNumber; 
   }
 }
 

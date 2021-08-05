@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     {% block title %}
     <title>NCR Burgers Demo</title>
     {% endblock %} {% load static %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-    />
-    <script src="{% static 'js/startsession.js' %}"></script>
-
-    <link
-      rel="icon"
-      type="image/png"
-      href="{% static 'images/favicon.png' %}"
-    />
+    <link rel="icon"
+          type="image/png"
+          href="{% static 'images/favicon.png' %}" />
     {% block stylesheets %}{% endblock %} {% block scripts %}{% endblock %}
-  </head>
+</head>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white custom-navbar">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'index' %}">
-        <img src="{% static 'images/Lg.png' %}" height="40" />
+        <img src="{% static 'images/capture.png' %}" height="40" />
       </a>
       <button
         class="navbar-toggler"
@@ -38,27 +31,43 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul
-          class="navbar-nav ml-auto smooth-scroll d-lg-flex align-items-center mt-4"
-          style="margin-bottom:0px; padding-bottom;0px"
-        >
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-          <li class="nav-item h-100">
-            <a
-              class="nav-link"
-              href="https://github.com/NCR-Corporation/sample-app-burgers"
-              target="_blank"
-              >GitHub</a
-            >
-          </li>
-          <li class="nav-item h-100">
-            <a class="nav-link" href="{% url 'viewCart' %}">
-              <i class="fa fa-shopping-cart fa-lg" style="color: #ffffff"></i
-            ></a>
-          </li>
-        </ul>
+          <ul class="navbar-nav ml-auto smooth-scroll d-lg-flex mt-4">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}#about">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}#map-content">Our Burger Joints</a>
+              </li>
+              <li class="nav-item">
+                  <div class="dropdown mr-3">
+                      <button class="btn btn-white dropdown-toggle menu-dropdown" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Menu
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                          <button class="dropdown-item" id="lunch-menu" type="button">Lunch Menu</button>
+                          <button class="dropdown-item" id="dinner-menu" type="button">Dinner Menu</button>
+                      </div>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <div class="location-box">
+                      <img class="nav-burger-icon" src="../static/images/Location-Tooltip.svg" />
+                      <a class="nav-link" href="{% url 'index' %}#map-content">Midtown
+                        <span class="change-text">(Change)</span>
+                      </a>
+                  </div>
+              </li>
+              <li class="nav-item h-100">
+                  <a class="nav-link" href="{% url 'viewCart' %}">
+                      <div class="cart-container">
+                          <i class="fa fa-shopping-cart fa-lg cart-icon" style="color: #008D9B">
+                              <span class="badge badge-pill badge-dark cart-badge" id='cart-number'></span>
+                          </i>
+                          <span class="cart-text pl-2">Cart</span>
+                      </div>
+                  </a>
+              </li>
+          </ul>
       </div>
     </div>
   </nav>
@@ -76,8 +85,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
-
-
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
         var toolBarD = document.getElementById("djShowToolBarD");
@@ -92,6 +99,39 @@
           toolBarButton.innerHTML = "Profiler";
         }
       });
-    </script>{% block javascript %}     {% endblock javascript %}
+    </script>
+    
+    <script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/startsession.js' %}"></script>
+    {% block javascript %}     {% endblock javascript %}
   </body>
+
+  <footer>
+    <div class="container-fluid mt-5 footer-container">
+      <div class="row pt-2 pl-md-5">
+        <div class="footer-text col-lg-6 col-md-8">
+            <div class="pt-lg-1 pt-md-4">
+                <a class="footer-link-text" href="{% url 'index' %}">
+                    <h1 class="footer-title-text">Peachtree Burger</h1>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-8 footer-text ">
+            <div class="pt-lg-3 pt-md-4">
+                <h3 class="footer-header">Site</h3>
+                <h2><a class="footer-link-text" href="{% url 'index' %}#map-content">Our Burger Joints</a></h2>
+                <h2><a class="footer-link-text" href="{% url 'index' %}">Lunch Menu</a></h2>
+                <h2><a class="footer-link-text" href="{% url 'index' %}">Dinner Menu</a></h2>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-8 footer-text">
+            <div class="pt-lg-3 pt-md-4 pb-md-4">
+                <h3 class="footer-header">Help</h3>
+                <h2><a class="footer-link-text" href="https://developer.ncr.com/portals/dev-portal/help-center/search">Documentation</a></h2>
+                <h2><a class="footer-link-text" href="https://github.com/NCR-Corporation/sample-app-burgers">Github</a></h2>
+            </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>

@@ -2,13 +2,13 @@
 
 .custom-navbar a {
     margin-right: 30px;
-    border-bottom: 2px solid #343a40;
-    font-weight: bold;
+    font-weight: 400;
 }
 
-    .custom-navbar a:hover {
-        border-bottom: 2px solid #7ed957;
-    }
+.custom-navbar a:hover {
+    font-weight: bold;
+    border-bottom: 2px solid #7ed957;
+}
 
 .active a {
     border-bottom: 2px solid #7ed957;
@@ -19,198 +19,83 @@ a.navbar-brand > img {
     width: auto;
 }
 
-.container-row {
-    padding: 0px 5% 0px 5% ;
+.cart-icon {
+    position: relative;
 }
 
-.home-page-fluid-container {
-    padding: 0px;
-}
-
-.p-home-text {
-    color: black;
-    align-items: center;
-    width: 50%;
-}
-
-.row-card {
-    margin-bottom: 20px;
-}
-
-.p-text {
-    color: white;
-    text-align: left;
-}
-
-.about-info-header {
-    font-family: "Open Sans", sans-serif;
-    color: black;
-    font-size: 35pt;
-    font-weight: bold;
-}
-
-.about-info-text {
-    font-family: "Open Sans", sans-serif;
-    color: black;
-    font-weight: 200;
-}
-
-.card-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.about-icon {
-    font-size: 50px;
-}
-
-.about-card-body {
-    display: flex;
-    padding: 0px 1.25rem 0px 1.25rem;
-    justify-content: center;
-    background-color: #EFEFF4;
-    box-shadow: 1px 4px 4px rgb(0, 0, 0, 0.25);
-}
-
-.about-text {
-    width: 95%;
-}
-
-.about-cards {
-    display: flex;
-    margin-top: 24px;
-}
-
-.about-card {
-    margin-top: 24px;
-    width: 95%;
-    height: 100%;
-}
-
-.p-text-header {
-    font-family: "Open Sans", sans-serif;
-    font-weight: bold;
-    font-size: 75pt;
-    color: white;
-}
-
-.p-text-home {
-    font-family: "Open Sans", sans-serif;
-    color: white;
-    font-size: 20pt;
-}
-
-.home-image {
-    min-width: 360px;
-    max-height: 2000px;
-    max-height: 1800px;
-    min-height: 300px;
-}
-
-.start-order {
-    font-weight: bold;
-}
-
-.home-container {
-    margin-left: 5%;
-    align-items: center;
-}
-
-.about-card-title {
-    font-family: "Open Sans", sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.about-card-text{
+.badge {
+    position: absolute;
+    right: -10px;
+    bottom: 10px;
     font-size: 12px;
+}
+
+.cart-text {
+    color: #008D9B
+}
+
+.menu-dropdown:focus {
+    box-shadow: 0 0 0 0.125rem #7ed957;
+}
+
+.footer-container {
+    background-color: #66C15D;
+}
+
+.footer-text{
+    color: #FFFFFF;
     font-family: "Open Sans", sans-serif;
 }
 
-.map-block{
-    padding-left: 3%;
+.footer-header{
+    font-weight: bold;
 }
 
-.map-title-text {
-    font-family: "Open Sans", sans-serif;
-    font-size: 48px;
+.footer-title-text {
+    color: #FFFFFF;
+    font-weight: bold;
 }
 
-.store-header-text {
-    margin-top: 15px;
-    margin-left: 15px;
-}
-
-.store-card{
-    width: 100%;
-}
-
-.homepage-jumbotron {
-    background-image: url(../images/HomePageImage.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    font-family: "Open Sans", sans-serif;
-    align-items: center;
-    display: flex;
-}
-
-@media (min-width: 1300px) {
-    .homepage-jumbotron{
-        height: 100vh;
+@media (min-width: 1100px) {
+    .footer-title-text{
+        padding-left: 9%;
     }
 }
 
-.map-container {
-    margin-top: 5%;
+a {
+    font-weight: normal;
+    color: #31a7e5;
 }
 
-.store-header {
-    font-weight: bold;
-    font-size: 12px;
-    font-family: "Open Sans", sans-serif;
+a:hover {
+    font-weight: 600;
+    color: #31a7e5;
 }
 
-.card-info{
-    font-family: "Open Sans", sans-serif;
-    display: block;
-}
-
-.address-text {
-    font-size: 12px;
-}
-
-.hours-text {
-    font-size: 12px;
-}
-
-.store-info-text {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 15px 0px 15px;
-}
-
-.order-button {
-    width: 100%;
-    height: 60px;
-    background-color: #158D9B;
-    border-color: #158D9B;
-    color: white;
-}
-
-@media (min-width: 1300px) {
-    .order-button{
-        width: 80%;
-    }
-}
-
-.store-name {
+.footer-link-text {
     font-size: 24px;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
-.burger-icon-image {
-    height: 350px;
-    width: 350px;
+.footer-link-text:hover{
+    color: #31a7e5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.location-box{
+    display: flex;
+}
+
+.nav-burger-icon {
+    height: 33.15px;
+    width: 24px;
+}
+
+.change-text {
+    color: #008D9B;
+    font-weight: 200;
 }
 /* Button Styles */
 
@@ -279,6 +164,10 @@ a.navbar-brand > img {
     color: white;
 }
 
+nav .navbar-nav li a {
+    color: black !important;
+}
+
 .nav-btn-container {
     margin-top: 18rem;
     display: flex;
@@ -314,21 +203,6 @@ hr {
     border-top: 2px dashed #000000;
 }
 
-a {
-    font-weight: normal;
-    color: #31a7e5;
-}
-
-    a:link {
-        text-decoration: none;
-        color: #31a7e5;
-    }
-
-    a:hover {
-        font-weight: 600;
-        color: #31a7e5;
-    }
-
 .section-header {
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
@@ -354,6 +228,7 @@ a {
 }
 
 body, html {
+    scroll-behavior: smooth;
     height: 100%;
 }
 
