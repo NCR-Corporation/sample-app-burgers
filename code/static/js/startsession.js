@@ -30,6 +30,3 @@ else{
 
     document.getElementById('cart-number').innerHTML = itemNumber;  
 }
-
-
-console.log(itemNumber);
