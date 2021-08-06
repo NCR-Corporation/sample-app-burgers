@@ -6,8 +6,9 @@
 </div>
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
 
-<div class="homepage-jumbotron jumbotron jumbotron-fluid">
+<div class="homepage-jumbotron jumbotron-fluid">
   <div class="home-container">
     <div class="p-home-text">
       <h2 class="p-text-header pb-4">Peachtree Burger</h2>
@@ -19,8 +20,8 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row container-row">
+<div class="container-fluid pt-5" id="about">
+  <div class="row pb-5 container-row">
     <div class="col-12 col-lg-12 col-xl-3 my-3" align="center">
       <img class="burger-icon-image" src="../static/images/Burger-logo.png" />
     </div>
@@ -29,7 +30,6 @@
             <div class="row">
                 <div class="about-text">
                     <h2 class="about-info-header mb-3">About Peachtree Burger</h2>
-                    <!-- Description -->
                     <h4 class="about-info-text mb-3">
                         This open-source, interactive demo showcases how to build a
                         digital purchasing flow for your business that's backed entirely
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="row">
-          <div class="col-12 col-md-12 col-lg-12 col-xl-4 mt-3">
+          <div class="col-xl-4 mt-3">
             <div class="card about-card">
               <div class="card-body about-card-body">
                 <div class="card-icon pb-3">
@@ -61,7 +61,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-12 col-xl-4 mt-3">
+          <div class="col-xl-4 mt-3">
             <div class="card justify-content-center about-card">
               <div class="card-body about-card-body">
                 <div class="card-icon pb-3">
@@ -77,7 +77,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-12 col-xl-4 mt-3">
+          <div class="col-xl-4 mt-3">
             <div class="card justify-content-end about-card">
               <div class="card-body about-card-body">
                 <div class="card-icon pb-3">
@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <div class="row map-container container-row">
+  <div class="row pt-5 container-row" id="map-content">
     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 card-column">
       <div class="row">
         <h2 class="map-title-text pl-3">Our Burger Joints</h2>
@@ -143,7 +143,7 @@
       </div>
       {% endfor %}
     </div>
-    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 map-block">
+    <div class="col-md-8 col-sm-12 col-xs-12 map-block">
       <div id="map"></div>
       <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOeae3mJn5fjVDyk6lW4cdYHdF0VVkrkE&callback=initMap&libraries=&v=weekly"
