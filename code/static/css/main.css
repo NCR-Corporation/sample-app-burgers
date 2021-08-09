@@ -1,7 +1,6 @@
 /* Index Page Styles */
 
 .custom-navbar a {
-    margin-right: 30px;
     font-weight: 400;
 }
 
@@ -44,7 +43,6 @@ a.navbar-brand > img {
 
 .footer-text{
     color: #FFFFFF;
-    font-family: "Open Sans", sans-serif;
 }
 
 .footer-header{
@@ -223,11 +221,8 @@ hr {
     }
 }
 
-.card-text {
-    font-family: "Open Sans", sans-serif;
-}
-
 body, html {
+    font-family: "Open Sans", sans-serif;
     scroll-behavior: smooth;
     height: 100%;
 }
