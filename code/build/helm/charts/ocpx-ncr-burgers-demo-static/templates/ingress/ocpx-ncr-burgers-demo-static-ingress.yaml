@@ -1,0 +1,24 @@
+{{- if .Values.Ingress.Burgers }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.Master.App.Prefix }}-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: {{ .Values.Ingress.Burgers.IpName }}
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+  {{- if .Values.Ingress.Burgers.TlsSecret }}
+  tls:
+    - hosts:
+        - {{ .Values.Ingress.Burgers.Host }}
+      secretName: {{ .Values.Ingress.Burgers.TlsSecret }}
+  {{- end}}
+  rules:
+    - host: {{ .Values.Ingress.Burgers.Host }}
+      http:
+        paths:
+          - backend:
+              serviceName: {{ $.Release.Name }}-service
+              servicePort: 8080
+{{- end}}

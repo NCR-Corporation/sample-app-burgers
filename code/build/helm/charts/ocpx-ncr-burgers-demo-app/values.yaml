@@ -1,6 +1,6 @@
 Master:
   App:
-    Name: ocpx-ncr-burgers-demo
+    Name: ocpx-ncr-burgers-demo-app
     Prefix: ocpx-ncr-burgers-demo
     ReleaseVersion:
   ImagePullPolicy: Always
