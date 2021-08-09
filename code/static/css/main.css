@@ -20,6 +20,11 @@ a.navbar-brand > img {
 
 .cart-icon {
     position: relative;
+    color: #008d9b;
+}
+
+.footer-list-item{
+    list-style-type: none;
 }
 
 .badge {
@@ -71,7 +76,6 @@ a:hover {
 }
 
 .footer-link-text {
-    font-size: 24px;
     color: #FFFFFF;
     text-decoration: none;
 }
