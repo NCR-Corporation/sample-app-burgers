@@ -18,9 +18,8 @@ body, html {
     border-bottom: 2px solid #7ed957;
 }
 
-a.navbar-brand > img {
-    height: 100%;
-    width: auto;
+.title-container{
+    display: flex;
 }
 
 .cart-icon {
@@ -55,6 +54,10 @@ a.navbar-brand > img {
     font-weight: 400;
 }
 
+.navbar-burger-icon{
+    height: 45px;
+    width: 45px;
+}
 
 a {
     font-weight: normal;
