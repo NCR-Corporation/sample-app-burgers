@@ -144,15 +144,17 @@
       {% endfor %}
     </div>
     <div class="col-md-8 col-sm-12 col-xs-12 map-block">
+
       <div id="map"></div>
-      <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOeae3mJn5fjVDyk6lW4cdYHdF0VVkrkE&callback=initMap&libraries=&v=weekly"
-        async
-      ></script>
+
     </div>
   </div>
 </div>
 
 {% endblock %} {% block javascript %}
 <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOeae3mJn5fjVDyk6lW4cdYHdF0VVkrkE&callback=initMap&libraries=&v=weekly"
+        async
+      ></script>
 {% endblock %}
