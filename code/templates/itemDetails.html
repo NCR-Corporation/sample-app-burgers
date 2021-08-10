@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <img src={{item.image}} width="300" height="300">
+    <p>DisplayName: {{item.displayName}}</p>
+    <p>Description: {{item.description}}</p>
+    <p>Price: {{item.price}}</p>
+    <p>Tags: {{item.tags}}</p>
+    <br>
+
+    <p>Unique ToppingsList </p>
+
+    {% for topping in item.uniqueToppings %}
+        <li>{{ topping.displayName}}, price: {{topping.price}}</li>
+    {% endfor %}
+    <br>
+
+    <p>Shared Toppings ToppingsList </p>
+
+    {% for topping in item.sharedToppings %}
+        <li>{{ topping.displayName}}, price: {{topping.price}}</li>
+     {% endfor %}
+    <br>
+
+    <p>Group Toppings ToppingsList </p>
+
+    {% for topping in item.groupToppings %}
+    <li>{{ topping.displayName}}, price: {{topping.price}}</li>
+    {% endfor %}
+
+{% endblock content %}

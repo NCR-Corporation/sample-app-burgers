@@ -1,0 +1,59 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}
+    <title> Menu</title>
+{% endblock %} 
+{% block content %}
+  <h2 class="text-center mt-2"> {{site}} {{time}} Menu</h2>
+  
+  {% for item in items.burgers %}
+    <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
+        <p>{{item.id}}</p>
+        <p>{{item.displayName}} </p>
+        <p>{{item.description}} </p>
+        <p>{{item.price}} </p>
+    </a>
+    <br>
+   {% endfor %}
+
+   {% for item in items.apps %}
+    <a href="{% url 'itemDetails' iitemId=item.id location=site tag=item.tags.0 time=time %}">
+        <p>{{item.id}}</p>
+        <p>{{item.displayName}} </p>
+        <p>{{item.description}} </p>
+        <p>{{item.price}} </p>
+    </a>
+    <br>
+   {% endfor %}
+
+   {% for item in items.sandwiches %}
+    <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
+        <p>{{item.id}}</p>
+        <p>{{item.displayName}} </p>
+        <p>{{item.description}} </p>
+        <p>{{item.price}} </p>
+    </a>
+    <br>
+   {% endfor %}
+
+    {% for item in items.sides %}
+     <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
+        <p>{{item.id}}</p>
+        <p>{{item.displayName}} </p>
+        <p>{{item.description}} </p>
+        <p>{{item.price}} </p>
+     </a>
+    <br>
+    {% endfor %}
+
+    {% for item in items.drinks %}
+        <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
+            <p>{{item.id}}</p>
+            <p>{{item.displayName}} </p>
+            <p>{{item.description}} </p>
+            <p>{{item.price}} </p>
+        </a>
+        <br>
+        {% endfor %}
+
+{% endblock %}

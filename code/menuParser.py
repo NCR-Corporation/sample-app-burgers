@@ -1,7 +1,7 @@
 import json
 
-
 class Menu():
+
  def __init__(self):
      self.apps = []
      self.burgers = []
@@ -10,9 +10,7 @@ class Menu():
      self.sandwiches = []
      self.sides = []
      self.wraps = []
-     
-
-
+    
 def getLinkedGroupContents(linkgroup, data):
     for items in data['linkGroups']:
 
@@ -31,7 +29,6 @@ def getLinkedGoupContentsIds(toppingsList, data):
 def menuParsing(data):
 
     menu = Menu()
-    #menuItems = []
     groupToppingsList = ['Sandwich-Toppings']
     itemId = 0
 
@@ -46,18 +43,19 @@ def menuParsing(data):
             for linkgroup in item['linkGroupIds']:
 
                 if linkgroup != 'Shared-Toppings' and linkgroup not in groupToppingsList:
-                    uniqueToppings = getLinkedGroupContents(linkgroup)
+                    uniqueToppings = getLinkedGroupContents(linkgroup,data)
                     uniqueToppingsWithPrices = getLinkedGoupContentsIds(uniqueToppings,data)
                   
                 elif linkgroup == 'Shared-Toppings':
-                    sharedToppings = getLinkedGroupContents(linkgroup)
+                    sharedToppings = getLinkedGroupContents(linkgroup,data)
                     sharedToppingsWithPrices = getLinkedGoupContentsIds(sharedToppings,data)
                
                 else:
-                    groupToppings = getLinkedGroupContents(linkgroup)
+                    groupToppings = getLinkedGroupContents(linkgroup,data)
                     groupToppingsWithPrices = getLinkedGoupContentsIds(groupToppings, data)
                               
         iteminfo = {'id':itemId ,
+                    'image':item['imageUrls'][0],
                     'displayName':item['displayName'],
                     'description':item['description'],
                     'price': item['currentPrice'],
@@ -66,8 +64,8 @@ def menuParsing(data):
                     'sharedToppings':sharedToppingsWithPrices,
                     'groupToppings':groupToppingsWithPrices}
         itemId += 1
-        
-        if iteminfo['tags'][0] == 'app':
+       
+        if iteminfo['tags'][0] == 'apps':
             menu.apps.append(iteminfo)
         elif iteminfo['tags'][0] == 'burgers':
             menu.burgers.append(iteminfo)
@@ -80,7 +78,6 @@ def menuParsing(data):
         elif iteminfo['tags'][0] == 'sides':
             menu.sides.append(iteminfo)
         elif iteminfo['tags'][0] == 'wraps':
-            menu.wraps.append(iteminfo)                             
-        #menuItems.append((iteminfo))
-
-    return menu
+            menu.wraps.append(iteminfo) 
+               
+    return menu.__dict__
