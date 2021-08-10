@@ -1,7 +1,11 @@
 /* Index Page Styles */
+body, html {
+    font-family: "Open Sans", sans-serif;
+    scroll-behavior: smooth;
+    height: 100%;
+}
 
 .custom-navbar a {
-    margin-right: 30px;
     font-weight: 400;
 }
 
@@ -21,6 +25,7 @@ a.navbar-brand > img {
 
 .cart-icon {
     position: relative;
+    color: #008d9b;
 }
 
 .badge {
@@ -42,47 +47,24 @@ a.navbar-brand > img {
     background-color: #66C15D;
 }
 
-.footer-text{
-    color: #FFFFFF;
-    font-family: "Open Sans", sans-serif;
-}
-
 .footer-header{
     font-weight: bold;
 }
 
-.footer-title-text {
-    color: #FFFFFF;
-    font-weight: bold;
+.footer-title-text{
+    font-weight: 400;
 }
 
-@media (min-width: 1100px) {
-    .footer-title-text{
-        padding-left: 9%;
-    }
-}
 
 a {
     font-weight: normal;
-    color: #31a7e5;
 }
 
 a:hover {
     font-weight: 600;
-    color: #31a7e5;
+
 }
 
-.footer-link-text {
-    font-size: 24px;
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-.footer-link-text:hover{
-    color: #31a7e5;
-    font-weight: 600;
-    text-decoration: none;
-}
 
 .location-box{
     display: flex;
@@ -221,15 +203,6 @@ hr {
     .card-column {
         padding-left: 3%;
     }
-}
-
-.card-text {
-    font-family: "Open Sans", sans-serif;
-}
-
-body, html {
-    scroll-behavior: smooth;
-    height: 100%;
 }
 
 .round {
