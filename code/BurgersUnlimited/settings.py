@@ -184,7 +184,5 @@ NEP_ORGANIZATION = ''
 NEP_SHARED_KEY = ''
 HMAC_SHARED_KEY = ''
 HMAC_SECRET_KEY = ''
-CENSUS_API_KEY = ''
-
 # Locations of the restaurants saved in a id, site name pattern
 LOCATIONS = {}
