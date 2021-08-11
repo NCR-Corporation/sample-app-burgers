@@ -145,6 +145,11 @@ a:hover {
     color: white;
 }
 
+.dropdown-item:hover{
+    background-color: #008D9B;
+    color: white;
+}
+
 nav .navbar-nav li a {
     color: black !important;
 }
