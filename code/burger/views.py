@@ -89,14 +89,10 @@ def viewCart(request):
 
 
 def confirmation(request):
-
     userCart = request.POST.getlist('cart')
-
 
     context = {'cart': userCart}
 
     return render(request, 'confirmation.html', context)
 
 
-def about(request):
-    return render(request, 'about.html')
