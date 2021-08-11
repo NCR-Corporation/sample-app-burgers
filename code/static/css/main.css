@@ -95,56 +95,6 @@ a:hover {
     color: white;
 }
 
-.btn-about {
-    padding: 10px 18px 10px 18px;
-    border: 1px solid #31a7e5;
-    border-radius: 4px;
-    min-width: 150px;
-    background-color: white;
-    color: #0279b3;
-}
-
-    .btn-about:hover, .btn-about-link:hover {
-        border-color: #31a7e5;
-        background-color: #31a7e5;
-        color: white;
-    }
-
-.btn-about-secondary {
-    margin-left: 2rem;
-    padding: 10px 18px 10px 18px;
-    border: 1px solid #31a7e5;
-    border-radius: 4px;
-    background-color: #31a7e5;
-    color: white;
-}
-
-    .btn-about-secondary:hover, .btn-about-link-secondary:hover {
-        border-color: #2e99d3;
-        background-color: #2e99d3;
-        color: white;
-    }
-
-.btn-about-link {
-    margin-top: 0.5rem;
-    padding: 10px 18px 10px 18px;
-    border: 1px solid #31a7e5;
-    border-radius: 4px;
-    min-width: 150px;
-    background-color: white;
-    color: #0279b3;
-}
-
-.btn-about-link-secondary {
-    margin-top: 0.75rem;
-    padding: 10px 18px 10px 18px;
-    border: 1px solid #31a7e5;
-    border-radius: 4px;
-    min-width: 150px;
-    background-color: #31a7e5;
-    color: white;
-}
-
 nav .navbar-nav li a {
     color: black !important;
 }
@@ -207,22 +157,6 @@ hr {
 .round {
     border-radius: 50%;
     background: #7ed957;
-}
-
-/* About Page Styles */
-
-.about-section {
-    margin-bottom: 3rem;
-    display: block;
-}
-
-.about-section-hidden {
-    display: none;
-}
-
-.about-image {
-    margin: 1rem auto;
-    display: block;
 }
 
 /* Sidebar Styles */
