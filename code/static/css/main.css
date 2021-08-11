@@ -1,5 +1,6 @@
 /* Index Page Styles */
-body, html {
+body,
+html {
     font-family: "Open Sans", sans-serif;
     scroll-behavior: smooth;
     height: 100%;
@@ -31,7 +32,7 @@ body, html {
 }
 
 .cart-text {
-    color: #008D9B
+    color: #008d9b;
 }
 
 .menu-dropdown:focus {
@@ -39,18 +40,18 @@ body, html {
 }
 
 .footer-container {
-    background-color: #66C15D;
+    background-color: #66c15d;
 }
 
-.footer-header{
+.footer-header {
     font-weight: bold;
 }
 
-.footer-title-text{
+.footer-title-text {
     font-weight: 400;
 }
 
-.navbar-burger-icon{
+.navbar-burger-icon {
     height: 45px;
     width: 45px;
 }
@@ -61,11 +62,9 @@ a {
 
 a:hover {
     font-weight: 600;
-
 }
 
-
-.location-box{
+.location-box {
     display: flex;
 }
 
@@ -75,12 +74,13 @@ a:hover {
 }
 
 .change-text {
-    color: #008D9B;
+    color: #008d9b;
     font-weight: 200;
 }
 /* Button Styles */
 
-.btn-custom:hover, .btn-custom-round:hover {
+.btn-custom:hover,
+.btn-custom-round:hover {
     color: white;
 }
 
@@ -147,7 +147,6 @@ hr {
     color: #333333;
 }
 
-
 @media (min-width: 1200px) {
     .card-column {
         padding-left: 3%;
@@ -157,28 +156,6 @@ hr {
 .round {
     border-radius: 50%;
     background: #7ed957;
-}
-
-/* Sidebar Styles */
-
-.sidebar {
-    margin-right: 1.5rem;
-    min-width: 16rem;
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-.sidebar-h4 {
-    margin-top: 1.75rem;
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    font-weight: 700;
-    color: #333333;
-}
-
-.sidebar-item-current {
-    display: block;
-    background-color: #def4fe;
 }
 
 .list {
@@ -191,7 +168,7 @@ hr {
 .list-section {
     display: flex;
     flex-flow: column nowrap;
-    border-bottom: 1px solid #E4E4E4;
+    border-bottom: 1px solid #e4e4e4;
 }
 
 .list-section-item {
@@ -199,23 +176,21 @@ hr {
     color: #333333;
 }
 
-    .list-section-item:hover {
-        font-weight: 600;
-        color: #333333;
-    }
+.list-section-item:hover {
+    font-weight: 600;
+    color: #333333;
+}
 
-    .list-section-item:first-child {
-        padding-left: 2.75rem;
-    }
+.list-section-item:first-child {
+    padding-left: 2.75rem;
+}
 
-@media(max-width: 1200px) {
+@media (max-width: 1200px) {
     .sidebar {
         margin-right: 0;
         width: 100%;
     }
 }
-
-/* Sidebar code and css found from codepen:  https://codepen.io/mouse0270/pen/wEYyqx  Author: Robert McIntosh */
 
 .make-me-sticky {
     position: -webkit-sticky;
@@ -247,26 +222,26 @@ pre code {
     overflow: hidden;
 }
 
-    .list-group.list-group-root .list-group {
-        margin-bottom: 0;
-    }
+.list-group.list-group-root .list-group {
+    margin-bottom: 0;
+}
 
-    .list-group.list-group-root .list-group-item {
-        border-radius: 0;
-        border-width: 1px 0 0 0;
-    }
+.list-group.list-group-root .list-group-item {
+    border-radius: 0;
+    border-width: 1px 0 0 0;
+}
 
-    .list-group.list-group-root > .list-group-item:first-child {
-        border-top-width: 0;
-    }
+.list-group.list-group-root > .list-group-item:first-child {
+    border-top-width: 0;
+}
 
-    .list-group.list-group-root > .list-group > .list-group-item {
-        padding-left: 30px;
-    }
+.list-group.list-group-root > .list-group > .list-group-item {
+    padding-left: 30px;
+}
 
-    .list-group.list-group-root > .list-group > .list-group > .list-group-item {
-        padding-left: 45px;
-    }
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+    padding-left: 45px;
+}
 
 .invalid {
     border: 3px #7ed957 solid;
