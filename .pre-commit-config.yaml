@@ -1,3 +1,4 @@
+files: ^code/
 repos:
 -   repo: https://github.com/ambv/black
     rev: stable
