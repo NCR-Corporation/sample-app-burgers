@@ -4,7 +4,6 @@ import re
 from BurgersUnlimited import settings
 from HMACAuth import HMACAuth
 
-
 HIGHLANDS = settings.LOCATIONS['Burgers Unlimited Highlands']
 SOUTHLAND = settings.LOCATIONS['Burgers Unlimited Southland']
 MIDTOWN = settings.LOCATIONS ['Burgers Unlimited Midtown']
@@ -29,7 +28,6 @@ def createItem(itemName, version, shortDescription ,location, department):
     r = requests.put(url, payload, auth=(HMACAuth()))
     return r.json()
 
-
 '''
 Description: This function returns the item details of the itemName passed
 Parameters: itemName [name of the item you want information about]
@@ -46,7 +44,6 @@ Description: This function will call the catalog bulk getItem function. It will 
 Parameters: storeName [The name of the store you wish  to call  all the  items from]
 Returns: An array with the names of all the items within the storeName.
 '''
-
 def getStoreItems(storeName):
     url = 'https://gateway-staging.ncrcloud.com/catalog/items?merchandiseCategoryId=%s&itemStatus=ACTIVE' % storeName
     r = requests.get(url, auth=(HMACAuth()))
@@ -75,9 +72,6 @@ Parameters:
 
 Returns: N/A
 '''
-
-
-
 def createPrice(itemName, itemPriceId, version, price, enterpriseId):
     url = 'https://gateway-staging.ncrcloud.com/catalog/item-prices/%s/%s' % (itemName, itemPriceId)
     payload = "{\"version\":%s,\"price\":%s,\"currency\":\"US Dollar\",\"effectiveDate\":\"2020-07-16T18:22:05.784Z\",\"status\":\"INACTIVE\"}" %(version, price)
@@ -92,9 +86,7 @@ Parameters:
 -enterpriseId [ The alphanumeric id associated with the location. NOTICE: This was created when the site was created. If unknown use query() within siteMaker] 
 Returns: A json of the priceItem from the requested itemName
 '''
-
 def getPrice(itemName,itemPriceId,enterpriseId):
-
     url = 'https://gateway-staging.ncrcloud.com/catalog/item-prices/%s/%s' %(itemName, itemPriceId)
     r = requests.get(url, auth=(HMACAuth(enterpriseId)))
     print(r.json())
@@ -124,9 +116,6 @@ def getAllPrices(itemIds,enterpriseId):
 
     itemsWithPrices = []
 
-
-
-
     i = 0
     for item in tempPrices['itemPrices']:
         result = {}
@@ -139,8 +128,6 @@ def getAllPrices(itemIds,enterpriseId):
             if collection['name'] == name:
                 department = collection['department']
 
-
-
         price = addChange(price)
         name = addSpacesInbetweenCaptialLetters(name)
         if isUnique(itemsWithPrices,name):
@@ -148,9 +135,7 @@ def getAllPrices(itemIds,enterpriseId):
             itemsWithPrices.append(result)
             i += 1
         else:
-
             result.update({'name': name, 'price': price})
-
 
     return itemsWithPrices
 
@@ -168,7 +153,6 @@ Description: A helper function to build json strings for the getPriceItems paylo
 Parameters: items [A list of itemNames to be turned into a json string]
 Returns: a string in the correct format for the getPriceItems payload.
 '''
-
 def createJsonString(items):
     String = ""
 
@@ -189,8 +173,6 @@ def isUnique(dict_list,item):
 
 #TODO: Fix this bug when you pass .01 - 0.9
 def addChange(string):
-
-
     string = str(string)
     if "." not in string:
         string = string + '.00'
