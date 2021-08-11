@@ -116,6 +116,11 @@ nav .navbar-nav li a {
     justify-content: flex-end;
 }
 
+.dropdown-item:hover {
+    background-color: #008d9b;
+    color: #ffffff;
+}
+
 #map {
     height: 100%;
     width: 92%;
@@ -129,7 +134,6 @@ nav .navbar-nav li a {
 }
 
 /* General Styles */
-
 hr {
     border-top: 2px dashed #000000;
 }
