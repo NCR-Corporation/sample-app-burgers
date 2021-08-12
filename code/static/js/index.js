@@ -77,7 +77,7 @@ $(document).ready(function () {
 
 
   $("#menu").click(function () {
-    var site = "southland"
+    var site = "midtown"
     var csrftoken = getCookie('csrftoken');
     $.ajax({
       type: "POST",
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
       },
       complete: function () {
-        window.location.href = "/burger";
+        window.location.href = "/burger/menu";
       },
       error: function (xhr, textStatus, thrownError) {
         alert("Could not send URL to Django. Error: " + xhr.status + ": " + xhr.responseText);

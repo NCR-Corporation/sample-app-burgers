@@ -67,9 +67,8 @@ def menu(request):
         conn = requests.get(url, auth=(HMACAuth(SOUTHLAND)))
 
     results = menuParsing(conn.json())
-    request.session[f'{location}{time}'] = results
+    request.session[menustring] = results
     context = {'items': results, 'time': time, 'site': site}
-
     return render(request, 'menu.html', context)
 
 
@@ -87,7 +86,7 @@ def itemDetails(request, itemId, location, tag, time):
     menu = None
     context = None
 
-    if time == 'lunch':
+    if time == 'Lunch':
         if location == 'highland':
             menu = request.session.get('highlandLunch')
         elif location == 'midtown':
