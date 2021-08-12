@@ -19,7 +19,7 @@
     <a class="navbar-brand text-decoration-none" href="{% url 'index' %}">
       <div class="d-flex">
         <div class="nav-image-container">
-          <img class="navbar-burger-icon text-decoration-none" src="../static/images/Burger-logo.png" />
+          <img class="navbar-burger-icon text-decoration-none" src="{% static 'images/Burger-logo.png' %}" />
         </div>
         <div class="text-container ml-3 pt-2">
           <span class="h3 font-weight-bold">Peachtree Burger</span>
@@ -56,8 +56,8 @@
         </li>
         <li class="nav-item">
           <div class="location-box ml-md-2 pl-md-1">
-            <img class="nav-burger-icon" src="../static/images/Location-Tooltip.svg" />
-            <a class="nav-link" href="{% url 'index' %}#map-content">
+            <img class="nav-burger-icon" src="{% static 'images/Location-Tooltip.svg' %}" />
+            <a class=" nav-link" href="{% url 'index' %}#map-content">
               Midtown
               <span class="change-text">(Change)</span>
             </a>
