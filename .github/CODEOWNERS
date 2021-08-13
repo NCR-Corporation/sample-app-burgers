@@ -12,8 +12,4 @@
 # This should make it easy to add new rules without breaking existing ones.
 
 # Global rule:
-*           @ncr-bsp/bsp-devex-approvers
-
-# Documentation Review Rule
-how-tos/ @ncr-bsp/bsp-developer-advocates
-README.md @ncr-bsp/bsp-developer-advocates
+*           @ncr-bsp/bsp-developer-advocates
