@@ -27,7 +27,7 @@ steps:
 # Helm Charts
 
   - id: 'publish-helm'
-    name: 'us.gcr.io/${PROJECT_ID}/helm:${_HELM_VERSION}-gcs${_HELM_GCS_VERSION}'
+    name: 'us.gcr.io/odsp-management/helm:latest'
     waitFor:
       - django-docker
       - nginx-docker
