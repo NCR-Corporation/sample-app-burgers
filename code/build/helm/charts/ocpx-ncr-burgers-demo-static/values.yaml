@@ -1,7 +1,7 @@
 Master:
   App:
-    Name: ocpx-ncr-burgers-demo-static
-    Prefix: ocpx-ncr-burgers-demo
+    Name: ncr-burgers-demo-static
+    Prefix: ncr-burgers-demo
     ReleaseName:
 Ingress:
   Annotations: {}
