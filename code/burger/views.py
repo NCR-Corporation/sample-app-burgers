@@ -40,11 +40,8 @@ def index(request):
         'results': sites
     }
 
-    time = datetime.datetime.now()
-    hour = time.hour
-    min = time.minute / 100
-    hourAndTime = hour + min
-    if 15.01 < hourAndTime < 23.59:
+    time = datetime.datetime.now().hour
+    if time > 14:
         request.session['time'] = 'Dinner'
     else:
         request.session['time'] = 'Lunch'
@@ -55,7 +52,11 @@ def index(request):
 def menu(request):
     time = request.session.get('time')
     menustring = site+time
-    menuMapping = MENUMAPPINGS[menustring]
+
+    if menustring in MENUMAPPINGS:
+        menuMapping = MENUMAPPINGS[menustring]
+    else:
+        return render(request, 'error.html')
 
     url = f'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/{menuMapping}'
 
@@ -63,7 +64,7 @@ def menu(request):
         conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))
     elif site == 'midtown':
         conn = requests.get(url, auth=(HMACAuth(MIDTOWN)))
-    else:
+    elif site == 'southland':
         conn = requests.get(url, auth=(HMACAuth(SOUTHLAND)))
 
     results = menuParsing(conn.json())

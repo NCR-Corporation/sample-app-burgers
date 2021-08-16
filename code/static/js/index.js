@@ -63,7 +63,6 @@ function getCookie(name) {
     var cookies = document.cookie.split(';');
     for (var i = 0; i < cookies.length; i++) {
       var cookie = jQuery.trim(cookies[i]);
-      // Does this cookie string begin with the name we want?
       if (cookie.substring(0, name.length + 1) === (name + '=')) {
         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
         break;
@@ -86,8 +85,6 @@ $(document).ready(function () {
       contentType: "application/json;charset=utf-8",
       data: JSON.stringify({ 'Site': site }),
       success: function (data) {
-        console.log(data);
-
       },
       complete: function () {
         window.location.href = "/burger/menu";
