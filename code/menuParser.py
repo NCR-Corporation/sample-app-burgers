@@ -2,7 +2,6 @@ import json
 
 
 class Menu():
-
     def __init__(self):
         self.apps = []
         self.burgers = []

@@ -35,7 +35,6 @@ function initMap() {
   }
 }
 
-
 $(document).ready(function () {
   $('input[rel="inputAddress"]').popover();
 });
@@ -73,7 +72,6 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
-
 
   $("#menu").click(function () {
     var site = "midtown"
