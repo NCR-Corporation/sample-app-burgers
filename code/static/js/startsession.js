@@ -26,15 +26,17 @@ dinnerButton.onclick = function () {
 };
 
 function locationChange(data) {
+    var regex = "Peachtree Burger ";
+    shortName = data.replace(regex, "");
     if (sessionStorage.getItem("Location") === null) {
-        sessionStorage.setItem("Location", data);
+        sessionStorage.setItem("Location", shortName);
 
         document.location.href = "/";
 
         document.getElementById("store-location").innerHTML =
             sessionStorage.getItem("Location");
     } else {
-        sessionStorage.setItem("Location", data);
+        sessionStorage.setItem("Location", shortName);
 
         document.location.href = "/";
 

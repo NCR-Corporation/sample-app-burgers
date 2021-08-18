@@ -6,7 +6,6 @@ import re
 
 
 def geoCodeAddress(address):
-
     try:
         url = 'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress'
 
@@ -55,20 +54,19 @@ def findResturantsInRange(coordinates, radius):
 
 
 def getPeachtreeRestaurants(request):
-    regex = r"Peachtree Burger (.*?) "
-
     siteNames = []
     for i in range(0, len(request)):
-        currentSiteName = request[i].get('siteName')
-        siteNames.append(re.sub(r"\W+", ' ', currentSiteName) + " ")
+        currentSiteName = re.sub(r"\W+", ' ', request[i].get('siteName'))
+        print(currentSiteName.strip())
+        if currentSiteName.strip() == 'Peachtree Burger Midtown' or currentSiteName.strip() == 'Peachtree Burger Southland' or currentSiteName.strip() == 'Peachtree Burger Highland':
+            siteNames.append(request[i])
 
-    matches = re.findall(regex, str(siteNames))
-    return matches
+    return siteNames
 
 
 dict = {
     'x': '-84.3895',
     'y': '33.7891',
+
 }
 rad = 15
-

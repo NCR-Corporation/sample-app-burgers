@@ -146,16 +146,20 @@
                 <div class="card-body location-card">
                   <div class="row">
                     <div class="col-12 col-xl-8">
-                      <p class="h3">Peachtree Burger {{instance}}</p>
+                      <p class="h3">{{instance.siteName}}</p>
                       <p class="h6 font-weight-bold">Address</p>
-                      <p class="h6">864 North Spring St NW, Atlanta GA 30308</p>
+                      <p class="h6">
+                        {{instance.address.street}} {{instance.address.city}},
+                        {{instance.address.state}}
+                        {{instance.address.postalCode}}
+                      </p>
                     </div>
                     <div class="col-12 col-xl-4">
                       <button
                         type="button"
                         class="btn location-button"
                         id="location-button-{{ forloop.counter }}"
-                        onclick="locationChange('{{instance}}')"
+                        onclick="locationChange('{{instance.siteName}}')"
                       >
                         Select Location
                       </button>

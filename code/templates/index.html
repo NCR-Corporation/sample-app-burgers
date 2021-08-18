@@ -113,7 +113,7 @@
             <div class="card-body">
               <div class="store-header-text pl-2">
                 <p class="card-title h5 pl-1 store-name">
-                  Peachtree Burger {{instance}}
+                  {{instance.siteName}}
                 </p>
               </div>
               <div class="store-info-text">
@@ -121,13 +121,18 @@
                   <div class="store-address-block">
                     <p class="address-text">
                       <span class="store-header">Address</span>
-                      <span class="card-info">864 Spring St NW,</span>
-                      <span class="card-info">Atlanta, GA 30308</span>
+                      <span class="card-info"
+                        >{{instance.address.street}},</span
+                      >
+                      <span class="card-info"
+                        >{{instance.address.city}}, {{instance.address.state}}
+                        {{instance.address.postalCode}}</span
+                      >
                     </p>
                     <button
                       type="button"
                       class="btn order-button mt-3"
-                      onclick="setLocation('{{instance}}')"
+                      onclick="setLocation('{{instance.siteName}}')"
                     >
                       View Menu
                     </button>

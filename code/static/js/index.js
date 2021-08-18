@@ -36,7 +36,10 @@ function initMap() {
 }
 
 function setLocation(data) {
-    sessionStorage.setItem("Location", data);
+    console.log(data);
+    var regex = "Peachtree Burger ";
+    shortName = data.replace(regex, "");
+    sessionStorage.setItem("Location", shortName);
     document.getElementById("store-location").innerHTML =
         sessionStorage.getItem("Location");
 }
