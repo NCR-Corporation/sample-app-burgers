@@ -82,15 +82,8 @@ def location(request):
 
 
 def itemDetails(request, itemId, location, tag, time):
-    try:
-        items = catalogMaker.getStoreItems('BurgersUnlimitedSouthland')
-        items_prices = catalogMaker.getAllPrices(items, SOUTHLAND)
-    except:
-        return render(request, 'error.html')
-    context = {
-        'items': items_prices,
-        'locations': MATCHES
-    }
+    menu = None
+    context = None
 
     if time == 'Lunch':
         if location == 'highland':
@@ -109,6 +102,7 @@ def itemDetails(request, itemId, location, tag, time):
 
     length = len(menu[tag])
     for item in range(length):
+
         if menu[tag][item]['id'] == int(itemId):
             context = {
                 'item': menu[tag][item],
