@@ -1,9 +1,5 @@
 from django.shortcuts import render
-
-# Create your views here.
-
-import http.client
-import requests
+import re
 from requests.auth import HTTPBasicAuth
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -13,20 +9,27 @@ import catalogMaker
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 
-HIGHLANDS = settings.LOCATIONS['Burgers Unlimited Highlands']
-SOUTHLAND = settings.LOCATIONS['Burgers Unlimited Southland']
-MIDTOWN = settings.LOCATIONS['Burgers Unlimited Midtown']
+HIGHLAND = settings.LOCATIONS['Peachtree Burger Highland']
+SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
+MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
+
+MENUMAPPINGS = {
+    'highlandLunch': '1626399748035',
+    'highlandDinner': '1628539739497',
+    'midtownLunch': '1628542092992',
+    'midtownDinner': '1628558391854',
+    'southlandLunch': '1628508502301',
+    'southlandDinner': '1628508515030'
+}
+
+RESULTS = auxMethods.findResturantsInRange(
+    {'x': -84.38879, 'y': 33.777714}, 20)
+MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
 
 
 def index(request):
-    results = auxMethods.findResturantsInRange({'x': -84.38879, 'y': 33.777714}, 20)
-    sites = []
-
-    for i in range (0,3):
-        sites.append(results[i])
-    
     context = {
-        'results': sites
+        'locations': MATCHES
     }
     return render(request, 'index.html', context)
 
@@ -41,8 +44,9 @@ def findRestaurant(request):
         return render(request, 'addressNotFound.html')
 
     results = auxMethods.findResturantsInRange(coordinates, radius)
+    matches = auxMethods.getPeachtreeRestaurants(results)
     context = {'address': address, "radius": radius,
-               'coordinates': coordinates, 'results': results}
+               'coordinates': coordinates, 'results': results, 'locations': matches}
 
     return render(request, 'findRestaurant.html', context)
 
@@ -53,7 +57,11 @@ def midtownMenu(request):
         items_prices = catalogMaker.getAllPrices(items, MIDTOWN)
     except:
         return render(request, 'error.html')
-    context = {'items': items_prices}
+
+    context = {
+        'items': items_prices,
+        'locations': MATCHES
+    }
 
     return render(request, 'midtownMenu.html', context)
 
@@ -64,7 +72,11 @@ def southlandMenu(request):
         items_prices = catalogMaker.getAllPrices(items, SOUTHLAND)
     except:
         return render(request, 'error.html')
-    context = {'items': items_prices}
+
+    context = {
+        'items': items_prices,
+        'locations': MATCHES
+    }
 
     return render(request, 'southlandMenu.html', context)
 
@@ -72,27 +84,33 @@ def southlandMenu(request):
 def highlandsMenu(request):
     try:
         items = catalogMaker.getStoreItems('BurgersUnlimitedHighlands')
-        items_prices = catalogMaker.getAllPrices(items, HIGHLANDS)
+        items_prices = catalogMaker.getAllPrices(items, HIGHLAND)
     except:
         return render(request, 'error.html')
-    context = {'items': items_prices}
+
+    context = {
+        'items': items_prices,
+        'locations': MATCHES
+    }
 
     return render(request, 'highlandsMenu.html', context)
 
 
 def payment(request):
-    return render(request, 'payment.html')
+    context = {'locations': MATCHES}
+    return render(request, 'payment.html', context)
 
 
 def viewCart(request):
-    return render(request, 'viewCart.html')
+    context = {'locations': MATCHES}
+    return render(request, 'viewCart.html', context)
 
 
 def confirmation(request):
     userCart = request.POST.getlist('cart')
-
-    context = {'cart': userCart}
+    context = {
+        'cart': userCart,
+        'locations': MATCHES
+    }
 
     return render(request, 'confirmation.html', context)
-
-

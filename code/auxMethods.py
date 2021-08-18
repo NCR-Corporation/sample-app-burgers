@@ -2,6 +2,7 @@ from django.conf import settings
 import requests
 import json
 from HMACAuth import HMACAuth
+import re
 
 
 def geoCodeAddress(address):
@@ -26,7 +27,6 @@ def geoCodeAddress(address):
 
 
 def findResturantsInRange(coordinates, radius):
-    # The radius in this function is in meters, so unit that user enters needs to be converted to from miles to meters
     meters = 1609
     y = coordinates['y']
     x = coordinates['x']
@@ -54,14 +54,21 @@ def findResturantsInRange(coordinates, radius):
     return sites
 
 
+def getPeachtreeRestaurants(request):
+    regex = r"Peachtree Burger (.*?) "
+
+    siteNames = []
+    for i in range(0, len(request)):
+        currentSiteName = request[i].get('siteName')
+        siteNames.append(re.sub(r"\W+", ' ', currentSiteName) + " ")
+
+    matches = re.findall(regex, str(siteNames))
+    return matches
+
+
 dict = {
     'x': '-84.3895',
     'y': '33.7891',
 }
 rad = 15
 
-#geoCodeAddress('864 Spring St Nw, Atlanta, GA')
-
-#results =findResturantsInRange(dict,rad)
-
-# print(results)

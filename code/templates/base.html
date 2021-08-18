@@ -21,7 +21,7 @@
       type="image/png"
       href="{% static 'images/favicon.png' %}"
     />
-    {% block stylesheets %}{% endblock %} {% block scripts %}{% endblock %}
+    {% block stylesheets %}{% endblock %} {% block scripts %} {% endblock %}
   </head>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-white custom-navbar">
@@ -29,7 +29,10 @@
       <a class="navbar-brand text-decoration-none" href="{% url 'index' %}">
         <div class="d-flex">
           <div class="nav-image-container">
-            <img class="navbar-burger-icon text-decoration-none" src="../static/images/Burger-logo.png" />
+            <img
+              class="navbar-burger-icon text-decoration-none"
+              src="../static/images/Burger-logo.png"
+            />
           </div>
           <div class="text-container ml-3 pt-2">
             <span class="h3 font-weight-bold">Peachtree Burger</span>
@@ -50,10 +53,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto smooth-scroll d-lg-flex">
           <li class="nav-item">
-            <a class="nav-link ml-md-2 pl-md-1" href="{% url 'index' %}#about">About Us</a>
+            <a class="nav-link ml-md-2 pl-md-1" href="{% url 'index' %}#about"
+              >About Us</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link ml-md-2 pl-md-1" href="{% url 'index' %}#map-content"
+            <a
+              class="nav-link ml-md-2 pl-md-1"
+              href="{% url 'index' %}#map-content"
               >Our Burger Joints</a
             >
           </li>
@@ -85,10 +92,15 @@
                 class="nav-burger-icon"
                 src="../static/images/Location-Tooltip.svg"
               />
-              <a class="nav-link" href="{% url 'index' %}#map-content">
-                Midtown
+              <button
+                type="button"
+                class="btn btn-link text-decoration-none btn-outline-light"
+                data-toggle="modal"
+                onclick="loadDynamicModal()"
+              >
+                <span class="text-dark" id="store-location"></span>
                 <span class="change-text">(Change)</span>
-              </a>
+              </button>
             </div>
           </li>
           <li class="nav-item h-100">
@@ -109,6 +121,56 @@
     </div>
   </nav>
 
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="dynamicModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="ModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered dynamicNavModal"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="container-fluid my-4 py-2 px-2">
+          <p class="h2 ml-4 my-1 modal-title font-weight-bold">
+            Choose a Location
+          </p>
+          {% for instance in locations %}
+          <div class="row">
+            <div class="col-12">
+              <div class="card my-2 mx-auto" style="width: 93%">
+                <div class="card-body location-card">
+                  <div class="row">
+                    <div class="col-12 col-xl-8">
+                      <p class="h3">Peachtree Burger {{instance}}</p>
+                      <p class="h6 font-weight-bold">Address</p>
+                      <p class="h6">864 North Spring St NW, Atlanta GA 30308</p>
+                    </div>
+                    <div class="col-12 col-xl-4">
+                      <button
+                        type="button"
+                        class="btn btn-info location-button"
+                        id="location-button-{{ forloop.counter }}"
+                        onclick="locationChange('{{instance}}')"
+                      >
+                        Select Location
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
   {% if messages %} {% for msg in messages %}
   <div class="alert alert-{{ message.tags }}">{{ message }}</div>
   {% endfor %} {% endif %}
@@ -119,14 +181,22 @@
     <footer class="py-5 mt-5 footer-container">
       <div class="container-fluid">
         <div class="row mx-xl-5">
-          <div class="text-white col-12 col-xl-6 ">
+          <div class="text-white col-12 col-xl-6">
             <div class="pt-1 pl-xl-4 pl-md-4 pb-md-3">
-              <a class="text-white text-decoration-none h2 pl-xl-5 pl-lg-2 pl-md-3 footer-title-text" href="{% url 'index' %}">
+              <a
+                class="
+                  text-white text-decoration-none
+                  h2
+                  pl-xl-5 pl-lg-2 pl-md-3
+                  footer-title-text
+                "
+                href="{% url 'index' %}"
+              >
                 Peachtree Burger
               </a>
             </div>
           </div>
-          <div class="col-12 col-xl-3 ml-xl-0 ml-lg-5 ml-md-5 text-white">
+          <div class="col-12 col-xl-3 ml-xl-0 ml-lg-5 pl-md-5 text-white">
             <div class="pt-xl-3 pt-lg-4">
               <p class="h3 pb-1 font-weight-bold">SITE</p>
               <ul class="list-unstyled">
@@ -138,19 +208,23 @@
                   >
                 </li>
                 <li class="h5">
-                  <a class="text-decoration-none text-white" href="{% url 'index' %}"
+                  <a
+                    class="text-decoration-none text-white"
+                    href="{% url 'index' %}"
                     >Lunch Menu</a
                   >
                 </li>
                 <li class="h5">
-                  <a class="text-decoration-none text-white" href="{% url 'index' %}"
+                  <a
+                    class="text-decoration-none text-white"
+                    href="{% url 'index' %}"
                     >Dinner Menu</a
                   >
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-12 col-xl-3 ml-xl-0 ml-lg-5 ml-md-5 text-white">
+          <div class="col-12 col-xl-3 ml-xl-0 ml-lg-5 pl-md-5 text-white">
             <div class="pt-xl-3 pt-lg-4 pb-lg-4">
               <p class="h3 pb-1 font-weight-bold">HELP</p>
               <ul class="list-unstyled">
