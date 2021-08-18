@@ -177,22 +177,12 @@ DEBUG_TOOLBAR_CONFIG = {
 DEBUG_TOOLBAR_PANELS = ['requests_panel.panel.RequestsDebugPanel']
 
 # DO NOT COMMIT THESE VALUES
-NEP_USERNAME = 'acct:burgers-unlimited@burgers-unlimited-service-account'
-NEP_PASSWORD = 'ncr1sB3st!'
-NEP_APPLICATION_KEY = 'a5c9267189f249a9b91c44c61d7a4b3f'
-#NEP_ORGANIZATION = 'burgers-unlimited'
-NEP_ORGANIZATION = 'hospitality-sample-app-dev'
-NEP_SHARED_KEY = '236720bb9bbb4fbcab77ceba8d1678f1'
-CENSUS_API_KEY = 'a24172508f28a6e7933932141b888e1bd85e30ff'
-# HMAC_SHARED_KEY='993b86ce5a76454eb8e4d39922fe2e2a'
-# HMAC_SECRET_KEY='93095d71df7a44c6ad349d9c6544799d'
-HMAC_SHARED_KEY = '368deb2f68a041c2a95e5facb23a3c4b'
-HMAC_SECRET_KEY = '34c9f00169a34fe6967ec7f075c0da67'
-
-# Locations of the resturants saved in a id, site name pattern
-LOCATIONS = {'Burgers Unlimited Highlands': 'a6c0b9c5ed4c40f8bf584dca562b47eb',
-             'Burgers Unlimited Midtown': '5b0c5bec0a1b46ab86182cf3e612dd5b',
-             'Burgers Unlimited Southland': 'dc10bef242fb4ef993729e5e74f39b9b',
-             'Peachtree Burger Midtown': '4a11814528394b83b2680057d10b6ba5',
-             'Peachtree Burger Southland': 'b7571743fb7d4eeabc0c63573869b390',
-             'Peachtree Burger Highland': 'c9eeb9bf887c49aa800df09dd3af2fb6'}
+NEP_USERNAME = ''
+NEP_PASSWORD = ''
+NEP_APPLICATION_KEY = ''
+NEP_ORGANIZATION = ''
+NEP_SHARED_KEY = ''
+HMAC_SHARED_KEY = ''
+HMAC_SECRET_KEY = ''
+# Locations of the restaurants saved in a id, site name pattern
+LOCATIONS = {}
