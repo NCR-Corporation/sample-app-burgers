@@ -1,8 +1,9 @@
 from menuParser import menuParsing
 from HMACAuth import HMACAuth
 from django.shortcuts import render
-import re
-import http.client
+import datetime
+import json
+import catalogMaker
 import requests
 from requests.auth import HTTPBasicAuth
 from django.http import HttpResponse
@@ -28,12 +29,13 @@ RESULTS = auxMethods.findResturantsInRange(
     {'x': -84.38879, 'y': 33.777714}, 20)
 MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
 
+site = ''
+
+
 def index(request):
-    def index(request):
     context = {
         'locations': MATCHES
     }
-    return render(request, 'index.html', context)
 
     time = datetime.datetime.now().hour
     if time > 14:
@@ -54,12 +56,8 @@ def menu(request):
         return render(request, 'error.html')
 
     url = f'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/{menuMapping}'
-    
-    results = auxMethods.findResturantsInRange(coordinates, radius)
-    context = {'address': address, "radius": radius,
-               'coordinates': coordinates, 'results': results}
 
-        if site == 'highlands':
+    if site == 'highlands':
         conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))
     elif site == 'midtown':
         conn = requests.get(url, auth=(HMACAuth(MIDTOWN)))
@@ -68,26 +66,22 @@ def menu(request):
 
     results = menuParsing(conn.json())
     request.session[menustring] = results
-    context = {'items': results, 'time': time, 'site': site}
+    context = {'items': results, 'time': time,
+               'site': site, 'locations': MATCHES}
     return render(request, 'menu.html', context)
 
 
-def midtownMenu(request):
-    try:
-        items = catalogMaker.getStoreItems('BurgersUnlimitedMidtown')
-        items_prices = catalogMaker.getAllPrices(items, MIDTOWN)
-    except:
-        return render(request, 'error.html')
-
-    context = {
-        'items': items_prices,
-        'locations': MATCHES
-    }
+def location(request):
+    if request.method == 'POST':
+        global site
+        body = json.loads(request.body)
+        site = body['Site']
+        print(f'Site Selction:{site}')
 
     return HttpResponse()
 
 
-def southlandMenu(request):
+def itemDetails(request, itemId, location, tag, time):
     try:
         items = catalogMaker.getStoreItems('BurgersUnlimitedSouthland')
         items_prices = catalogMaker.getAllPrices(items, SOUTHLAND)
@@ -115,17 +109,11 @@ def southlandMenu(request):
 
     length = len(menu[tag])
     for item in range(length):
-
-def highlandsMenu(request):
-    try:
-        items = catalogMaker.getStoreItems('BurgersUnlimitedHighlands')
-        items_prices = catalogMaker.getAllPrices(items, HIGHLANDS)
-    except:
-        return render(request, 'error.html')
-    context = {
-        'items': items_prices,
-        'locations': MATCHES
-    }
+        if menu[tag][item]['id'] == int(itemId):
+            context = {
+                'item': menu[tag][item],
+                'locations': MATCHES
+            }
 
     return render(request, 'itemDetails.html', context)
 
