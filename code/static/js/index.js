@@ -36,7 +36,6 @@ function initMap() {
 }
 
 function setLocation(data) {
-    console.log(data);
     var regex = "Peachtree Burger ";
     shortName = data.replace(regex, "");
     sessionStorage.setItem("Location", shortName);

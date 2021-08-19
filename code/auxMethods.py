@@ -57,7 +57,6 @@ def getPeachtreeRestaurants(request):
     siteNames = []
     for i in range(0, len(request)):
         currentSiteName = re.sub(r"\W+", ' ', request[i].get('siteName'))
-        print(currentSiteName.strip())
         if currentSiteName.strip() == 'Peachtree Burger Midtown' or currentSiteName.strip() == 'Peachtree Burger Southland' or currentSiteName.strip() == 'Peachtree Burger Highland':
             siteNames.append(request[i])
 

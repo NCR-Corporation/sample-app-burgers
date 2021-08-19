@@ -76,7 +76,6 @@ def location(request):
         global site
         body = json.loads(request.body)
         site = body['Site']
-        print(f'Site Selction:{site}')
 
     return HttpResponse()
 
