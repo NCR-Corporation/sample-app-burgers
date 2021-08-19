@@ -18,7 +18,7 @@ In future updates, we aim to:
 - **[Usage](#usage)**
 - **[Notes](#notes)**
 - **[Troubleshooting](#troubleshooting)**
-- **[Contributin](#contributing)**
+- **[Contributing](#contributing)**
 - **[License](#license)**
 
 ## Installation
