@@ -1,16 +1,16 @@
 from menuParser import menuParsing
 from HMACAuth import HMACAuth
 from django.shortcuts import render
-
-# Create your views here.
-
+import datetime
+import json
+import catalogMaker
 import requests
+from requests.auth import HTTPBasicAuth
 from django.http import HttpResponse
 from django.conf import settings
 import datetime
 import json
 import auxMethods
-
 
 HIGHLAND = settings.LOCATIONS['Peachtree Burger Highland']
 SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
@@ -25,19 +25,16 @@ MENUMAPPINGS = {
     'southlandDinner': '1628508515030'
 }
 
+RESULTS = auxMethods.findResturantsInRange(
+    {'x': -84.38879, 'y': 33.777714}, 20)
+MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
+
 site = ''
 
 
 def index(request):
-    results = auxMethods.findResturantsInRange(
-        {'x': -84.38879, 'y': 33.777714}, 20)
-    sites = []
-
-    for i in range(0, 3):
-        sites.append(results[i])
-
     context = {
-        'results': sites
+        'locations': MATCHES
     }
 
     time = datetime.datetime.now().hour
@@ -69,7 +66,8 @@ def menu(request):
 
     results = menuParsing(conn.json())
     request.session[menustring] = results
-    context = {'items': results, 'time': time, 'site': site}
+    context = {'items': results, 'time': time,
+               'site': site, 'locations': MATCHES}
     return render(request, 'menu.html', context)
 
 
@@ -78,7 +76,6 @@ def location(request):
         global site
         body = json.loads(request.body)
         site = body['Site']
-        print(f'Site Selction:{site}')
 
     return HttpResponse()
 
@@ -106,21 +103,27 @@ def itemDetails(request, itemId, location, tag, time):
     for item in range(length):
 
         if menu[tag][item]['id'] == int(itemId):
-            context = {'item': menu[tag][item]}
+            context = {
+                'item': menu[tag][item],
+                'locations': MATCHES
+            }
 
     return render(request, 'itemDetails.html', context)
 
 
 def payment(request):
-    return render(request, 'payment.html')
+    context = {'locations': MATCHES}
+    return render(request, 'payment.html', context)
 
 
 def viewCart(request):
-    return render(request, 'viewCart.html')
+    context = {'locations': MATCHES}
+    return render(request, 'viewCart.html', context)
 
 
 def confirmation(request):
     userCart = request.POST.getlist('cart')
+
     context = {'cart': userCart}
 
     return render(request, 'confirmation.html', context)

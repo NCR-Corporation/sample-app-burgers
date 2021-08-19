@@ -31,12 +31,23 @@ html {
     font-size: 12px;
 }
 
+.location-button {
+    background-color: #008d9b;
+    border-color: #008d9b;
+    width: 100%;
+    color: white;
+}
+
 .cart-text {
     color: #008d9b;
 }
 
 .menu-dropdown:focus {
     box-shadow: 0 0 0 0.125rem #7ed957;
+}
+
+.location-card {
+    box-shadow: 1px 4px 4px rgb(0, 0, 0, 0.25);
 }
 
 .footer-container {
@@ -49,6 +60,10 @@ html {
 
 .footer-title-text {
     font-weight: 400;
+}
+
+.dynamicNavModal {
+    max-width: 40%;
 }
 
 .navbar-burger-icon {
@@ -77,6 +92,7 @@ a:hover {
     color: #008d9b;
     font-weight: 200;
 }
+
 /* Button Styles */
 
 .btn-custom:hover,
