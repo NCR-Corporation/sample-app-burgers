@@ -99,3 +99,7 @@ def confirmation(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def liveliness(request):
+    return HttpResponse("OK")

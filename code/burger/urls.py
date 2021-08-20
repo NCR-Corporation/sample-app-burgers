@@ -12,4 +12,5 @@ urlpatterns = [
     path('viewCart', views.viewCart, name='viewCart'),
     path('confirmation', views.confirmation, name='confirmation'),
     path('about', views.about, name='about'),
+    path('liveliness', views.liveliness, name="liveliness"),
 ]
