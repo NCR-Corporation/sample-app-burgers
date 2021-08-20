@@ -60,14 +60,12 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              scheme: HTTPS
-              path: /healthz
-              port: 8000
+              path: /
+              port: http
           readinessProbe:
             httpGet:
-              scheme: HTTPS
-              path: /healthz
-              port: 8000
+              path: /
+              port: http
           volumeMounts:
             - name: shared-data
               mountPath: /app/dist
