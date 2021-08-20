@@ -60,11 +60,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /burger
+              path: /static/debug_toolbar/css/toolbar.css
               port: http
           readinessProbe:
             httpGet:
-              path: /burger
+              path: /static/debug_toolbar/css/toolbar.css
               port: http
           volumeMounts:
             - name: shared-data
