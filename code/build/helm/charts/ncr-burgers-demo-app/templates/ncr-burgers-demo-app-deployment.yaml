@@ -60,11 +60,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /static/debug_toolbar/css/toolbar.css
+              path: /
               port: http
           readinessProbe:
             httpGet:
-              path: /static/debug_toolbar/css/toolbar.css
+              path: /
               port: http
           volumeMounts:
             - name: shared-data
@@ -81,7 +81,7 @@ spec:
               mountPath: /app/dist
           livenessProbe:
             httpGet:
-              path: /burger
+              path: /static/debug_toolbar/css/toolbar.css
               port: http
             initialDelaySeconds: 10
             periodSeconds: 10
@@ -90,7 +90,7 @@ spec:
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /burger
+              path: /static/debug_toolbar/css/toolbar.css
               port: http
             initialDelaySeconds: 10
             periodSeconds: 10
