@@ -58,6 +58,14 @@ spec:
             - name: http
               containerPort: 8000
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /burger/liveliness
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /burger/liveliness
+              port: http
           volumeMounts:
             - name: shared-data
               mountPath: /app/dist
