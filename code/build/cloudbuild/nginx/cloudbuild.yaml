@@ -5,14 +5,12 @@ steps:
       'build',
       '--build-arg', 'NGINX_VERSION=${_NGINX_VERSION}',
       '--build-arg', 'NGINX_VARIANT=alpine',
-      '--tag', 'us.gcr.io/$PROJECT_ID/ocpx-${_APP_NAME}:${_APP_TAG}',
-      '--label', 'ocpx-artifact=${_APP_TAG}',
+      '--tag', 'us.gcr.io/$PROJECT_ID/ncr-burgers-demo-nginx:${TAG_NAME}',
+      '--label', 'ncr-burgers-demo-artifact=${TAG_NAME}',
       '.'
     ]
 images: [
-  'us.gcr.io/$PROJECT_ID/ocpx-ncr-burgers-demo-nginx-${_APP_NAME}:${_APP_TAG}'
+  'us.gcr.io/$PROJECT_ID/ncr-burgers-demo-nginx:${TAG_NAME}'
 ]
 substitutions:
   _NGINX_VERSION: '1.15'
-  _APP_NAME:
-  _APP_TAG:

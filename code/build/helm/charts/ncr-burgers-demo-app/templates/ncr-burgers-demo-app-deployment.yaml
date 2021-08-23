@@ -58,6 +58,14 @@ spec:
             - name: http
               containerPort: 8000
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           volumeMounts:
             - name: shared-data
               mountPath: /app/dist
@@ -73,7 +81,7 @@ spec:
               mountPath: /app/dist
           livenessProbe:
             httpGet:
-              path: /burger
+              path: /static/debug_toolbar/css/toolbar.css
               port: http
             initialDelaySeconds: 10
             periodSeconds: 10
@@ -82,7 +90,7 @@ spec:
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /burger
+              path: /static/debug_toolbar/css/toolbar.css
               port: http
             initialDelaySeconds: 10
             periodSeconds: 10
