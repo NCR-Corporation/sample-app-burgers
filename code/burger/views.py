@@ -127,3 +127,7 @@ def confirmation(request):
     context = {'cart': userCart}
 
     return render(request, 'confirmation.html', context)
+
+
+def liveliness(request):
+    return HttpResponse("OK")
