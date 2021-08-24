@@ -6,8 +6,8 @@ steps:
     waitFor: ['-']
     args: [
       'build',
-      '--tag', 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${VERSION_SUFFIX}-django:${TAG_NAME}',
-      '--label', 'ncr-burgers-demo${VERSION_SUFFIX}-artifact=${TAG_NAME}',
+      '--tag', 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-django:${TAG_NAME}',
+      '--label', 'ncr-burgers-demo${_VERSION_SUFFIX}-artifact=${TAG_NAME}',
       'code'
     ]
 
@@ -19,8 +19,8 @@ steps:
       'build',
       '--build-arg', 'NGINX_VERSION=${_NGINX_VERSION}',
       '--build-arg', 'NGINX_VARIANT=alpine',
-      '--tag', 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${VERSION_SUFFIX}-nginx:${TAG_NAME}',
-      '--label', 'ncr-burgers-demo${VERSION_SUFFIX}-artifact=${TAG_NAME}',
+      '--tag', 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-nginx:${TAG_NAME}',
+      '--label', 'ncr-burgers-demo${_VERSION_SUFFIX}-artifact=${TAG_NAME}',
       'code/build/cloudbuild/nginx'
     ]
 
@@ -53,8 +53,8 @@ steps:
         done
 
 images:
-  - 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${VERSION_SUFFIX}-django:${TAG_NAME}'
-  - 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${VERSION_SUFFIX}-nginx:${TAG_NAME}'
+  - 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-django:${TAG_NAME}'
+  - 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-nginx:${TAG_NAME}'
 
 substitutions:
   _HELM_GCS_VERSION: '0.3.9'
