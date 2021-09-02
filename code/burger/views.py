@@ -19,11 +19,12 @@ MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
 MENUMAPPINGS = {
     'highlandLunch': '1626399748035',
     'highlandDinner': '1628539739497',
-    'midtownLunch': '1628542092992',
-    'midtownDinner': '1628558391854',
+    'midtownLunch': '1629990058438',
+    'midtownDinner': '1630432196891',
     'southlandLunch': '1628508502301',
     'southlandDinner': '1628508515030'
 }
+
 
 RESULTS = auxMethods.findResturantsInRange(
     {'x': -84.38879, 'y': 33.777714}, 20)
@@ -105,7 +106,8 @@ def itemDetails(request, itemId, location, tag, time):
         if menu[tag][item]['id'] == int(itemId):
             context = {
                 'item': menu[tag][item],
-                'locations': MATCHES
+                'locations': MATCHES,
+                'menu': menu
             }
 
     return render(request, 'itemDetails.html', context)
