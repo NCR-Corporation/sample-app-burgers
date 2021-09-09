@@ -30,6 +30,7 @@
           class="btn btn-primary"
           data-toggle="modal"
           data-target="#menuModal"
+          onclick="addItemToCart()"
         >
           Add to Order
         </button>
@@ -122,39 +123,6 @@
         <div class="row" id="item-sharedToppings--list-optional"></div>
       </div>
     </div>
-    <!-- <div class="mt-4"><h4>Sides</h4></div>
-    <div class="row">
-      <div class="col-12">
-        <div class="row">
-          {% for topping in menu.sides %}
-          <div class="col-6 col-md-3 my-2">
-            <div class="card shadow-sm">
-              <div class="d-flex justify-content-end">
-                <span class="fa-stack fa-lg float-right" id="addition">
-                  <i
-                    class="fas fa-circle fa-stack-1x"
-                    style="color: #54b948"
-                  ></i>
-                  <i
-                    class="fas fa-plus fa-stack-1x"
-                    style="color: white; font-size: 1em"
-                  ></i>
-                </span>
-              </div>
-              <div class="card-body py-0">
-                <p>
-                  <img src=" https://via.placeholder.com/300.png"
-                  class="card-img-top"
-                </p>
-                <p class="h5 text-center">{{ topping.displayName}}</p>
-                <p class="h6 text-center">${{ topping.price}}0</p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div> -->
   </div>
 </div>
 

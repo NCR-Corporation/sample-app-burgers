@@ -74,7 +74,7 @@ function createDefaultCard(text = "No other available toppings") {
 function createItemCard({ item, included, container, type }) {
     $(`<div class='col-4 col-md-3 col-lg-2 my-2' data-display-name="${
         item.displayName
-    }">
+    }" data-item-price="${item.price}">
         <div class='card shadow-sm'>
             <div class='d-flex justify-content-end pt-1' onclick='removeItem({ displayName: "${
                 item.displayName
