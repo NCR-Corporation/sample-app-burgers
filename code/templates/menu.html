@@ -1,59 +1,247 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block title %}
-    <title> Menu</title>
-{% endblock %} 
-{% block content %}
-  <h2 class="text-center mt-2"> {{site}} {{time}} Menu</h2>
-  
-  {% for item in items.burgers %}
-    <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
-        <p>{{item.id}}</p>
-        <p>{{item.displayName}} </p>
-        <p>{{item.description}} </p>
-        <p>{{item.price}} </p>
-    </a>
-    <br>
-   {% endfor %}
+{% include 'base.html' %} {% load static %}
+<div class="burgers-nav-bar">
+  {% block title %}
+  <title>Menu</title>
+  {% endblock %}
+</div>
 
-   {% for item in items.apps %}
-    <a href="{% url 'itemDetails' iitemId=item.id location=site tag=item.tags.0 time=time %}">
-        <p>{{item.id}}</p>
-        <p>{{item.displayName}} </p>
-        <p>{{item.description}} </p>
-        <p>{{item.price}} </p>
-    </a>
-    <br>
-   {% endfor %}
-
-   {% for item in items.sandwiches %}
-    <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
-        <p>{{item.id}}</p>
-        <p>{{item.displayName}} </p>
-        <p>{{item.description}} </p>
-        <p>{{item.price}} </p>
-    </a>
-    <br>
-   {% endfor %}
-
-    {% for item in items.sides %}
-     <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
-        <p>{{item.id}}</p>
-        <p>{{item.displayName}} </p>
-        <p>{{item.description}} </p>
-        <p>{{item.price}} </p>
-     </a>
-    <br>
-    {% endfor %}
-
-    {% for item in items.drinks %}
-        <a href="{% url 'itemDetails' itemId=item.id location=site tag=item.tags.0 time=time %}">
-            <p>{{item.id}}</p>
-            <p>{{item.displayName}} </p>
-            <p>{{item.description}} </p>
-            <p>{{item.price}} </p>
-        </a>
-        <br>
-        {% endfor %}
-
+{% block javascript %}
+<script src="{% static 'js/menuPage.js' %}" type="text/javascript"></script>
 {% endblock %}
+
+<body>
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+  <div class="container-fluid mb-5 menu-container">
+    <h2 class="text-center mt-2 mb-5">
+      Peachtree Burger {{site}} {{time}} Menu
+    </h2>
+
+    {%if items.burgers%}
+    <h2 class="mt-2" align="center">{{site}} Burgers</h2>
+    <hr />
+    <div
+      class="
+        d-xl-flex
+        flex-xl-wrap
+        justify-content-sm-center justify-content-xl-start
+        py-3
+        px-5
+        mx-5
+      "
+    >
+      {% for item in items.burgers %}
+      <div class="col-12 col-xl-4">
+        <div class="card item-card h-100 mb-4">
+          <div class="row no-gutters h-100">
+            <div class="col-xl-5">
+              <img
+                class="food-image"
+                src="{{item.image}}"
+                alt="Card image cap"
+              />
+            </div>
+            <div class="col-xl-7">
+              <div class="card-body h-100">
+                <div class="card-text-container mb-5">
+                  <h5 class="card-title">{{item.displayName}}</h5>
+                  <h6 class="card-text">{{item.price}}</h6>
+                  <h6 class="card-text">{{item.description}}</h6>
+                </div>
+                <button
+                  type="button"
+                  class="btn order-button"
+                  onclick="goToItemDetails('{{item.id}}', '{{site}}', '{{item.tags.0}}', '{{time}}')"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% if items.appetizers %}
+    <h2 class="mt-2" align="center">Appetizers</h2>
+    <hr />
+    <div
+      class="
+        d-xl-flex
+        flex-xl-wrap
+        justify-content-sm-center justify-content-xl-start
+        py-3
+        px-5
+        mx-5
+      "
+    >
+      {% for item in items.appetizers %}
+      <div class="col-12 col-xl-4">
+        <div class="card item-card h-100 mb-4">
+          <div class="row no-gutters h-100">
+            <div class="col-xl-5">
+              <img
+                class="food-image"
+                src="{{item.image}}"
+                alt="Card image cap"
+              />
+            </div>
+            <div class="col-xl-7">
+              <div class="card-body h-100">
+                <div class="card-text-container mb-5">
+                  <h5 class="card-title">{{item.displayName}}</h5>
+                  <h6 class="card-text">{{item.price}}</h6>
+                  <h6 class="card-text">{{item.description}}</h6>
+                </div>
+                <button
+                  type="button"
+                  class="btn order-button"
+                  onclick="goToItemDetails('{{item.id}}', '{{site}}', '{{item.tags.0}}', '{{time}}')"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% if items.sandwiches %}
+    <h2 class="mt-2" align="center">Sandwiches</h2>
+    <hr />
+    <div
+      class="
+        d-xl-flex
+        flex-xl-wrap
+        justify-content-sm-center justify-content-xl-start
+        py-3
+        px-5
+        mx-5
+      "
+    >
+      {% for item in items.sandwiches %}
+      <div class="col-12 col-xl-4">
+        <div class="card item-card h-100 mb-4">
+          <div class="row no-gutters h-100">
+            <div class="col-xl-5">
+              <img
+                class="food-image"
+                src="{{item.image}}"
+                alt="Card image cap"
+              />
+            </div>
+            <div class="col-xl-7">
+              <div class="card-body h-100">
+                <div class="card-text-container mb-5">
+                  <h5 class="card-title">{{item.displayName}}</h5>
+                  <h6 class="card-text">{{item.price}}</h6>
+                  <h6 class="card-text">{{item.description}}</h6>
+                </div>
+                <button
+                  type="button"
+                  class="btn order-button"
+                  onclick="goToItemDetails('{{item.id}}', '{{site}}', '{{item.tags.0}}', '{{time}}')"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% if items.sides %}
+    <h2 class="mt-2" align="center">Sides</h2>
+    <hr />
+    <div
+      class="
+        d-xl-flex
+        flex-xl-wrap
+        justify-content-sm-center justify-content-xl-start
+        py-3
+        px-5
+        mx-5
+      "
+    >
+      {% for item in items.sides %}
+      <div class="col-12 col-xl-4">
+        <div class="card item-card h-100 mb-4">
+          <div class="row no-gutters h-100">
+            <div class="col-xl-5">
+              <img
+                class="food-image"
+                src="{{item.image}}"
+                alt="Card image cap"
+              />
+            </div>
+            <div class="col-xl-7">
+              <div class="card-body h-100">
+                <div class="card-text-container mb-5">
+                  <h5 class="card-title">{{item.displayName}}</h5>
+                  <h6 class="card-text">{{item.price}}</h6>
+                  <h6 class="card-text">{{item.description}}</h6>
+                </div>
+                <button
+                  type="button"
+                  class="btn order-button"
+                  onclick="goToItemDetails('{{item.id}}', '{{site}}', '{{item.tags.0}}', '{{time}}')"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% if items.drinks %}
+    <h2 class="mt-2" align="center">Drinks</h2>
+    <hr />
+    <div
+      class="
+        d-xl-flex
+        flex-xl-wrap
+        justify-content-sm-center justify-content-xl-start
+        py-3
+        px-5
+        mx-5
+      "
+    >
+      {% for item in items.drinks %}
+      <div class="col-12 col-xl-4">
+        <div class="card item-card h-100 mb-4">
+          <div class="row no-gutters h-100">
+            <div class="col-xl-5">
+              <img
+                class="food-image"
+                src="{{item.image}}"
+                alt="Card image cap"
+              />
+            </div>
+            <div class="col-xl-7">
+              <div class="card-body h-100">
+                <div class="card-text-container mb-5">
+                  <h5 class="card-title">{{item.displayName}}</h5>
+                  <h6 class="card-text">{{item.price}}</h6>
+                  <h6 class="card-text">{{item.description}}</h6>
+                </div>
+                <button
+                  type="button"
+                  class="btn order-button"
+                  onclick="goToItemDetails('{{item.id}}', '{{site}}', '{{item.tags.0}}', '{{time}}')"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% include 'footer.html' %}
+</body>

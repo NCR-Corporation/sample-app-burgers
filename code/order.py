@@ -6,6 +6,8 @@ from HMACAuth import HMACAuth
 
 def doubleQ(dict):
     return (json.dumps(dict))
+
+
 def createPayload(dict):
     eDict = {}
     quantity = {
@@ -22,9 +24,9 @@ def createPayload(dict):
     eDict.update({"quantity": quantity})
     eDict.update({"unitPrice": unitPrice})
 
-    #print((eDict.get('unitPrice')))
-    #print(eDict)
     return eDict
+
+
 def createOrder(cart):
 
     results = []
@@ -33,18 +35,19 @@ def createOrder(cart):
         results.append(createPayload(cart[dict]))
     modified_results = doubleQ(results)
 
-    customer={
+    customer = {
         "email": "test@ncr.com",
         "firstName": "Testy",
         "lastName": "McTest Test"
     }
 
     modified_customer = doubleQ(customer)
-    payload = "{\"comments\":\"This is a test4\",\"customer\":%s,\"orderLines\":%s}"%(modified_customer,modified_results)
+    payload = "{\"comments\":\"This is a test4\",\"customer\":%s,\"orderLines\":%s}" % (
+        modified_customer, modified_results)
     url = 'https://gateway-staging.ncrcloud.com/order/orders'
-    res = requests.post(url, payload, auth=(HMACAuth(settings.LOCATIONS["Burgers Unlimited Southland"])))
+    res = requests.post(url, payload, auth=(
+        HMACAuth(settings.LOCATIONS["Burgers Unlimited Southland"])))
     result = res.json()
-    print(result)
     return result['id']
 
 
@@ -54,12 +57,13 @@ def getOrder(orderId):
         'nep-organization': 'burgers-unlimited',
         'nep-correlation-id': '2020-0708',
     }
-    url = 'https://gateway-staging.ncrcloud.com/order/3/orders/1/%s'%orderId
+    url = 'https://gateway-staging.ncrcloud.com/order/3/orders/1/%s' % orderId
     res = requests.get(url, auth=(HMACAuth()), headers=headers)
     result = res.json()
-    print(result)
 
-cart = [{'item': 'SmallFries', 'price': 9.00, 'qty': 2}, {'item': 'Tunaburger', 'price': 13.00, 'qty': 2},{'item': 'milkshake', 'price': 11.00, 'qty': 2}]
+
+cart = [{'item': 'SmallFries', 'price': 9.00, 'qty': 2}, {'item': 'Tunaburger',
+                                                          'price': 13.00, 'qty': 2}, {'item': 'milkshake', 'price': 11.00, 'qty': 2}]
 
 
 def getOrders():
@@ -69,4 +73,3 @@ def getOrders():
 
     res = requests.post(url, payload, auth=(HMACAuth()))
     result = res.json()
-    print(result)

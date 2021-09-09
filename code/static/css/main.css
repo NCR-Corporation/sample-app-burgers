@@ -54,6 +54,13 @@ html {
     background-color: #66c15d;
 }
 
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .footer-container {
+        background-color: #66c15d;
+        height: 24%;
+    }
+}
+
 .footer-header {
     font-weight: bold;
 }
