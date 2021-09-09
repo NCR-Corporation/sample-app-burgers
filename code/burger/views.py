@@ -33,22 +33,6 @@ MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
 site = ''
 
 
-def updateToLunch(request):
-    if not request.method == 'POST':
-        return HttpResponseNotAllowed(['POST'])
-
-    request.session['time'] = "Lunch"
-    return HttpResponse('ok')
-
-
-def updateToDinner(request):
-    if not request.method == 'POST':
-        return HttpResponseNotAllowed(['POST'])
-
-    request.session['time'] = "Dinner"
-    return HttpResponse('ok')
-
-
 def index(request):
     request.session['location'] = 'Midtown'
     site = request.session['location']
