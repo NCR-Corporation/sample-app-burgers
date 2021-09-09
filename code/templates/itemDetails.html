@@ -1,191 +1,163 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-
-
-<!---
-    <img src={{item.image}} width="300" height="300">
-    <p>DisplayName: {{item.displayName}}</p>
-    <p>Description: {{item.description}}</p>
-    <p>Price: {{item.price}}</p>
-    <p>Tags: {{item.tags}}</p>
-    <br>
-
-    <p>Unique ToppingsList </p>
-
-    {% for topping in item.uniqueToppings %}
-        <li>{{ topping.displayName}}, price: {{topping.price}}</li>
-    {% endfor %}
-    <br>
-
-    <p>Shared Toppings ToppingsList </p>
-
-    {% for topping in item.sharedToppings %}
-        <li>{{ topping.displayName}}, price: {{topping.price}}</li>
-     {% endfor %}
-    <br>
-
-    <p>Group Toppings ToppingsList </p>
-
-    {% for topping in item.groupToppings %}
-    <li>{{ topping.displayName}}, price: {{topping.price}}</li>
-    {% endfor %}
--->
+{% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+  .fa-stack {
+    font-size: 0.66em;
+  }
+  i {
+    vertical-align: middle;
+  }
+</style>
 <div class="container-fluid">
+  <span class="">
+    <a href="{% url 'menu' %}" style="text-decoration: none">
+      <i class="fas fa-chevron-left"></i> Back to Menu</a
+    >
+  </span>
 
-    <span class="">
-        <a href="{% url 'menu' %}" style="text-decoration:none;"> <i class="fas fa-chevron-left"></i> Back to Menu</a>
-    </span>
+  <div class="container mt-2" id="item-details-container">
+    <!--Image/Item/Details-->
+    <div class="row mb-2">
+      <div class="col-12 col-md-4">
+        <img class="mw-100" src="{{item.image}}" alt="{{item.displayName}}" />
+      </div>
 
-    <div class="container mt-3">
-        <!--Image/Item/Details-->
-        <div class="row">
-            <div class="col-4">
-                <img src={{item.image}} width="300" height="300">
-            </div>
-
-            <div class="col-8">
-                <h2 class="pb-2">{{item.displayName}}</h2>
-                <p class="pb-2">${{item.price}}</p>
-                <p class="pb-2">{{item.description}}</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#menuModal">
-                    Add to Order
-                </button>
-
-            </div>
-        </div>
-
-
-        <div class="modal fade " id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body ">
-                        <div class="mb-3">
-                            <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <p class="d-flex justify-content-center">Success!</p>
-                        <p class="d-flex justify-content-center"> Your item has been added to your order</p>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6">
-                                    <a class="btn btn-secondary d-flex justify-content-center"
-                                        href="{% url 'menu' %}">Continue
-                                        Ordering?</a>
-                                </div>
-                                <div class="col-6">
-                                    <a class="btn btn-primary d-flex justify-content-center"
-                                        href="{% url 'viewCart' %}">Checkout</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-3 pt-3">Includes</div>
-        <div class="row">
-
-            <div class="col-12 mt-3">
-                <!-- Card Deck for Includes-->
-                <div class="card-deck">
-                    {% for topping in item.uniqueToppings %}
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <span class="fa-stack fa-lg float-right" id="subtraction">
-                                <i class="fas fa-circle fa-stack-1x" style="color: #FF3B30;"></i>
-                                <i class="fas fa-minus fa-stack-1x" style="color: white; font-size: 1em;"></i>
-                            </span>
-                            <p><img src="https://via.placeholder.com/300.png" class="card-img-top" </p>
-                            <p class="text-center">{{ topping.displayName}}</p>
-                            <p class="text-center">${{ topping.price}}0</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-
-        </div>
-
-
-    </div>
-</div>
-
-</div>
-
-
-<div class="container-fluid" style="background-color:#F4F4F5;">
-    <div class="container">
-        <div class="mt-4 pt-3">
-            Extras
-        </div>
-        <div class="row">
-            <div class="col-12 mt-3">
-                <!-- Card Deck for Includes-->
-                <div class="card-deck">
-                    {% for topping in item.sharedToppings %}
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <span class="fa-stack fa-lg float-right" id="addition">
-                                <i class="fas fa-circle fa-stack-1x" style="color: #54B948;"></i>
-                                <i class="fas fa-plus fa-stack-1x" style="color: white; font-size: 1em;"></i>
-                            </span>
-                            <p><img src="https://via.placeholder.com/300.png" class="card-img-top" </p>
-                            <p class="text-center">{{ topping.displayName}}</p>
-                            <p class="text-center">${{ topping.price}}0</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-
-                    {% for topping in item.groupToppings %}
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <span class="fa-stack fa-lg float-right" id="addition">
-                                <i class="fas fa-circle fa-stack-1x" style="color: #54B948;"></i>
-                                <i class="fas fa-plus fa-stack-1x" style="color: white; font-size: 1em;"></i>
-                            </span>
-                            <p><img src="https://via.placeholder.com/300.png" class="card-img-top" </p>
-                            <p class="text-center">{{ topping.displayName}}</p>
-                            <p class="text-center">${{ topping.price}}0</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-
-                </div>
-            </div>
-        </div>
-        <div class="mt-3 pt-3">Sides</div>
-        <div class="row">
-
-            <div class="col-12 mt-3">
-                <!-- Card Deck for Includes-->
-                <div class="card-deck">
-                    {% for topping in menu.sides %}
-                    <div class="card shadow-sm">
-                        <div class="card-body ">
-                            <span class="fa-stack fa-lg float-right" id="addition">
-                                <i class="fas fa-circle fa-stack-1x" style="color: #54B948;"></i>
-                                <i class="fas fa-plus fa-stack-1x" style="color: white; font-size: 1em;"></i>
-                            </span>
-                            <p><img src=" https://via.placeholder.com/300.png" class="card-img-top" </p>
-                            <p class="text-center">{{ topping.displayName}}</p>
-                            <p class="text-center">${{ topping.price}}0</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+      <div class="col-12 col-md-8 my-2">
+        <h2>{{item.displayName}}</h2>
+        <h3 class="h5 text-body">${{item.price}}</h3>
+        <h3 class="h5 text-body">{{item.description}}</h3>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#menuModal"
+        >
+          Add to Order
+        </button>
+      </div>
     </div>
 
+    <div
+      class="modal fade"
+      id="menuModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="mb-3">
+              <button
+                type="button"
+                class="close float-right"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <p class="d-flex justify-content-center">Success!</p>
+            <p class="d-flex justify-content-center">
+              Your item has been added to your order
+            </p>
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <a
+                    class="btn btn-secondary d-flex justify-content-center"
+                    href="{% url 'menu' %}"
+                    >Continue Ordering?</a
+                  >
+                </div>
+                <div class="col-6">
+                  <a
+                    class="btn btn-primary d-flex justify-content-center"
+                    href="{% url 'viewCart' %}"
+                    >Checkout</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="item-uniqueToppings--container" class="row py-2">
+      <div class="col-12">
+        <h4 id="item-uniqueToppings--title">Toppings</h4>
+      </div>
+      <div class="col-12">
+        <div class="row" id="item-uniqueToppings--list"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<div class="container-fluid py-2" style="background-color: #f4f4f5">
+  <div class="container">
+    <div id="item-uniqueToppings--container-optional" class="row py-2">
+      <div class="col-12">
+        <h4 id="item-uniqueToppings--title-optional">Included</h4>
+      </div>
+      <div class="col-12">
+        <div class="row" id="item-uniqueToppings--list-optional"></div>
+      </div>
+    </div>
+    <div id="item-groupToppings--container-optional" class="row py-2">
+      <div class="col-12">
+        <h4 id="item-groupToppings--title-optional">Addons</h4>
+      </div>
+      <div class="col-12">
+        <div class="row" id="item-groupToppings--list-optional"></div>
+      </div>
+    </div>
+    <div id="item-sharedToppings--container-optional" class="row py-2">
+      <div class="col-12">
+        <h4 id="item-sharedToppings--title-optional">Extras</h4>
+      </div>
+      <div class="col-12">
+        <div class="row" id="item-sharedToppings--list-optional"></div>
+      </div>
+    </div>
+    <!-- <div class="mt-4"><h4>Sides</h4></div>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          {% for topping in menu.sides %}
+          <div class="col-6 col-md-3 my-2">
+            <div class="card shadow-sm">
+              <div class="d-flex justify-content-end">
+                <span class="fa-stack fa-lg float-right" id="addition">
+                  <i
+                    class="fas fa-circle fa-stack-1x"
+                    style="color: #54b948"
+                  ></i>
+                  <i
+                    class="fas fa-plus fa-stack-1x"
+                    style="color: white; font-size: 1em"
+                  ></i>
+                </span>
+              </div>
+              <div class="card-body py-0">
+                <p>
+                  <img src=" https://via.placeholder.com/300.png"
+                  class="card-img-top"
+                </p>
+                <p class="h5 text-center">{{ topping.displayName}}</p>
+                <p class="h6 text-center">${{ topping.price}}0</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
 
-
-
-{% endblock content %}
+{% endblock content %} {% block javascript %} {{ item|json_script:"item" }}
+<script src="{% static 'js/itemDetails.js' %}" type="text/javascript"></script>
+{% endblock javascript %}
