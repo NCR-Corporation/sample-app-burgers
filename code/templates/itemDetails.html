@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% include 'base.html' %} {% load static %} {% block content %}
 <style>
   .fa-stack {
     font-size: 0.66em;
@@ -9,7 +9,7 @@
 </style>
 <div class="container-fluid">
   <span class="">
-    <a href="{% url 'menu' %}" style="text-decoration: none">
+    <a href="{{menuLink}}" style="text-decoration: none">
       <i class="fas fa-chevron-left"></i> Back to Menu</a
     >
   </span>
@@ -68,7 +68,7 @@
                 <div class="col-6">
                   <a
                     class="btn btn-secondary d-flex justify-content-center"
-                    href="{% url 'menu' %}"
+                    href="{{menuLink}}"
                     >Continue Ordering?</a
                   >
                 </div>

@@ -150,7 +150,8 @@ def itemDetails(request, itemId, location, tag, time):
             context = {
                 'item': menu[tag][item],
                 'locations': MATCHES,
-                'menu': menu
+                'menu': menu,
+                'menuLink': '/burger/menu/' + location.capitalize() + '/' + time
             }
 
     return render(request, 'itemDetails.html', context)
