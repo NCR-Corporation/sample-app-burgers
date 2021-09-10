@@ -1,11 +1,11 @@
-.GFG {
+.menu-footer-button {
     background-color: #66c15d;
     border: 0px;
     color: white;
     cursor: pointer;
 }
 
-.GFG:hover {
+.menu-footer-button:hover {
     font-weight: bold;
 }
 

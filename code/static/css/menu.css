@@ -31,9 +31,6 @@ hr {
     height: 40px;
     position: absolute;
     bottom: 10px;
-    background-color: #008d9b;
-    border-color: #008d9b;
-    color: white;
 }
 
 @media (min-width: 1200px) {
