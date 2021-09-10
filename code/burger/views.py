@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseNotAllowed
 from menuParser import menuParsing
 from HMACAuth import HMACAuth
 from django.shortcuts import render
@@ -17,12 +18,12 @@ SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
 MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
 
 MENUMAPPINGS = {
-    'highlandLunch': '1626399748035',
-    'highlandDinner': '1628539739497',
-    'midtownLunch': '1629990058438',
+    'highlandLunch': '1630681027701',
+    'highlandDinner': '1630681016611',
+    'midtownLunch': '1630432196891',
     'midtownDinner': '1630432196891',
-    'southlandLunch': '1628508502301',
-    'southlandDinner': '1628508515030'
+    'southlandLunch': '1630681007487',
+    'southlandDinner': '1630681000410'
 }
 
 
@@ -34,8 +35,11 @@ site = ''
 
 
 def index(request):
+    request.session['location'] = 'Midtown'
+    site = request.session['location']
     context = {
-        'locations': MATCHES
+        'locations': MATCHES,
+        'site': site
     }
 
     time = datetime.datetime.now().hour
@@ -47,28 +51,67 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def menu(request):
-    time = request.session.get('time')
-    menustring = site+time
+def lunchMenu(request, location):
+    request.session['location'] = location
+
+    time = "Lunch"
+    site = request.session.get('location')
+
+    menustring = site.lower()+time
 
     if menustring in MENUMAPPINGS:
         menuMapping = MENUMAPPINGS[menustring]
     else:
         return render(request, 'error.html')
 
-    url = f'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/{menuMapping}'
+    url = 'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/' + menuMapping
 
-    if site == 'highlands':
+    if site == 'Highland':
         conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))
-    elif site == 'midtown':
+    elif site == 'Midtown':
         conn = requests.get(url, auth=(HMACAuth(MIDTOWN)))
-    elif site == 'southland':
+    elif site == 'Southland':
         conn = requests.get(url, auth=(HMACAuth(SOUTHLAND)))
 
     results = menuParsing(conn.json())
+
     request.session[menustring] = results
+
     context = {'items': results, 'time': time,
                'site': site, 'locations': MATCHES}
+
+    return render(request, 'menu.html', context)
+
+
+def dinnerMenu(request, location):
+    request.session['location'] = location
+
+    time = "Dinner"
+    site = request.session.get('location')
+
+    menustring = site.lower()+time
+
+    if menustring in MENUMAPPINGS:
+        menuMapping = MENUMAPPINGS[menustring]
+    else:
+        return render(request, 'error.html')
+
+    url = 'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/' + menuMapping
+
+    if site == 'Highland':
+        conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))
+    elif site == 'Midtown':
+        conn = requests.get(url, auth=(HMACAuth(MIDTOWN)))
+    elif site == 'Southland':
+        conn = requests.get(url, auth=(HMACAuth(SOUTHLAND)))
+
+    results = menuParsing(conn.json())
+
+    request.session[menustring] = results
+
+    context = {'items': results, 'time': time,
+               'site': site, 'locations': MATCHES}
+
     return render(request, 'menu.html', context)
 
 
@@ -101,8 +144,8 @@ def itemDetails(request, itemId, location, tag, time):
             menu = request.session.get('southlandDinner')
 
     length = len(menu[tag])
-    for item in range(length):
 
+    for item in range(length):
         if menu[tag][item]['id'] == int(itemId):
             context = {
                 'item': menu[tag][item],
