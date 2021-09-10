@@ -41,6 +41,15 @@ function setLocation(data) {
     sessionStorage.setItem("Location", shortName);
     document.getElementById("store-location").innerHTML =
         sessionStorage.getItem("Location");
+
+    var time = new Date();
+    if (time.getHours() < 14) {
+        document.location.pathname =
+            "burger/menu/" + shortName.trim() + "/Lunch";
+    } else {
+        document.location.pathname =
+            "burger/menu/" + shortName.trim() + "/Dinner";
+    }
 }
 
 function getCookie(name) {

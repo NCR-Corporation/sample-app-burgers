@@ -4,8 +4,9 @@ from burger import views
 urlpatterns = [
 
     path('', views.index, name='index'),
-    path('menu', views.menu, name='menu'),
-    path('itemDetails/<str:location>/<str:time>/<str:tag>/<str:itemId>',
+    path('menu/<str:location>/Lunch', views.lunchMenu, name='lunchMenu'),
+    path('menu/<str:location>/Dinner', views.dinnerMenu, name='dinnerMenu'),
+    path('menu/itemDetails/<str:itemId>/<str:location>/<str:tag>/<str:time>',
          views.itemDetails, name="itemDetails"),
     path('location', views.location, name='location'),
     path('payment/', views.payment, name='payment'),

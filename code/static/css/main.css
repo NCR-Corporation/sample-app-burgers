@@ -31,7 +31,7 @@ html {
     font-size: 12px;
 }
 
-.location-button {
+.default-blue-button {
     background-color: #008d9b;
     border-color: #008d9b;
     width: 100%;
@@ -52,6 +52,13 @@ html {
 
 .footer-container {
     background-color: #66c15d;
+}
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .footer-container {
+        background-color: #66c15d;
+        height: 24%;
+    }
 }
 
 .footer-header {

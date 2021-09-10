@@ -1,15 +1,12 @@
-import json
+import re
 
 
 class Menu():
     def __init__(self):
-        self.apps = []
+        self.appetizers = []
         self.burgers = []
         self.drinks = []
-        self.salads = []
-        self.sandwiches = []
         self.sides = []
-        self.wraps = []
 
 
 def getLinkedGroupContents(linkgroup, data):
@@ -60,30 +57,29 @@ def menuParsing(data):
                     groupToppingsWithPrices = getLinkedGoupContentsIds(
                         groupToppings, data)
 
+        if len(item['imageUrls']):
+            image = item['imageUrls'][0]
+        else:
+            image = ""
+
         iteminfo = {'id': itemId,
-                    'image': item['imageUrls'][0],
+                    'image': image,
                     'displayName': item['displayName'],
                     'description': item['description'],
-                    'price': item['currentPrice'],
+                    'price': "${:,.2f}".format(item['currentPrice']),
                     'tags': item['tags'],
                     'uniqueToppings': uniqueToppingsWithPrices,
                     'sharedToppings': sharedToppingsWithPrices,
                     'groupToppings': groupToppingsWithPrices}
         itemId += 1
 
-        if iteminfo['tags'][0] == 'apps':
-            menu.apps.append(iteminfo)
+        if iteminfo['tags'][0] == 'appetizers':
+            menu.appetizers.append(iteminfo)
         elif iteminfo['tags'][0] == 'burgers':
             menu.burgers.append(iteminfo)
         elif iteminfo['tags'][0] == 'drinks':
             menu.drinks.append(iteminfo)
-        elif iteminfo['tags'][0] == 'salads':
-            menu.salads.append(iteminfo)
-        elif iteminfo['tags'][0] == 'sandwiches':
-            menu.sandwiches.append(iteminfo)
         elif iteminfo['tags'][0] == 'sides':
             menu.sides.append(iteminfo)
-        elif iteminfo['tags'][0] == 'wraps':
-            menu.wraps.append(iteminfo)
 
     return menu.__dict__

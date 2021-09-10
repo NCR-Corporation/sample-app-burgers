@@ -1,0 +1,41 @@
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+@media (min-width: 1200px) {
+    .item-card {
+        max-height: 250px;
+        width: 100%;
+    }
+}
+
+.food-image {
+    object-fit: cover;
+    max-height: 350px;
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .food-image {
+        height: 100%;
+        max-height: 248px;
+        width: 100%;
+    }
+}
+
+.order-button {
+    width: 93%;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+    .order-button {
+        width: 85%;
+    }
+}
