@@ -25,12 +25,19 @@
     {% block stylesheets %}{% endblock %} {% block scripts %} {% endblock %}
   </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white custom-navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand text-decoration-none" href="{% url 'index' %}">
-      <div class="d-flex">
-        <div class="nav-image-container">
-          <img class="navbar-burger-icon text-decoration-none" src="{% static 'images/Location-Tooltip.svg' %}" />
+  <nav class="navbar navbar-expand-lg navbar-light bg-white custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand text-decoration-none" href="{% url 'index' %}">
+        <div class="d-flex">
+          <div class="nav-image-container">
+            <img
+              class="navbar-burger-icon text-decoration-none"
+              src="{% static 'images/Location-Tooltip.svg' %}"
+            />
+          </div>
+          <div class="text-container ml-3 pt-2">
+            <span class="h3 font-weight-bold">Peachtree Burger</span>
+          </div>
         </div>
       </a>
       <button
@@ -109,32 +116,24 @@
                 <span class="change-text">(Change)</span>
               </button>
             </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="location-box ml-md-2 pl-md-1">
-            <img class="nav-burger-icon" src="{% static 'images/Location-Tooltip.svg' %}" />
-            <button type="button" class="btn btn-link text-decoration-none btn-outline-light" data-toggle="modal"
-              onclick="loadDynamicModal()">
-              <span class="text-dark" id="store-location"></span>
-              <span class="change-text">(Change)</span>
-            </button>
-          </div>
-        </li>
-        <li class="nav-item h-100">
-          <a class="nav-link" href="{% url 'viewCart' %}">
-            <div class="cart-container ml-md-2 pl-md-1">
-              <i class="fa fa-shopping-cart fa-lg cart-icon">
-                <span class="badge badge-pill badge-dark cart-badge" id="cart-number"></span>
-              </i>
-              <span class="cart-text pl-2">Cart</span>
-            </div>
-          </a>
-        </li>
-      </ul>
+          </li>
+          <li class="nav-item h-100">
+            <a class="nav-link" href="{% url 'viewCart' %}">
+              <div class="cart-container ml-md-2 pl-md-1">
+                <i class="fa fa-shopping-cart fa-lg cart-icon">
+                  <span
+                    class="badge badge-pill badge-dark cart-badge"
+                    id="cart-number"
+                  ></span>
+                </i>
+                <span class="cart-text pl-2">Cart</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- Modal -->
   <div
@@ -184,8 +183,8 @@
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
   </div>
