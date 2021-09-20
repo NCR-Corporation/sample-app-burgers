@@ -31,7 +31,7 @@ def findResturantsInRange(coordinates, radius):
     x = coordinates['x']
     circle = radius * meters
 
-    url = 'https://gateway-staging.ncrcloud.com/site/sites/find-nearby/%s,%s' % (
+    url = 'https://api.ncr.com/site/sites/find-nearby/%s,%s' % (
         coordinates['y'], coordinates['x'])
 
     payload = {
