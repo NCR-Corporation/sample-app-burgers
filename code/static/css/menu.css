@@ -12,8 +12,8 @@ hr {
 
 @media (min-width: 1200px) {
     .item-card {
+        min-height: 250px;
         max-height: 250px;
-        width: 100%;
     }
 }
 
@@ -25,9 +25,8 @@ hr {
 
 @media (min-width: 1200px) {
     .food-image {
-        height: 100%;
+        min-height: 250px;
         max-height: 250px;
-        width: 100%;
     }
 }
 

@@ -7,6 +7,7 @@ class Menu():
         self.burgers = []
         self.drinks = []
         self.sides = []
+        self.sandwiches = []
 
 
 def getLinkedGroupContents(linkgroup, data):
@@ -81,5 +82,7 @@ def menuParsing(data):
             menu.drinks.append(iteminfo)
         elif iteminfo['tags'][0] == 'sides':
             menu.sides.append(iteminfo)
+        elif iteminfo['tags'][0] == 'sandwiches':
+            menu.sandwiches.append(iteminfo)
 
     return menu.__dict__
