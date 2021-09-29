@@ -91,7 +91,7 @@
 }
 
 .about-card-text {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .map-block {
@@ -115,6 +115,7 @@
     background-image: url(../images/HomePageImage.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
+    min-height: 600px;
     font-family: "Open Sans", sans-serif;
     align-items: center;
     display: flex;
@@ -130,23 +131,51 @@
     padding-top: 5%;
 }
 
-.store-header {
-    font-weight: bold;
-    font-size: 12px;
-    font-family: "Open Sans", sans-serif;
-}
-
 .card-info {
     font-family: "Open Sans", sans-serif;
     display: block;
 }
 
 .address-text {
-    font-size: 12px;
+    font-size: 16px;
+}
+
+.store-name {
+    font-size: 24px;
 }
 
 .hours-text {
-    font-size: 12px;
+    font-size: 16px;
+}
+
+.store-header {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+}
+
+@media (min-width: 1200px) {
+    .address-text {
+        font-size: 12px;
+    }
+
+    .store-name {
+        font-size: 24px;
+    }
+
+    .hours-text {
+        font-size: 12px;
+    }
+
+    .about-card-text {
+        font-size: 12px;
+    }
+
+    .store-header {
+        font-weight: bold;
+        font-size: 12px;
+        font-family: "Open Sans", sans-serif;
+    }
 }
 
 .store-info-text {
@@ -167,10 +196,6 @@
     .order-button {
         width: 80%;
     }
-}
-
-.store-name {
-    font-size: 24px;
 }
 
 .burger-icon-image {
