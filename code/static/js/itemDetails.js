@@ -1,6 +1,5 @@
 function removeFromUniqueToppings(item, topping) {
     item.groupToppings.pop();
-    console.log(item);
 }
 
 let menuItem;
@@ -25,7 +24,7 @@ function initialize(menuItem) {
 
     let includedItems = [...uniqueToppings];
 
-    if (includedItems.length > 0) {
+    if (includedItems.length) {
         includedItems.forEach((item, index) => {
             createItemCard({
                 item,
@@ -38,7 +37,7 @@ function initialize(menuItem) {
         $(defaultCard).appendTo("#item-uniqueToppings--list-optional");
     }
 
-    if (sharedToppings.length > 0) {
+    if (sharedToppings.length) {
         sharedToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -49,7 +48,7 @@ function initialize(menuItem) {
         });
     }
 
-    if (groupToppings.length > 0) {
+    if (groupToppings.length) {
         groupToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -72,33 +71,37 @@ function createDefaultCard(text = "No other available toppings") {
 }
 
 function createItemCard({ item, included, container, type }) {
-    price = (item.price).toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
+    price = item.price.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
     });
 
-    $(`<div class='col-4 col-md-3 col-lg-2 my-2' data-display-name="${item.displayName
-        }" data-item-price="${item.price}">
+    $(`<div class='col-4 col-md-3 col-lg-2 my-2' data-display-name="${
+        item.displayName
+    }" data-item-price="${item.price}">
         <div class='card shadow-sm h-100'>
-            <div class='d-flex justify-content-end pt-1' onclick='removeItem({ displayName: "${item.displayName
-        }", container: "${container}", type: "${type}" })'>
+            <div class='d-flex justify-content-end pt-1' onclick='removeItem({ displayName: "${
+                item.displayName
+            }", container: "${container}", type: "${type}" })'>
                 <span class='fa-stack fa-lg'>
-                    <i class='fas fa-circle fa-stack-2x' style='${included ? "color: #ff3b30" : "color: #54b948"
-        }'></i>
-                    <i class="fas ${included ? "fa-minus" : "fa-plus"
-        } fa-stack-1x" style="color: white; font-size: 1em"></i>
+                    <i class='fas fa-circle fa-stack-2x' style='${
+                        included ? "color: #ff3b30" : "color: #54b948"
+                    }'></i>
+                    <i class="fas ${
+                        included ? "fa-minus" : "fa-plus"
+                    } fa-stack-1x" style="color: white; font-size: 1em"></i>
                 </span>
             </div>
             <div class='card-body py-0'>
-                <img src="https://via.placeholder.com/300.png" class="card-img-top my-1" />
+                <img src="${
+                    item.image
+                }" class="card-img-top my-1" style="object-fit: cover; max-height: 150px; min-height:150px"/>
                 <p class="h5 text-center">${item.displayName}</p>
                 <p class="h6 text-center">${price}</p>
                 
             </div>
         </div>
     </div>`).appendTo(container);
-
-
 }
 
 function removeItem({ displayName, container, type }) {

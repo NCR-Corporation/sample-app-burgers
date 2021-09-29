@@ -35,7 +35,6 @@ function addItemToCart() {
     cart.push(menuItem);
     sessionStorage.setItem("Cart", JSON.stringify(cart));
     sessionStorage.setItem("Total", total);
-    console.log(getTotal());
     document.getElementById("cart-number").innerHTML = cart.length;
 }
 

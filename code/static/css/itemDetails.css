@@ -1,0 +1,27 @@
+.fa-stack {
+    font-size: 0.66em;
+}
+
+i {
+    vertical-align: middle;
+}
+
+.success-text {
+    font-weight: 600;
+}
+
+.toppings-container {
+    background-color: #f4f4f5;
+}
+
+.menuLink a {
+    text-decoration: none;
+    color: black;
+}
+
+.order-button {
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+    font-weight: 600;
+}

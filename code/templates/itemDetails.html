@@ -1,24 +1,5 @@
 {% include 'base.html' %} {% load static %} {% block content %}
-<style>
-  .fa-stack {
-    font-size: 0.66em;
-  }
-
-  i {
-    vertical-align: middle;
-  }
-
-  .menuLink a {
-    text-decoration: none;
-    color: black;
-  }
-
-  .order-button {
-    background-color: #008d9b;
-    border-color: #008d9b;
-    color: white;
-  }
-</style>
+<link rel="stylesheet" href="{% static 'css/itemDetails.css' %}" />
 <div class="container-fluid menuLink">
   <span>
     <a href="{{menuLink}}">
@@ -37,7 +18,7 @@
         <h3 class="h5 text-body">{{item.price}}</h3>
         <h3 class="h5 text-body">{{item.description}}</h3>
         <button type="button" class="btn order-button px-4 mt-3" data-toggle="modal" data-target="#menuModal"
-          onclick="addItemToCart()" style="font-weight: 600;">
+          onclick="addItemToCart()">
           Add to Order
         </button>
       </div>
@@ -54,19 +35,19 @@
               </button>
             </div>
 
-            <h2 class="d-flex justify-content-center" style="font-weight: 600;">Success!</h2>
+            <h2 class="d-flex justify-content-center success-text">Success!</h2>
             <p class="d-flex justify-content-center">
               Your item has been added to your order
             </p>
             <div class="container">
               <div class="row">
                 <div class="col-6">
-                  <a class="btn order-button mt-3 d-flex justify-content-center" style="color: white;"
+                  <a class="btn order-button mt-3 d-flex justify-content-center"
                     href="{{menuLink}}">Continue
                     Ordering?</a>
                 </div>
                 <div class="col-6">
-                  <a class="btn btn order-button mt-3 d-flex justify-content-center" style="color: white;"
+                  <a class="btn btn order-button mt-3 d-flex justify-content-center"
                     href="{% url 'viewCart' %}">Checkout</a>
                 </div>
               </div>
@@ -88,7 +69,7 @@
   </div>
 </div>
 
-<div class="container-fluid py-2" style="background-color: #f4f4f5">
+<div class="container-fluid toppings-container py-2">
   <div class="container">
     <div id="item-uniqueToppings--container-optional" class="row py-2">
       <div class="col-12">

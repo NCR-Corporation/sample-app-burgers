@@ -1,7 +1,7 @@
 function updateCart(cost, itemName) {
     var cart = grabCart();
 
-    if (cart == null || cart.length == 0) {
+    if (cart == null || !cart.length) {
         sessionStorage.setItem(
             "Cart",
             JSON.stringify([

@@ -26,7 +26,6 @@ MENUMAPPINGS = {
     'southlandDinner': '1631732546628'
 }
 
-
 RESULTS = auxMethods.findResturantsInRange(
     {'x': -84.38879, 'y': 33.777714}, 20)
 MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)

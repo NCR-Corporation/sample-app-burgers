@@ -176,6 +176,8 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 DEBUG_TOOLBAR_PANELS = ['requests_panel.panel.RequestsDebugPanel']
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # DO NOT COMMIT THESE VALUES
 NEP_ORGANIZATION = ''
 HMAC_SHARED_KEY = ''
