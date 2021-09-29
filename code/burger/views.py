@@ -18,12 +18,12 @@ SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
 MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
 
 MENUMAPPINGS = {
-    'highlandLunch': '1630681027701',
-    'highlandDinner': '1630681016611',
-    'midtownLunch': '1630432196891',
-    'midtownDinner': '1630432196891',
-    'southlandLunch': '1630681007487',
-    'southlandDinner': '1630681000410'
+    'highlandLunch': '1631732419306',
+    'highlandDinner': '1631649497940',
+    'midtownLunch': '1631732484915',
+    'midtownDinner': '1631732451617',
+    'southlandLunch': '1631732514361',
+    'southlandDinner': '1631732546628'
 }
 
 
@@ -64,7 +64,7 @@ def lunchMenu(request, location):
     else:
         return render(request, 'error.html')
 
-    url = 'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/' + menuMapping
+    url = 'https://api.ncr.com/menu/v2/menu-details/' + menuMapping
 
     if site == 'Highland':
         conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))
@@ -96,7 +96,7 @@ def dinnerMenu(request, location):
     else:
         return render(request, 'error.html')
 
-    url = 'https://gateway-staging.ncrcloud.com/menu/v2/menu-details/' + menuMapping
+    url = 'https://api.ncr.com/menu/v2/menu-details/' + menuMapping
 
     if site == 'Highland':
         conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))

@@ -6,10 +6,14 @@ hr {
     width: 60%;
 }
 
+.item-card {
+    box-shadow: 1px 4px 4px rgb(0 0 0 / 25%);
+}
+
 @media (min-width: 1200px) {
     .item-card {
+        min-height: 250px;
         max-height: 250px;
-        width: 100%;
     }
 }
 
@@ -21,9 +25,8 @@ hr {
 
 @media (min-width: 1200px) {
     .food-image {
-        height: 100%;
-        max-height: 248px;
-        width: 100%;
+        min-height: 250px;
+        max-height: 250px;
     }
 }
 

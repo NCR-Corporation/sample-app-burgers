@@ -44,7 +44,7 @@ def createOrder(cart):
     modified_customer = doubleQ(customer)
     payload = "{\"comments\":\"This is a test4\",\"customer\":%s,\"orderLines\":%s}" % (
         modified_customer, modified_results)
-    url = 'https://gateway-staging.ncrcloud.com/order/orders'
+    url = 'https://api.ncr.com/order/orders'
     res = requests.post(url, payload, auth=(
         HMACAuth(settings.LOCATIONS["Burgers Unlimited Southland"])))
     result = res.json()
@@ -57,7 +57,7 @@ def getOrder(orderId):
         'nep-organization': 'burgers-unlimited',
         'nep-correlation-id': '2020-0708',
     }
-    url = 'https://gateway-staging.ncrcloud.com/order/3/orders/1/%s' % orderId
+    url = 'https://api.ncr.com/order/3/orders/1/%s' % orderId
     res = requests.get(url, auth=(HMACAuth()), headers=headers)
     result = res.json()
 
@@ -67,7 +67,7 @@ cart = [{'item': 'SmallFries', 'price': 9.00, 'qty': 2}, {'item': 'Tunaburger',
 
 
 def getOrders():
-    url = 'https://gateway-staging.ncrcloud.com/order/3/orders/1/find?pageNumber=0&pageSize=10'
+    url = 'https://api.ncr.com/order/3/orders/1/find?pageNumber=0&pageSize=10'
 
     payload = "{\"customerEmail\":\"test@ncr.com\",\"returnFullOrders\":true}"
 
