@@ -24,9 +24,9 @@
     </div>
   </div>
 
-  <div class="container-fluid pt-5" id="about">
+  <div class="container-fluid mt-4 mt-xl-5" id="about">
     <div class="row pb-5 container-row">
-      <div class="col-12 col-lg-12 col-xl-3 my-3" align="center">
+      <div class="col-12 col-lg-12 col-xl-3 mb-4" align="center">
         <img
           class="burger-icon-image"
           src="{% static 'images/Burger-logo.png' %}"
@@ -53,10 +53,10 @@
           <div class="col-xl-4 mt-3">
             <div class="card about-card">
               <div class="card-body about-card-body">
-                <div class="card-icon pb-3">
+                <div class="col-3 card-icon pb-3">
                   <i class="fas fa-project-diagram about-icon"></i>
                 </div>
-                <div class="pl-4">
+                <div class="col-9">
                   <p class="card-title h5 about-card-title pt-4">
                     Built with NCR APIs
                   </p>
@@ -71,10 +71,10 @@
           <div class="col-xl-4 mt-3">
             <div class="card justify-content-center about-card">
               <div class="card-body about-card-body">
-                <div class="card-icon pb-3">
+                <div class="col-3 card-icon pb-3">
                   <i class="fas fa-code about-icon"></i>
                 </div>
-                <div class="pl-4">
+                <div class="col-9">
                   <p class="card-title h5 about-card-title pt-4">
                     Open Sourced
                   </p>
@@ -89,10 +89,10 @@
           <div class="col-xl-4 mt-3">
             <div class="card justify-content-end about-card">
               <div class="card-body about-card-body">
-                <div class="card-icon pb-3">
+                <div class="col-3 card-icon pb-3">
                   <i class="fas fa-user-alt about-icon"></i>
                 </div>
-                <div class="pl-4">
+                <div class="col-9">
                   <p class="card-title about-card-title h5 pt-4">
                     Customer Focused
                   </p>
@@ -108,7 +108,7 @@
     </div>
 
     <div class="row pt-5 mb-5 container-row" id="map-content">
-      <div class="col-md-4 col-sm-8 card-column">
+      <div class="col-6 col-xl-4 card-column">
         <div class="row">
           <h2 class="map-title-text pl-3">Our Burger Joints</h2>
         </div>
@@ -123,7 +123,7 @@
                   </p>
                 </div>
                 <div class="store-info-text">
-                  <div class="col">
+                  <div class="col-5 col-xl-6 pr-1">
                     <div class="store-address-block">
                       <p class="address-text">
                         <span class="store-header">Address</span>
@@ -144,7 +144,7 @@
                       </button>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-7 col-xl-6">
                     <div class="store-hours-block">
                       <p class="hours-text">
                         <span class="store-header">Hours</span>
@@ -165,7 +165,7 @@
         </div>
         {% endfor %}
       </div>
-      <div class="col-md-8 col-sm-12 col-xs-12 map-block">
+      <div class="col-6 col-xl-8 map-block">
         <div id="map"></div>
       </div>
     </div>
@@ -176,7 +176,7 @@
 {% block javascript %}
 <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
 <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOeae3mJn5fjVDyk6lW4cdYHdF0VVkrkE&callback=initMap&libraries=&v=weekly"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD0jNBZriOaCs0K1q9ckADfEr3WaIA894&callback=initMap&libraries=&v=weekly"
   async
 ></script>
 {% endblock %}
