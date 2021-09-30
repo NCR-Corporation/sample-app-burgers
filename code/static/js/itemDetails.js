@@ -61,7 +61,7 @@ function initialize(menuItem) {
 }
 
 function createDefaultCard(text = "No other available toppings") {
-    return `<div class='col-4 col-md-3 col-lg-2 my-2' data-display-name="default">
+    return `<div class='col-6 col-lg-2 my-2' data-display-name="default">
         <div class="card shadow-sm">
             <div class="card-body">
                 <p class="text-center mb-0">${text}</p>
@@ -76,7 +76,7 @@ function createItemCard({ item, included, container, type }) {
         currency: "USD",
     });
 
-    $(`<div class='col-4 col-md-3 col-lg-2 my-2' data-display-name="${
+    $(`<div class='col-6 col-lg-2 my-2' data-display-name="${
         item.displayName
     }" data-item-price="${item.price}">
         <div class='card shadow-sm h-100'>
