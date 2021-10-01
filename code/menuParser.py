@@ -12,7 +12,6 @@ class Menu():
 
 def getLinkedGroupContents(linkgroup, data):
     for items in data['linkGroups']:
-
         if items['id'] == linkgroup:
             return items
 
@@ -24,7 +23,12 @@ def getLinkedGoupContentsIds(toppingsList, data):
             if ids['posName'] == items['displayName']:
                 price = items['prices'][0]['price']
                 priceList.append(
-                    {'displayName': items['displayName'], 'price': price})
+                    {
+                        'displayName': items['displayName'],
+                        'price': price,
+                        'image': items['imageUrls']
+                    },
+                )
     return priceList
 
 

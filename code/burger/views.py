@@ -148,7 +148,9 @@ def itemDetails(request, itemId, location, tag, time):
         if menu[tag][item]['id'] == int(itemId):
             context = {
                 'item': menu[tag][item],
-                'locations': MATCHES
+                'locations': MATCHES,
+                'menu': menu,
+                'menuLink': '/burger/menu/' + location.capitalize() + '/' + time
             }
 
     return render(request, 'itemDetails.html', context)

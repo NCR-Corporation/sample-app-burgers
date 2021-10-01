@@ -83,25 +83,8 @@ function loadDynamicModal() {
 }
 
 if (sessionStorage.getItem("Cart") === null) {
-    sessionStorage.setItem(
-        "Cart",
-        JSON.stringify([
-            {
-                item: "0",
-                price: 0,
-                qty: 0,
-            },
-        ])
-    );
     document.getElementById("cart-number").innerHTML = 0;
 } else {
-    var cart = grabCart();
-
-    if (cart.length) {
-        for (var i = 0; i < cart.length; i++) {
-            itemNumber = itemNumber + cart[i].qty;
-        }
-    }
-
-    document.getElementById("cart-number").innerHTML = itemNumber;
+    var cart = getCart();
+    document.getElementById("cart-number").innerHTML = cart.length;
 }

@@ -1,28 +1,112 @@
 {% include 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/itemDetails.css' %}" />
+<div class="container-fluid menuLink">
+  <span>
+    <a href="{{menuLink}}">
+      <div class="back-to-home">
+        <i class="fas fa-chevron-left my-3"></i> 
+        <p class="h4 m-2">Back to Menu</p>
+      </div>
+    </a>
+  </span>
 
-<img src="{{item.image}}" width="300" height="300" />
-<p>DisplayName: {{item.displayName}}</p>
-<p>Description: {{item.description}}</p>
-<p>Price: {{item.price}}</p>
-<p>Tags: {{item.tags}}</p>
-<br />
+  <div class="container my-5 my-xl-3" id="item-details-container">
+    <!--Image/Item/Details-->
+    <div class="row mb-2">
+      <div class="col-12 col-md-4">
+        <img class="mw-100 item-image" src="{{item.image}}" alt="{{item.displayName}}" />
+      </div>
 
-<p>Unique ToppingsList</p>
+      <div class="col-12 col-md-8 my-4 my-xl-2">
+        <h2>{{item.displayName}}</h2>
+        <h3 class="h5 text-body">{{item.price}}</h3>
+        <h3 class="h5 text-body">{{item.description}}</h3>
+        <button type="button" class="btn order-button px-4 mt-3" data-toggle="modal" data-target="#menuModal"
+          onclick="addItemToCart()">
+          Add to Order
+        </button>
+      </div>
+    </div>
 
-{% for topping in item.uniqueToppings %}
-<li>{{ topping.displayName}}, price: {{topping.price}}</li>
-{% endfor %}
-<br />
+    <div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="mb-3">
+              <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
-<p>Shared Toppings ToppingsList</p>
+            <h2 class="d-flex justify-content-center success-text">Success!</h2>
+            <p class="d-flex justify-content-center">
+              Your item has been added to your order
+            </p>
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <a class="btn order-button mt-3 d-flex justify-content-center"
+                    href="{{menuLink}}">Continue
+                    Ordering?</a>
+                </div>
+                <div class="col-6">
+                  <a class="btn btn order-button mt-3 d-flex justify-content-center"
+                    href="{% url 'viewCart' %}">Checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-{% for topping in item.sharedToppings %}
-<li>{{ topping.displayName}}, price: {{topping.price}}</li>
-{% endfor %}
-<br />
+    <div id="item-uniqueToppings--container" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-uniqueToppings--title">Toppings</h4>
+      </div>
+      <div class="col-12">
 
-<p>Group Toppings ToppingsList</p>
+        <div class="row" id="item-uniqueToppings--list"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-{% for topping in item.groupToppings %}
-<li>{{ topping.displayName}}, price: {{topping.price}}</li>
-{% endfor %} {% endblock content %} {% include 'footer.html' %}
+<div class="container-fluid toppings-container my-3 py-2">
+  <div class="container">
+    <div id="item-uniqueToppings--container-optional" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-uniqueToppings--title-optional">Included</h4>
+      </div>
+      <div class="col-12 mt-5 mt-xl-0">
+        <div class="row" id="item-uniqueToppings--list-optional"></div>
+      </div>
+    </div>
+    <div id="item-groupToppings--container-optional" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-groupToppings--title-optional">Addons</h4>
+      </div>
+      <div class="col-12 mt-5 mt-xl-0">
+        <div class="row" id="item-groupToppings--list-optional"></div>
+      </div>
+    </div>
+    <div id="item-sharedToppings--container-optional" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-sharedToppings--title-optional">Extras</h4>
+      </div>
+      <div class="col-12 mt-5 mt-xl-0">
+        <div class="row" id="item-sharedToppings--list-optional"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+</body>
+<div class="footer">
+  {% include 'footer.html' %}
+</div>
+{% block javascript %} {{ item|json_script:"item" }}
+<script src="{% static 'js/itemDetails.js' %}" type="text/javascript"></script>
+{% endblock javascript %}
