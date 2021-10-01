@@ -3,17 +3,21 @@
 <div class="container-fluid menuLink">
   <span>
     <a href="{{menuLink}}">
-      <i class="fas fa-chevron-left"></i> Back to Menu</a>
+      <div class="back-to-home">
+        <i class="fas fa-chevron-left my-3"></i> 
+        <p class="h4 m-2">Back to Menu</p>
+      </div>
+    </a>
   </span>
 
-  <div class="container mt-2" id="item-details-container">
+  <div class="container my-5 my-xl-3" id="item-details-container">
     <!--Image/Item/Details-->
     <div class="row mb-2">
       <div class="col-12 col-md-4">
         <img class="mw-100 item-image" src="{{item.image}}" alt="{{item.displayName}}" />
       </div>
 
-      <div class="col-12 col-md-8 my-2">
+      <div class="col-12 col-md-8 my-4 my-xl-2">
         <h2>{{item.displayName}}</h2>
         <h3 class="h5 text-body">{{item.price}}</h3>
         <h3 class="h5 text-body">{{item.description}}</h3>
@@ -58,7 +62,7 @@
     </div>
 
     <div id="item-uniqueToppings--container" class="row py-2">
-      <div class="col-12">
+      <div class="col-12 mt-5 mt-xl-0">
         <h4 id="item-uniqueToppings--title">Toppings</h4>
       </div>
       <div class="col-12">
@@ -72,26 +76,26 @@
 <div class="container-fluid toppings-container my-3 py-2">
   <div class="container">
     <div id="item-uniqueToppings--container-optional" class="row py-2">
-      <div class="col-12">
+      <div class="col-12 mt-5 mt-xl-0">
         <h4 id="item-uniqueToppings--title-optional">Included</h4>
       </div>
-      <div class="col-12">
+      <div class="col-12 mt-5 mt-xl-0">
         <div class="row" id="item-uniqueToppings--list-optional"></div>
       </div>
     </div>
     <div id="item-groupToppings--container-optional" class="row py-2">
-      <div class="col-12 my-5 my-lg-0">
+      <div class="col-12 mt-5 mt-xl-0">
         <h4 id="item-groupToppings--title-optional">Addons</h4>
       </div>
-      <div class="col-12">
+      <div class="col-12 mt-5 mt-xl-0">
         <div class="row" id="item-groupToppings--list-optional"></div>
       </div>
     </div>
     <div id="item-sharedToppings--container-optional" class="row py-2">
-      <div class="col-12 my-5 my-lg-0">
+      <div class="col-12 mt-5 mt-xl-0">
         <h4 id="item-sharedToppings--title-optional">Extras</h4>
       </div>
-      <div class="col-12">
+      <div class="col-12 mt-5 mt-xl-0">
         <div class="row" id="item-sharedToppings--list-optional"></div>
       </div>
     </div>

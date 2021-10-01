@@ -67,10 +67,6 @@ def menuParsing(data):
         else:
             image = ""
 
-        print(uniqueToppingsWithPrices)
-        print(sharedToppingsWithPrices)
-        print(groupToppingsWithPrices)
-
         iteminfo = {'id': itemId,
                     'image': image,
                     'displayName': item['displayName'],

@@ -16,11 +16,19 @@ i {
     object-fit: cover;
 }
 
-@media (max-width: 426px) {
+.back-to-home {
+    display: flex;
+}
+
+.footer {
+    position: relative;
+    bottom: -33%;
+}
+
+@media (min-width: 1200px) {
     .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
+        position: relative;
+        bottom: 0%;
     }
 }
 
