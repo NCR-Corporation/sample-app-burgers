@@ -20,8 +20,8 @@
       <div class="col-12 col-md-8 my-4 my-xl-2">
         <h2>{{item.displayName}}</h2>
         <h3 class="h5 text-body">{{item.price}}</h3>
-        <h3 class="h5 text-body">{{item.description}}</h3>
-        <button type="button" class="btn order-button px-4 mt-3" data-toggle="modal" data-target="#menuModal"
+        <h6 class="h6 text-body">{{item.description}}</h6>
+        <button type="button" class="btn order-button px-4 mt-2" data-toggle="modal" data-target="#menuModal"
           onclick="addItemToCart()">
           Add to Order
         </button>
@@ -43,18 +43,18 @@
             <p class="d-flex justify-content-center">
               Your item has been added to your order
             </p>
-            <div class="container">
-              <div class="row">
+            <div class="container-fluid d-flex justify-content-center">
                 <div class="col-6">
-                  <a class="btn order-button mt-3 d-flex justify-content-center"
-                    href="{{menuLink}}">Continue
-                    Ordering?</a>
+                  <button class="btn order-button">
+                   Continue Ordering?
+                  </button>
                 </div>
                 <div class="col-6">
-                  <a class="btn btn order-button mt-3 d-flex justify-content-center"
-                    href="{% url 'viewCart' %}">Checkout</a>
+                  <button class="btn order-button">
+                    Checkout
+                  </button>
                 </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
 
     <div id="item-uniqueToppings--container" class="row py-2">
       <div class="col-12 mt-5 mt-xl-0">
-        <h4 id="item-uniqueToppings--title">Toppings</h4>
+        <h4 id="item-uniqueToppings--title">Includes: </h4>
       </div>
       <div class="col-12">
 
@@ -77,7 +77,7 @@
   <div class="container">
     <div id="item-uniqueToppings--container-optional" class="row py-2">
       <div class="col-12 mt-5 mt-xl-0">
-        <h4 id="item-uniqueToppings--title-optional">Included</h4>
+        <h4 id="item-uniqueToppings--title-optional">Removed Default Toppings</h4>
       </div>
       <div class="col-12 mt-5 mt-xl-0">
         <div class="row" id="item-uniqueToppings--list-optional"></div>
