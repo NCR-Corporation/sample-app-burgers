@@ -18,6 +18,7 @@
       </div>
 
       <div class="col-12 col-md-8 my-4 my-xl-2">
+        {% csrf_token %}
         <h2>{{item.displayName}}</h2>
         <h3 class="h5 text-body">{{item.price}}</h3>
         <h3 class="h5 text-body">{{item.description}}</h3>
@@ -47,12 +48,12 @@
               <div class="row">
                 <div class="col-6">
                   <a class="btn order-button mt-3 d-flex justify-content-center"
-                    href="{{menuLink}}">Continue
+                    onclick='continueOrdering('{{menuLink}}')'>Continue
                     Ordering?</a>
                 </div>
                 <div class="col-6">
                   <a class="btn btn order-button mt-3 d-flex justify-content-center"
-                    href="{% url 'viewCart' %}">Checkout</a>
+                    onclick='checkout()'>Checkout</a>
                 </div>
               </div>
             </div>

@@ -9,6 +9,73 @@ $(function () {
     initialize(menuItem);
 });
 
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function continueOrdering(menuLink) {
+    var userCart = JSON.stringify(Json.parse(sessionStorage.getItem("Cart")));
+    var csrftoken = getCookie("csrftoken");
+    console.log(csrftoken);
+    $.ajax({
+        url: menuLink,
+        headers: {
+            "X-CSRFToken": csrftoken,
+        },
+        type: "POST",
+        data: { cart: userCart },
+        complete: function () {
+            window.location.href = menuLink;
+        },
+        error: function (xhr, textStatus, thrownError) {
+            alert(
+                "Could not send URL to Django. Error: " +
+                    xhr.status +
+                    ": " +
+                    xhr.responseText
+            );
+        },
+    });
+}
+
+function checkout() {
+    var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
+    var csrftoken = getCookie("csrftoken");
+    console.log(csrftoken);
+    $.ajax({
+        url: "/Peachtree-Burger/viewCart",
+        headers: {
+            "X-CSRFToken": csrftoken,
+        },
+        type: "POST",
+        data: { cart: userCart },
+        complete: function () {
+            window.location.href = "/Peachtree-Burger/viewCart";
+        },
+        error: function (xhr, textStatus, thrownError) {
+            alert(
+                "Could not send URL to Django. Error: " +
+                    xhr.status +
+                    ": " +
+                    xhr.responseText
+            );
+        },
+    });
+}
+
 function initialize(menuItem) {
     const {
         description,

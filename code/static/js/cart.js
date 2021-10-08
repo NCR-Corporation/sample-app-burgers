@@ -1,5 +1,6 @@
 var cartValue = sessionStorage.getItem("Cart");
 sessionStorage.setItem("Total", 0);
+console.log(cartValue);
 
 function getCart() {
     var cart = sessionStorage.getItem("Cart");
@@ -8,6 +9,23 @@ function getCart() {
 
 function getTotal() {
     return JSON.parse(sessionStorage.getItem("Total"));
+}
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
 function addItemToCart() {
@@ -66,3 +84,107 @@ function deleteItem(item) {
     sessionStorage.setItem("Cart", JSON.stringify(cart));
     sessionStorage.setItem("Total", total);
 }
+
+function grabCart() {
+    var cart = sessionStorage.getItem("Cart");
+    return JSON.parse(cart);
+}
+
+/**function displayCart() {
+    var lst = document.getElementById("order_table");
+    var cart = grabCart();
+    if (cart[0].item == "0") {
+    } else {
+        var tHolder = document.getElementById("total");
+        var total = 0.0;
+
+        for (let i = 0; i < cart.length; i++) {
+            var btn_add = document.createElement("BUTTON");
+            var btn_sub = document.createElement("BUTTON");
+            var btn_del = document.createElement("BUTTON");
+            btn_add.innerHTML = "+";
+            btn_sub.innerHTML = "-";
+            btn_del.innerHTML = "x";
+            btn_add.setAttribute("class", "round");
+            btn_add.setAttribute("id", "add" + cart[i].item);
+            btn_del.setAttribute("class", "round");
+            btn_del.setAttribute("id", "del");
+            btn_sub.setAttribute("class", "round");
+            btn_sub.setAttribute("id", "sub" + cart[i].item);
+            btn_add.setAttribute("onclick", "editCart()");
+            btn_sub.setAttribute("onclick", "editCart()");
+
+            var li = document.createElement("li");
+            li.appendChild(btn_del);
+            li.appendChild(document.createTextNode(cart[i].item));
+            li.appendChild(btn_sub);
+            li.appendChild(document.createTextNode(" : " + cart[i].qty));
+            li.appendChild(btn_add);
+
+            lst.appendChild(li);
+            total = total + cart[i].price * cart[i].qty;
+            tHolder.innerHTML = total;
+        }
+    }
+}
+
+function editCart() {
+    var cart = grabCart();
+    var id = parseString(event.srcElement.id);
+
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].item === id) {
+            if (event.srcElement.id.substr(0, 3) === "add") {
+                cart[i].qty += 1;
+                break;
+            } else {
+                if (cart[i].qty == 0) {
+                    alert("You already have 0 of this item");
+                    break;
+                } else {
+                    cart[i].qty -= 1;
+                    break;
+                }
+            }
+        }
+    }
+
+    sessionStorage.setItem("Cart", JSON.stringify(cart));
+
+    displayCart();
+}
+
+function parseString(id) {
+    return id.substr(3);
+}
+
+displayCart();
+$(document).ready(function () {
+    var userCart = grabCart();
+    userCart = JSON.stringify({ cart: userCart });
+
+    $("#Checkout").click(function () {
+        $.ajax({
+            url: "/burger/confirmation",
+            headers: {
+                "X-CSRFToken": "{{csrf_token}}",
+            },
+            type: "POST",
+            data: { cart: userCart },
+            success: function (response) {
+                //alert(" I was successful");
+            },
+            complete: function () {
+                window.location.href = "/burger/confirmation";
+            },
+            error: function (xhr, textStatus, thrownError) {
+                alert(
+                    "Could not send URL to Django. Error: " +
+                        xhr.status +
+                        ": " +
+                        xhr.responseText
+                );
+            },
+        });
+    });
+});**/

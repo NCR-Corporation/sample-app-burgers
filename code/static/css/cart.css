@@ -1,0 +1,17 @@
+.back-to-home {
+    text-decoration: none;
+    color: black;
+    display: flex;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+a:link {
+    text-decoration: none;
+}

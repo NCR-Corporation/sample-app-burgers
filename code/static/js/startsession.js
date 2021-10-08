@@ -53,12 +53,16 @@ if (sessionStorage.getItem("Location") == null) {
 
 function goToLunchMenu() {
     document.location.pathname =
-        "burger/menu/" + sessionStorage.getItem("Location").trim() + "/Lunch";
+        "Peachtree-Burger/menu/" +
+        sessionStorage.getItem("Location").trim() +
+        "/Lunch";
 }
 
 function goToDinnerMenu() {
     document.location.pathname =
-        "burger/menu/" + sessionStorage.getItem("Location").trim() + "/Dinner";
+        "Peachtree-Burger/menu/" +
+        sessionStorage.getItem("Location").trim() +
+        "/Dinner";
 }
 
 function locationChange(data, time) {
@@ -70,9 +74,11 @@ function locationChange(data, time) {
     document.getElementById("store-location").innerHTML =
         sessionStorage.getItem("Location");
 
-    if (document.location.pathname.substring(0, 12) == "/burger/menu") {
+    if (
+        document.location.pathname.substring(0, 12) == "/Peachtree-Burger/menu"
+    ) {
         document.location.pathname =
-            "burger/menu/" + shortName.trim() + "/" + time;
+            "Peachtree-Burger/menu/" + shortName.trim() + "/" + time;
     } else {
         document.location.reload();
     }
