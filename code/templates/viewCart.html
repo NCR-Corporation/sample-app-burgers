@@ -21,11 +21,42 @@
       <p class="h4 font-weight-bold">{{ items.displayName }}</p>
       <p class="h5 font-weight-light">{{ items.price }}</p>
       <p class="h6 font-weight-bold">Modifications</p>
-      {% for toppings in items.toppings %}
-      <p class="h6 font-weight-light">{{ toppings.displayName }}</p>
-      {% endfor %}
+
+      <div class="row pl-3">
+        {% for i in items.toppingColumns %}
+        <div class="col-3 px-0">
+          {% for toppings in items.toppings %}
+            {% if forloop.parentloop.counter == toppings.colNumber %}
+            <p class="h6 font-weight-light">{{ toppings.displayName}}</p>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endfor%}
+      </div>
     </div>
-    <div class="col-2"></div>
+    <div class="col-2">
+      <div class="d-flex">
+        <button type="button"
+                class="btn quantity-button justify-content-center">
+          <span class="pr-2">-<span>
+        </button>
+        <div class="col-xs-1">
+          <input class="form-control quantity-input" id="quantity-input" onkeydown="return false" placeholder="1" id="replyNumber" min="0" max="9" data-bind="value:replyNumber" type="number" />
+        </div>
+        <button type="button"
+                class="btn quantity-button justify-content-center">
+          <span class="pr-2">+<span>
+        </button>
+      </div>
+      <button type="button"
+              class="btn edit-button mt-2 d-flex justify-content-center">
+        <span class=""><i class="far fa-edit pr-1"></i> Edit<span>
+      </button>
+      <button type="button" class="btn btn-outline-danger mt-2 d-flex justify-content-center">
+        <div class="justify-content-center"><i class="fas fa-times pr-2"></i>Remove</div>
+      </button>
+
+    </div>
   </div>
   <hr class="mb-5" />
   {% endfor %}

@@ -27,7 +27,7 @@ function getCookie(name) {
 }
 
 function continueOrdering(menuLink) {
-    var userCart = JSON.stringify(Json.parse(sessionStorage.getItem("Cart")));
+    var userCart = JSON.stringify(JSON.parse(sessionStorage.getItem("Cart")));
     var csrftoken = getCookie("csrftoken");
     console.log(csrftoken);
     $.ajax({
@@ -165,7 +165,7 @@ function createItemCard({ item, included, container, type }) {
                 }" class="card-img-top my-1" style="object-fit: cover; max-height: 150px; min-height:150px"/>
                 <p class="h5 text-center">${item.displayName}</p>
                 <p class="h6 text-center">${price}</p>
-                
+                <p class="h6 text-center">${item.colNumber}</p>
             </div>
         </div>
     </div>`).appendTo(container);

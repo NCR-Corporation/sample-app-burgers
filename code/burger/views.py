@@ -178,8 +178,15 @@ def viewCart(request):
         cart = json.loads(cart)
 
     results = []
+    toppingColumns = ""
     if cart != None:
         for items in cart:
+            if len(items['toppings']) % 4 == 0:
+                for numCols in range(int(len(items['toppings']) / 4)):
+                    toppingColumns += "a"
+            else:
+                for numCols in range(int(len(items['toppings']) / 4 + 1)):
+                    toppingColumns += "a"
             iteminfo = {
                 'id': items['id'],
                 'image': items['image'],
@@ -188,7 +195,9 @@ def viewCart(request):
                 'price': items['price'],
                 'tags': items['tags'],
                 'toppings': items['toppings'],
+                'toppingColumns': toppingColumns
             }
+            toppingColumns = ""
             results.append(iteminfo)
 
     context = {

@@ -1,6 +1,5 @@
 var cartValue = sessionStorage.getItem("Cart");
 sessionStorage.setItem("Total", 0);
-console.log(cartValue);
 
 function getCart() {
     var cart = sessionStorage.getItem("Cart");
@@ -31,6 +30,8 @@ function getCookie(name) {
 function addItemToCart() {
     let cart = getCart();
     let total = getTotal();
+    let colNumber = 1;
+    let checkNumber = 0;
     if (!cart) {
         cart = [];
     }
@@ -44,11 +45,17 @@ function addItemToCart() {
             toppings.push({
                 displayName: item.dataset.displayName,
                 price: item.dataset.itemPrice,
+                colNumber: colNumber,
             });
+            if (checkNumber == colNumber * 4 - 1) {
+                colNumber += 1;
+            }
+            checkNumber += 1;
         });
     delete menuItem.groupToppings;
     delete menuItem.sharedToppings;
     delete menuItem.uniqueToppings;
+    console.log(toppings);
     menuItem["toppings"] = toppings;
     cart.push(menuItem);
     sessionStorage.setItem("Cart", JSON.stringify(cart));
