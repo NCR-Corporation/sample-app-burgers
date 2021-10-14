@@ -187,6 +187,8 @@ def viewCart(request):
             else:
                 for numCols in range(int(len(items['toppings']) / 4 + 1)):
                     toppingColumns += "a"
+
+            print(items['quantity'])
             iteminfo = {
                 'id': items['id'],
                 'image': items['image'],
@@ -195,6 +197,7 @@ def viewCart(request):
                 'price': items['price'],
                 'tags': items['tags'],
                 'toppings': items['toppings'],
+                'quantity': items['quantity'],
                 'toppingColumns': toppingColumns
             }
             toppingColumns = ""

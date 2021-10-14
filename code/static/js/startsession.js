@@ -1,5 +1,3 @@
-var itemNumber = 0;
-
 $(document).ready(function () {
     if (window.location.hash !== "") {
         var hash = window.location.hash;
@@ -15,6 +13,52 @@ $(document).ready(function () {
         return false;
     }
 });
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function goToCartPage() {
+    let csrftoken = getCookie("csrftoken");
+    var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
+    $.ajax({
+        url: "/Peachtree-Burger/viewCart",
+        headers: {
+            "X-CSRFToken": csrftoken,
+        },
+        type: "POST",
+        data: { cart: userCart },
+        complete: function () {
+            window.location.href = "/Peachtree-Burger/viewCart";
+        },
+        error: function (xhr, textStatus, thrownError) {
+            alert(
+                "Could not send URL to Django. Error: " +
+                    xhr.status +
+                    ": " +
+                    xhr.responseText
+            );
+        },
+    });
+}
+
+function getCart() {
+    var cart = sessionStorage.getItem("Cart");
+    return JSON.parse(cart);
+}
 
 function removeHash() {
     history.pushState(
@@ -92,5 +136,10 @@ if (sessionStorage.getItem("Cart") === null) {
     document.getElementById("cart-number").innerHTML = 0;
 } else {
     var cart = getCart();
-    document.getElementById("cart-number").innerHTML = cart.length;
+    document.getElementById("cart-number").innerHTML = 0;
+    for (let i = 0; i < cart.length; i++) {
+        document.getElementById("cart-number").innerHTML =
+            parseInt(document.getElementById("cart-number").innerHTML) +
+            cart[i].quantity;
+    }
 }

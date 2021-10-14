@@ -1,8 +1,8 @@
+let menuItem;
+
 function removeFromUniqueToppings(item, topping) {
     item.groupToppings.pop();
 }
-
-let menuItem;
 
 $(function () {
     menuItem = JSON.parse(document.getElementById("item").textContent);
@@ -29,7 +29,6 @@ function getCookie(name) {
 function continueOrdering(menuLink) {
     var userCart = JSON.stringify(JSON.parse(sessionStorage.getItem("Cart")));
     var csrftoken = getCookie("csrftoken");
-    console.log(csrftoken);
     $.ajax({
         url: menuLink,
         headers: {
@@ -54,7 +53,7 @@ function continueOrdering(menuLink) {
 function checkout() {
     var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
     var csrftoken = getCookie("csrftoken");
-    console.log(csrftoken);
+
     $.ajax({
         url: "/Peachtree-Burger/viewCart",
         headers: {

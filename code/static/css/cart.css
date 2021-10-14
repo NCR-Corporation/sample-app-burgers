@@ -4,7 +4,13 @@
     display: flex;
 }
 
-.quantity-input {
+.cart-image {
+    min-height: 175px;
+    max-height: 175px;
+    object-fit: cover;
+}
+
+[class^="quantity-input-"] {
     width: 55px;
 }
 
@@ -22,6 +28,14 @@
     background-color: #008d9b;
     border-color: #008d9b;
     color: white;
+}
+
+.checkout-button {
+    background-color: #008d9b;
+    color: white;
+    border-color: #008d9b;
+    height: 35px;
+    width: 12%;
 }
 
 .btn-outline-danger {

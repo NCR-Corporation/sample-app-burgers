@@ -10,6 +10,28 @@ function getTotal() {
     return JSON.parse(sessionStorage.getItem("Total"));
 }
 
+function increaseQuantity(itemId) {
+    let element = document.getElementById("quantity-input-" + itemId);
+    if (element.placeholder < 5) {
+        element.placeholder++;
+        addQuantityToCart(itemId);
+
+        document.getElementById("cart-number").innerHTML =
+            parseInt(document.getElementById("cart-number").innerHTML) + 1;
+    }
+}
+
+function decreaseQuantity(itemId) {
+    let element = document.getElementById("quantity-input-" + itemId);
+    if (element.placeholder > 1) {
+        element.placeholder--;
+        removeQuantityFromCart(itemId);
+
+        document.getElementById("cart-number").innerHTML =
+            parseInt(document.getElementById("cart-number").innerHTML) - 1;
+    }
+}
+
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== "") {
@@ -32,12 +54,16 @@ function addItemToCart() {
     let total = getTotal();
     let colNumber = 1;
     let checkNumber = 0;
+
     if (!cart) {
         cart = [];
     }
+
     let menuItem = JSON.parse(document.getElementById("item").textContent);
+    console.log(menuItem);
     total += menuItem.price;
     let toppings = [];
+
     $("#item-uniqueToppings--list")
         .children()
         .each((index, item) => {
@@ -52,15 +78,27 @@ function addItemToCart() {
             }
             checkNumber += 1;
         });
+
     delete menuItem.groupToppings;
     delete menuItem.sharedToppings;
     delete menuItem.uniqueToppings;
-    console.log(toppings);
+
     menuItem["toppings"] = toppings;
+
     cart.push(menuItem);
+
     sessionStorage.setItem("Cart", JSON.stringify(cart));
     sessionStorage.setItem("Total", total);
-    document.getElementById("cart-number").innerHTML = cart.length;
+    console.log(cart);
+
+    document.getElementById("cart-number").innerHTML = 0;
+    for (let i = 0; i < cart.length; i++) {
+        console.log(cart[i].quantity);
+        console.log(document.getElementById("cart-number").innerHTML);
+        document.getElementById("cart-number").innerHTML =
+            parseInt(document.getElementById("cart-number").innerHTML) +
+            cart[i].quantity;
+    }
 }
 
 function deleteItem(item) {
@@ -95,6 +133,36 @@ function deleteItem(item) {
 function grabCart() {
     var cart = sessionStorage.getItem("Cart");
     return JSON.parse(cart);
+}
+
+function addQuantityToCart(element) {
+    var cart = grabCart();
+    var id = element - 1;
+
+    if (cart[id].quantity < 5) {
+        cart[id].quantity += 1;
+    } else {
+        if (cart[id].quantity == 5) {
+            alert("You have reached the max quantity for orders of this item.");
+        }
+    }
+
+    sessionStorage.setItem("Cart", JSON.stringify(cart));
+}
+
+function removeQuantityFromCart(element) {
+    var cart = grabCart();
+    var id = element - 1;
+
+    if (cart[id].quantity > 1) {
+        cart[id].quantity -= 1;
+    } else {
+        if (cart[id].quantity == 1) {
+            alert("You must click remove to delete this item from the cart.");
+        }
+    }
+
+    sessionStorage.setItem("Cart", JSON.stringify(cart));
 }
 
 /**function displayCart() {

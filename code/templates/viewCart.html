@@ -15,11 +15,11 @@
   {% for items in cart %}
   <div class="container mb-5 d-flex">
     <div class="col-3">
-      <img class="mw-100" src="{{items.image}}" alt="{{items.displayName}}" />
+      <img class="mw-100 cart-image" src="{{items.image}}" alt="{{items.displayName}}" />
     </div>
     <div class="col-7">
       <p class="h4 font-weight-bold">{{ items.displayName }}</p>
-      <p class="h5 font-weight-light">{{ items.price }}</p>
+      <p class="h5 font-weight-light">{{ items.price }} {{items.quantity}}</p>
       <p class="h6 font-weight-bold">Modifications</p>
 
       <div class="row pl-3">
@@ -37,14 +37,16 @@
     <div class="col-2">
       <div class="d-flex">
         <button type="button"
-                class="btn quantity-button justify-content-center">
+                class="btn quantity-button justify-content-center"
+                onclick="decreaseQuantity('{{forloop.counter}}')">
           <span class="pr-2">-<span>
         </button>
         <div class="col-xs-1">
-          <input class="form-control quantity-input" id="quantity-input" onkeydown="return false" placeholder="1" id="replyNumber" min="0" max="9" data-bind="value:replyNumber" type="number" />
+          <input class="form-control quantity-input-{{forloop.counter}}" id="quantity-input-{{forloop.counter}}" onkeydown="return false" placeholder="{{items.quantity}}" min="0" max="9" data-bind="value:replyNumber" type="number" />
         </div>
         <button type="button"
-                class="btn quantity-button justify-content-center">
+                class="btn quantity-button justify-content-center"
+                onclick="increaseQuantity('{{forloop.counter}}')">
           <span class="pr-2">+<span>
         </button>
       </div>
@@ -55,11 +57,21 @@
       <button type="button" class="btn btn-outline-danger mt-2 d-flex justify-content-center">
         <div class="justify-content-center"><i class="fas fa-times pr-2"></i>Remove</div>
       </button>
-
     </div>
   </div>
   <hr class="mb-5" />
   {% endfor %}
+
+  <p class="h4">Special Instructions: <p>
+  <textarea class="form-control" placeholder="Write your special instructions here.." id="exampleFormControlTextarea1" rows="3"></textarea>
+  <div class="container-fluid d-flex align-items-end flex-column">
+    <p class="h5">Subtotal: </p>
+    <p class="h5">Georgia Tax(6.0%): </p>
+    <p class="h3"> Total: $</p>
+    <button type="button" class="btn checkout-button justify-content-center">
+      Checkout
+    </button>
+  </div>
 </div>
 
 {% endblock %} {% block javascript %}

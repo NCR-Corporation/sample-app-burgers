@@ -80,6 +80,7 @@ def menuParsing(data):
                     'description': item['description'],
                     'price': "${:,.2f}".format(item['currentPrice']),
                     'tags': item['tags'],
+                    'quantity': 1,
                     'uniqueToppings': uniqueToppingsWithPrices,
                     'sharedToppings': sharedToppingsWithPrices,
                     'groupToppings': groupToppingsWithPrices}

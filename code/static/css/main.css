@@ -10,6 +10,10 @@ html {
     font-weight: 400;
 }
 
+.nav-link {
+    cursor: pointer;
+}
+
 .custom-navbar a:hover {
     font-weight: bold;
     border-bottom: 2px solid #7ed957;
