@@ -179,13 +179,9 @@ DEBUG_TOOLBAR_PANELS = ['requests_panel.panel.RequestsDebugPanel']
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # DO NOT COMMIT THESE VALUES
-NEP_ORGANIZATION = 'hospitality-sample-app-dev'
-HMAC_SHARED_KEY = 'dbfb948235484296a120ccace97155c9'
-HMAC_SECRET_KEY = 'd0b93f9c47bc4792b7f423c61dbe368b'
+NEP_ORGANIZATION = ''
+HMAC_SHARED_KEY = ''
+HMAC_SECRET_KEY = ''
 
 # Locations of the restaurants saved in a id, site name pattern
-LOCATIONS = {
-    'Peachtree Burger Midtown': '4a11814528394b83b2680057d10b6ba5',
-    'Peachtree Burger Southland': 'b7571743fb7d4eeabc0c63573869b390',
-    'Peachtree Burger Highland': 'c9eeb9bf887c49aa800df09dd3af2fb6'
-}
+LOCATIONS = {}
