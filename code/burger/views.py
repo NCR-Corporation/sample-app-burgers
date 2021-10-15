@@ -188,7 +188,6 @@ def viewCart(request):
                 for numCols in range(int(len(items['toppings']) / 4 + 1)):
                     toppingColumns += "a"
 
-            print(items['quantity'])
             iteminfo = {
                 'id': items['id'],
                 'image': items['image'],
@@ -212,12 +211,8 @@ def viewCart(request):
 
 
 def confirmation(request):
-    if not request.is_ajax() or not request.method == 'POST':
-        return HttpResponseNotAllowed(['POST'])
 
-    request.session['cart'] = request.POST.get('cart', None)
-
-    return HttpResponse('ok')
+    return render(request, 'confirmation.html')
 
 
 def liveliness(request):

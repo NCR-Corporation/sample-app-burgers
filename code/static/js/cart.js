@@ -10,6 +10,10 @@ function getTotal() {
     return JSON.parse(sessionStorage.getItem("Total"));
 }
 
+function checkout() {
+    document.location.pathname = "/Peachtree-Burger/confirmation";
+}
+
 function increaseQuantity(itemId) {
     let element = document.getElementById("quantity-input-" + itemId);
     if (element.placeholder < 5) {
@@ -60,7 +64,6 @@ function addItemToCart() {
     }
 
     let menuItem = JSON.parse(document.getElementById("item").textContent);
-    console.log(menuItem);
     total += menuItem.price;
     let toppings = [];
 
@@ -89,12 +92,9 @@ function addItemToCart() {
 
     sessionStorage.setItem("Cart", JSON.stringify(cart));
     sessionStorage.setItem("Total", total);
-    console.log(cart);
 
     document.getElementById("cart-number").innerHTML = 0;
     for (let i = 0; i < cart.length; i++) {
-        console.log(cart[i].quantity);
-        console.log(document.getElementById("cart-number").innerHTML);
         document.getElementById("cart-number").innerHTML =
             parseInt(document.getElementById("cart-number").innerHTML) +
             cart[i].quantity;

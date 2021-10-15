@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
 
 <span>
-  <a class="" href="{{menuLink}}">
+  <a href="{{menuLink}}">
     <div class="back-to-home ml-5">
       <i class="fas fa-chevron-left my-3"></i>
       <p class="h4 m-2">Back to Menu</p>
@@ -39,7 +39,7 @@
         <button type="button"
                 class="btn quantity-button justify-content-center"
                 onclick="decreaseQuantity('{{forloop.counter}}')">
-          <span class="pr-2">-<span>
+          <span class="pr-2">-</span>
         </button>
         <div class="col-xs-1">
           <input class="form-control quantity-input-{{forloop.counter}}" id="quantity-input-{{forloop.counter}}" onkeydown="return false" placeholder="{{items.quantity}}" min="0" max="9" data-bind="value:replyNumber" type="number" />
@@ -47,12 +47,12 @@
         <button type="button"
                 class="btn quantity-button justify-content-center"
                 onclick="increaseQuantity('{{forloop.counter}}')">
-          <span class="pr-2">+<span>
+          <span class="pr-2">+</span>
         </button>
       </div>
       <button type="button"
               class="btn edit-button mt-2 d-flex justify-content-center">
-        <span class=""><i class="far fa-edit pr-1"></i> Edit<span>
+        <span class=""><i class="far fa-edit pr-1"></i> Edit</span>
       </button>
       <button type="button" class="btn btn-outline-danger mt-2 d-flex justify-content-center">
         <div class="justify-content-center"><i class="fas fa-times pr-2"></i>Remove</div>
@@ -68,7 +68,7 @@
     <p class="h5">Subtotal: </p>
     <p class="h5">Georgia Tax(6.0%): </p>
     <p class="h3"> Total: $</p>
-    <button type="button" class="btn checkout-button justify-content-center">
+    <button type="button" class="btn checkout-button justify-content-center" onclick="checkout()">
       Checkout
     </button>
   </div>
