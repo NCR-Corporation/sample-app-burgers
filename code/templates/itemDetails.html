@@ -18,6 +18,7 @@
       </div>
 
       <div class="col-12 col-md-8 my-4 my-xl-2">
+        {% csrf_token %}
         <h2>{{item.displayName}}</h2>
         <h3 class="h5 text-body">{{item.price}}</h3>
         <h6 class="h6 text-body">{{item.description}}</h6>
@@ -28,29 +29,23 @@
       </div>
     </div>
 
-    <div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="mb-3">
-              <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
             <h2 class="d-flex justify-content-center success-text">Success!</h2>
             <p class="d-flex justify-content-center">
               Your item has been added to your order
             </p>
             <div class="container-fluid d-flex justify-content-center">
                 <div class="col-6">
-                  <button class="btn order-button">
+                  <button class="btn order-button" onclick="continueOrdering('{{menuLink}}')">
                    Continue Ordering?
                   </button>
                 </div>
                 <div class="col-6">
-                  <button class="btn order-button">
+                  <button class="btn order-button" onclick="checkout()">
                     Checkout
                   </button>
                 </div>

@@ -4,9 +4,7 @@ from HMACAuth import HMACAuth
 from django.shortcuts import render
 import datetime
 import json
-import catalogMaker
 import requests
-from requests.auth import HTTPBasicAuth
 from django.http import HttpResponse
 from django.conf import settings
 import datetime
@@ -30,6 +28,7 @@ RESULTS = auxMethods.findResturantsInRange(
     {'x': -84.38879, 'y': 33.777714}, 20)
 MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
 
+MENULINK = '/Peachtree-Burger/menu/'
 site = ''
 
 
@@ -54,6 +53,7 @@ def lunchMenu(request, location):
     request.session['location'] = location
 
     time = "Lunch"
+    request.session['time'] = "Lunch"
     site = request.session.get('location')
 
     menustring = site.lower()+time
@@ -86,6 +86,7 @@ def dinnerMenu(request, location):
     request.session['location'] = location
 
     time = "Dinner"
+    request.session['time'] = "Dinner"
     site = request.session.get('location')
 
     menustring = site.lower()+time
@@ -123,9 +124,12 @@ def location(request):
     return HttpResponse()
 
 
-def itemDetails(request, itemId, location, tag, time):
+def itemDetails(request, itemId, tag):
     menu = None
     context = None
+
+    location = request.session.get('location').lower()
+    time = request.session.get('time')
 
     if time == 'Lunch':
         if location == 'highland':
@@ -137,7 +141,7 @@ def itemDetails(request, itemId, location, tag, time):
     else:
         if location == 'highland':
             menu = request.session.get('highlandDinner')
-        elif location == 'midtown':
+        elif request.session.get('location').lower() == 'midtown':
             menu = request.session.get('midtownDinner')
         else:
             menu = request.session.get('southlandDinner')
@@ -150,7 +154,7 @@ def itemDetails(request, itemId, location, tag, time):
                 'item': menu[tag][item],
                 'locations': MATCHES,
                 'menu': menu,
-                'menuLink': '/burger/menu/' + location.capitalize() + '/' + time
+                'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
             }
 
     return render(request, 'itemDetails.html', context)
@@ -162,16 +166,53 @@ def payment(request):
 
 
 def viewCart(request):
-    context = {'locations': MATCHES}
+    location = request.session.get('location')
+    time = request.session.get('time')
+    cart = None
+
+    if request.is_ajax():
+        request.session['cart'] = request.POST.get('cart', None)
+
+    if request.session.get('cart') != None:
+        cart = json.loads(request.session.get('cart'))
+        cart = json.loads(cart)
+
+    results = []
+    toppingColumns = ""
+    if cart != None:
+        for items in cart:
+            if len(items['toppings']) % 4 == 0:
+                for numCols in range(int(len(items['toppings']) / 4)):
+                    toppingColumns += "a"
+            else:
+                for numCols in range(int(len(items['toppings']) / 4 + 1)):
+                    toppingColumns += "a"
+
+            iteminfo = {
+                'id': items['id'],
+                'image': items['image'],
+                'displayName': items['displayName'],
+                'description': items['description'],
+                'price': items['price'],
+                'tags': items['tags'],
+                'toppings': items['toppings'],
+                'quantity': items['quantity'],
+                'toppingColumns': toppingColumns
+            }
+            toppingColumns = ""
+            results.append(iteminfo)
+
+    context = {
+        'locations': MATCHES,
+        'cart': results,
+        'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
+    }
     return render(request, 'viewCart.html', context)
 
 
 def confirmation(request):
-    userCart = request.POST.getlist('cart')
 
-    context = {'cart': userCart}
-
-    return render(request, 'confirmation.html', context)
+    return render(request, 'confirmation.html')
 
 
 def liveliness(request):

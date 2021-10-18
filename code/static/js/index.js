@@ -45,52 +45,9 @@ function setLocation(data) {
     var time = new Date();
     if (time.getHours() < 14) {
         document.location.pathname =
-            "burger/menu/" + shortName.trim() + "/Lunch";
+            "Peachtree-Burger/Menu/" + shortName.trim() + "/Lunch";
     } else {
         document.location.pathname =
-            "burger/menu/" + shortName.trim() + "/Dinner";
+            "Peachtree-Burger/Menu/" + shortName.trim() + "/Dinner";
     }
 }
-
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== "") {
-        var cookies = document.cookie.split(";");
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            if (cookie.substring(0, name.length + 1) === name + "=") {
-                cookieValue = decodeURIComponent(
-                    cookie.substring(name.length + 1)
-                );
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
-$(document).ready(function () {
-    $("#menu").click(function () {
-        var site = "midtown";
-        var csrftoken = getCookie("csrftoken");
-        $.ajax({
-            type: "POST",
-            url: "/burger/location",
-            headers: { "X-CSRFToken": csrftoken },
-            contentType: "application/json;charset=utf-8",
-            data: JSON.stringify({ Site: site }),
-            success: function (data) {},
-            complete: function () {
-                window.location.href = "/burger/menu";
-            },
-            error: function (xhr, textStatus, thrownError) {
-                alert(
-                    "Could not send URL to Django. Error: " +
-                        xhr.status +
-                        ": " +
-                        xhr.responseText
-                );
-            },
-        });
-    });
-});

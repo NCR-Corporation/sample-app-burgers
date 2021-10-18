@@ -118,7 +118,7 @@
             </div>
           </li>
           <li class="nav-item h-100">
-            <a class="nav-link" href="{% url 'viewCart' %}">
+            <a class="nav-link" onclick="goToCartPage();">
               <div class="cart-container ml-md-2 pl-md-1">
                 <i class="fa fa-shopping-cart fa-lg cart-icon">
                   <span
@@ -223,7 +223,10 @@
   </script>
 
   <script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/startsession.js' %}"></script>
-  <script src="{% static 'js/footer.js' %}"></script>
+  <script
+    src="{% static 'js/startsession.js' %}"
+    type="text/javascript"
+  ></script>
+  <script src="{% static 'js/footer.js' %}" type="text/javascript"></script>
   {% block javascript %} {% endblock javascript %}
 </html>

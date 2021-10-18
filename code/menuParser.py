@@ -1,4 +1,4 @@
-import re
+import json
 
 
 class Menu():
@@ -18,6 +18,8 @@ def getLinkedGroupContents(linkgroup, data):
 
 def getLinkedGoupContentsIds(toppingsList, data):
     priceList = []
+    colNumber = 1
+    checkNumber = 0
     for ids in toppingsList['linkedItemReferences']:
         for items in data['linkedItems']:
             if ids['posName'] == items['displayName']:
@@ -26,9 +28,14 @@ def getLinkedGoupContentsIds(toppingsList, data):
                     {
                         'displayName': items['displayName'],
                         'price': price,
-                        'image': items['imageUrls']
+                        'image': items['imageUrls'],
+                        'colNumber': colNumber
                     },
                 )
+                if checkNumber == colNumber * 4 - 1:
+                    colNumber += 1
+                checkNumber += 1
+
     return priceList
 
 
@@ -73,6 +80,7 @@ def menuParsing(data):
                     'description': item['description'],
                     'price': "${:,.2f}".format(item['currentPrice']),
                     'tags': item['tags'],
+                    'quantity': 1,
                     'uniqueToppings': uniqueToppingsWithPrices,
                     'sharedToppings': sharedToppingsWithPrices,
                     'groupToppings': groupToppingsWithPrices}

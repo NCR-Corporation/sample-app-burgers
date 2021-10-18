@@ -1,0 +1,67 @@
+.back-to-home {
+    text-decoration: none;
+    color: black;
+    display: flex;
+}
+
+.cart-image {
+    min-height: 175px;
+    max-height: 175px;
+    object-fit: cover;
+}
+
+[class^="quantity-input-"] {
+    width: 55px;
+}
+
+.quantity-button {
+    width: 21%;
+    height: 12%;
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+}
+
+.edit-button {
+    width: 78%;
+    height: 40px;
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+}
+
+.checkout-button {
+    background-color: #008d9b;
+    color: white;
+    border-color: #008d9b;
+    height: 35px;
+    width: 12%;
+}
+
+.btn-outline-danger {
+    width: 78%;
+    height: 40px;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+a:link {
+    text-decoration: none;
+}
