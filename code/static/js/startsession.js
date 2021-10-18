@@ -34,25 +34,30 @@ function getCookie(name) {
 function goToCartPage() {
     let csrftoken = getCookie("csrftoken");
     var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
-    $.ajax({
-        url: "/Peachtree-Burger/viewCart",
-        headers: {
-            "X-CSRFToken": csrftoken,
-        },
-        type: "POST",
-        data: { cart: userCart },
-        complete: function () {
-            window.location.href = "/Peachtree-Burger/viewCart";
-        },
-        error: function (xhr, textStatus, thrownError) {
-            alert(
-                "Could not send URL to Django. Error: " +
-                    xhr.status +
-                    ": " +
-                    xhr.responseText
-            );
-        },
-    });
+
+    if (csrftoken == null) {
+        document.location.pathname = "/Peachtree-Burger/viewCart";
+    } else {
+        $.ajax({
+            url: "/Peachtree-Burger/viewCart",
+            headers: {
+                "X-CSRFToken": csrftoken,
+            },
+            type: "POST",
+            data: { cart: userCart },
+            complete: function () {
+                window.location.href = "/Peachtree-Burger/viewCart";
+            },
+            error: function (xhr, textStatus, thrownError) {
+                alert(
+                    "Could not send URL to Django. Error: " +
+                        xhr.status +
+                        ": " +
+                        xhr.responseText
+                );
+            },
+        });
+    }
 }
 
 function getCart() {

@@ -176,7 +176,10 @@ def viewCart(request):
     if request.session.get('cart') != None:
         cart = json.loads(request.session.get('cart'))
         cart = json.loads(cart)
+    else:
+        cart = []
 
+    print(cart)
     results = []
     toppingColumns = ""
     if cart != None:
