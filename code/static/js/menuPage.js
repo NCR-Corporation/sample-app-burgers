@@ -1,4 +1,4 @@
 function goToItemDetails(id, tags) {
     document.location.pathname =
-        "Peachtree-Burger/menu/itemDetails/" + id + "/" + tags;
+        "Peachtree-Burger/Menu/ItemDetails/" + id + "/" + tags;
 }

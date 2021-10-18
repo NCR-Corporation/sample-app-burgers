@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import mimetypes
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,6 +26,7 @@ SECRET_KEY = '+=ey4af%pw@67a!knl6t44e)$ms=6uq7x)btzilz4yl$2c7!2v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+mimetypes.add_type("application/javascript", ".js", True)
 
 ALLOWED_HOSTS = ['*']
 
@@ -179,9 +181,13 @@ DEBUG_TOOLBAR_PANELS = ['requests_panel.panel.RequestsDebugPanel']
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # DO NOT COMMIT THESE VALUES
-NEP_ORGANIZATION = ''
-HMAC_SHARED_KEY = ''
-HMAC_SECRET_KEY = ''
+NEP_ORGANIZATION = 'hospitality-sample-app-dev'
+HMAC_SHARED_KEY = 'dbfb948235484296a120ccace97155c9'
+HMAC_SECRET_KEY = 'd0b93f9c47bc4792b7f423c61dbe368b'
 
 # Locations of the restaurants saved in a id, site name pattern
-LOCATIONS = {}
+LOCATIONS = {
+    'Peachtree Burger Midtown': '4a11814528394b83b2680057d10b6ba5',
+    'Peachtree Burger Southland': 'b7571743fb7d4eeabc0c63573869b390',
+    'Peachtree Burger Highland': 'c9eeb9bf887c49aa800df09dd3af2fb6'
+}

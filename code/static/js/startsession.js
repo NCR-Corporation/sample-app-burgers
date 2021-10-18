@@ -34,19 +34,26 @@ function getCookie(name) {
 function goToCartPage() {
     let csrftoken = getCookie("csrftoken");
     var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
+    console.log(csrftoken);
+    console.log(csrftoken == null);
+    console.log(userCart);
 
-    if (csrftoken == null) {
-        document.location.pathname = "/Peachtree-Burger/viewCart";
+    if (csrftoken == null || cart == null) {
+        if (userCart == null) {
+            cart = [];
+            sessionStorage.setItem("Cart", JSON.stringify(cart));
+        }
+        document.location.pathname = "/Peachtree-Burger/ViewCart";
     } else {
         $.ajax({
-            url: "/Peachtree-Burger/viewCart",
+            url: "/Peachtree-Burger/ViewCart",
             headers: {
                 "X-CSRFToken": csrftoken,
             },
             type: "POST",
             data: { cart: userCart },
             complete: function () {
-                window.location.href = "/Peachtree-Burger/viewCart";
+                window.location.href = "/Peachtree-Burger/ViewCart";
             },
             error: function (xhr, textStatus, thrownError) {
                 alert(
@@ -102,14 +109,14 @@ if (sessionStorage.getItem("Location") == null) {
 
 function goToLunchMenu() {
     document.location.pathname =
-        "Peachtree-Burger/menu/" +
+        "Peachtree-Burger/Menu/" +
         sessionStorage.getItem("Location").trim() +
         "/Lunch";
 }
 
 function goToDinnerMenu() {
     document.location.pathname =
-        "Peachtree-Burger/menu/" +
+        "Peachtree-Burger/Menu/" +
         sessionStorage.getItem("Location").trim() +
         "/Dinner";
 }
@@ -124,10 +131,10 @@ function locationChange(data, time) {
         sessionStorage.getItem("Location");
 
     if (
-        document.location.pathname.substring(0, 12) == "/Peachtree-Burger/menu"
+        document.location.pathname.substring(0, 12) == "/Peachtree-Burger/Menu"
     ) {
         document.location.pathname =
-            "Peachtree-Burger/menu/" + shortName.trim() + "/" + time;
+            "Peachtree-Burger/Menu/" + shortName.trim() + "/" + time;
     } else {
         document.location.reload();
     }

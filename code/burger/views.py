@@ -28,7 +28,7 @@ RESULTS = auxMethods.findResturantsInRange(
     {'x': -84.38879, 'y': 33.777714}, 20)
 MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
 
-MENULINK = '/burger/menu/'
+MENULINK = '/Peachtree-Burger/menu/'
 site = ''
 
 
@@ -154,7 +154,7 @@ def itemDetails(request, itemId, tag):
                 'item': menu[tag][item],
                 'locations': MATCHES,
                 'menu': menu,
-                'menuLink': '/Peachtree-Burger/menu/' + location.capitalize() + '/' + time
+                'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
             }
 
     return render(request, 'itemDetails.html', context)
@@ -176,10 +176,7 @@ def viewCart(request):
     if request.session.get('cart') != None:
         cart = json.loads(request.session.get('cart'))
         cart = json.loads(cart)
-    else:
-        cart = []
 
-    print(cart)
     results = []
     toppingColumns = ""
     if cart != None:
@@ -208,7 +205,7 @@ def viewCart(request):
     context = {
         'locations': MATCHES,
         'cart': results,
-        'menuLink': '/Peachtree-Burger/menu/' + location.capitalize() + '/' + time
+        'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
     }
     return render(request, 'viewCart.html', context)
 

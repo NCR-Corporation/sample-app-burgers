@@ -10,8 +10,12 @@ function getTotal() {
     return JSON.parse(sessionStorage.getItem("Total"));
 }
 
+function backToMenu(menuLink) {
+    document.location.pathname = menuLink;
+}
+
 function checkout() {
-    document.location.pathname = "/Peachtree-Burger/confirmation";
+    document.location.pathname = "/Peachtree-Burger/Confirmation";
 }
 
 function increaseQuantity(itemId) {

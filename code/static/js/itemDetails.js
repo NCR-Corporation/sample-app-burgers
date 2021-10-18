@@ -55,14 +55,14 @@ function checkout() {
     var csrftoken = getCookie("csrftoken");
 
     $.ajax({
-        url: "/Peachtree-Burger/viewCart",
+        url: "/Peachtree-Burger/ViewCart",
         headers: {
             "X-CSRFToken": csrftoken,
         },
         type: "POST",
         data: { cart: userCart },
         complete: function () {
-            window.location.href = "/Peachtree-Burger/viewCart";
+            window.location.href = "/Peachtree-Burger/ViewCart";
         },
         error: function (xhr, textStatus, thrownError) {
             alert(

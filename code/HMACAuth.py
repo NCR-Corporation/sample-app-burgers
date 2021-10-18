@@ -45,7 +45,7 @@ class HMACAuth(requests.auth.AuthBase):
 
         # Get data from the request headers to sign in the HMAC string
         request.headers['Date'] = utcDate
-        request.headers['Content-Type'] = 'application/json'
+        request.headers['Content-Type'] = 'application/javascript'
 
         if self.enterprise_unit != '0':
             request.headers['nep-enterprise-unit'] = self.enterprise_unit

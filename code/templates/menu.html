@@ -1,16 +1,7 @@
-{% include 'base.html' %} {% load static %}
-<div class="burgers-nav-bar">
-  {% block title %}
-  <title>Menu</title>
-  {% endblock %}
-</div>
-
-{% block javascript %}
-<script src="{% static 'js/menuPage.js' %}" type="text/javascript"></script>
-{% endblock %}
+{% include 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
 
 <body>
-  <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
   <div class="container-fluid mb-5 menu-container">
     <h2 class="text-center mt-2 mb-5">
       Peachtree Burger {{site}} {{time}} Menu
@@ -243,5 +234,7 @@
     </div>
     {% endif %}
   </div>
-  {% include 'footer.html' %}
+  {% endblock %} {% block javascript %}
+  <script src="{% static 'js/menuPage.js' %}" type="text/javascript"></script>
+  {% endblock %} {% include 'footer.html' %}
 </body>

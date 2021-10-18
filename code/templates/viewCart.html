@@ -10,6 +10,8 @@
   </a>
 </span>
 
+
+{% if cart %}
 <div class="container mt-2">
   <p class="h1 mb-5">Cart</p>
   {% for items in cart %}
@@ -19,16 +21,16 @@
     </div>
     <div class="col-7">
       <p class="h4 font-weight-bold">{{ items.displayName }}</p>
-      <p class="h5 font-weight-light">{{ items.price }} {{items.quantity}}</p>
+      <p class="h5 font-weight-light">{{ items.price }}</p>
       <p class="h6 font-weight-bold">Modifications</p>
 
       <div class="row pl-3">
         {% for i in items.toppingColumns %}
         <div class="col-3 px-0">
           {% for toppings in items.toppings %}
-            {% if forloop.parentloop.counter == toppings.colNumber %}
-            <p class="h6 font-weight-light">{{ toppings.displayName}}</p>
-            {% endif %}
+          {% if forloop.parentloop.counter == toppings.colNumber %}
+          <p class="h6 font-weight-light">{{ toppings.displayName}}</p>
+          {% endif %}
           {% endfor %}
         </div>
         {% endfor%}
@@ -63,17 +65,25 @@
   {% endfor %}
 
   <p class="h4">Special Instructions: <p>
-  <textarea class="form-control" placeholder="Write your special instructions here.." id="exampleFormControlTextarea1" rows="3"></textarea>
-  <div class="container-fluid d-flex align-items-end flex-column">
-    <p class="h5">Subtotal: </p>
-    <p class="h5">Georgia Tax(6.0%): </p>
-    <p class="h3"> Total: $</p>
-    <button type="button" class="btn checkout-button justify-content-center" onclick="checkout()">
-      Checkout
-    </button>
-  </div>
+    <textarea class="form-control" placeholder="Write your special instructions here.." id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div class="container-fluid d-flex align-items-end flex-column">
+      <p class="h5">Subtotal: </p>
+      <p class="h5">Georgia Tax(6.0%): </p>
+      <p class="h3"> Total: $</p>
+      <button type="button" class="btn checkout-button justify-content-center" onclick="checkout()">
+        Checkout
+      </button>
+    </div>
 </div>
 
+{% else %}
+<div class="container px-5 my-5 py-5">
+  <p class="h2">You have no items in your cart. Head to the menu to add some items to your cart.</p>
+  <button type="button" class="btn checkout-button justify-content-center" onclick="backToMenu('{{menuLink}}')">
+    Menu
+  </button>
+</div>
+{% endif %}
 {% endblock %} {% block javascript %}
 <script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
 {% endblock %}

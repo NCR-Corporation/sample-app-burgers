@@ -1,13 +1,17 @@
 function setToLunch(site) {
     sessionStorage.setItem("time", "Lunch");
     document.location.pathname =
-        "burger/menu/" + sessionStorage.getItem("Location").trim() + "/Lunch";
+        "Peachtree-Burger/Menu/" +
+        sessionStorage.getItem("Location").trim() +
+        "/Lunch";
 }
 
 function setToDinner(site) {
     sessionStorage.setItem("time", "Dinner");
     document.location.pathname =
-        "burger/menu/" + sessionStorage.getItem("Location").trim() + "/Dinner";
+        "Peachtree-Burger/Menu/" +
+        sessionStorage.getItem("Location").trim() +
+        "/Dinner";
 }
 
 $("#menu").click(function () {
@@ -15,7 +19,7 @@ $("#menu").click(function () {
     var csrftoken = getCookie("csrftoken");
     $.ajax({
         type: "POST",
-        url: "/burger/location",
+        url: "/Peachtree-Burger/location",
         headers: { "X-CSRFToken": csrftoken },
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify({ Site: site }),
