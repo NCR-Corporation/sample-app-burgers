@@ -105,33 +105,46 @@ function addItemToCart() {
     }
 }
 
-function deleteItem(item) {
+function deleteItem(itemId) {
     let cart = grabCart();
-    var row = item.parentNode.parentNode.rowIndex;
-    var itemId = parseString(event.srcElement.id);
-    var total = parseFloat(document.getElementById("total").innerHTML);
-    var tHolder = document.getElementById("total");
-
-    for (let i = 0; i < cart.length; i++) {
-        if (cart[i].item === itemId) {
-            total = total - cart[i].price * cart[i].qty;
-            tHolder.innerHTML = total;
-            cart.splice(i, 1);
-            break;
-        }
+    if (!cart) {
+        cart = [];
     }
-
-    itemNumber = 0;
-    for (var j = 0; j < cart.length; j++) {
-        itemNumber = itemNumber + cart[j].qty;
-    }
-
-    document.getElementById("cart-number").innerHTML = itemNumber;
-
-    document.getElementById("order_table").deleteRow(row);
-
+    console.log(cart);
+    console.log(itemId);
+    total =
+        sessionStorage.getItem("Total") -
+        cart[itemId - 1].price * cart[itemId - 1].quantity;
+    console.log(itemId - 1);
+    cart.splice(itemId - 1, 1);
+    console.log(cart);
     sessionStorage.setItem("Cart", JSON.stringify(cart));
     sessionStorage.setItem("Total", total);
+
+    let csrftoken = getCookie("csrftoken");
+
+    $.ajax({
+        url: "/Peachtree-Burger/ViewCart",
+        headers: {
+            "X-CSRFToken": csrftoken,
+        },
+        type: "POST",
+        data: {
+            cart: cart,
+            item-request: 'REMOVE'
+        },
+        complete: function () {
+            window.location.href = "/Peachtree-Burger/ViewCart";
+        },
+        error: function (xhr, textStatus, thrownError) {
+            alert(
+                "Could not send URL to Django. Error: " +
+                    xhr.status +
+                    ": " +
+                    xhr.responseText
+            );
+        },
+    });
 }
 
 function grabCart() {
@@ -167,6 +180,23 @@ function removeQuantityFromCart(element) {
     }
 
     sessionStorage.setItem("Cart", JSON.stringify(cart));
+}
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
 /**function displayCart() {

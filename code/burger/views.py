@@ -170,13 +170,15 @@ def viewCart(request):
     time = request.session.get('time')
     cart = None
 
-    if request.is_ajax():
+    print(request.POST.get('cart', None))
+    if request.is_ajax() and request.POST.get('cart', None) != None:
         request.session['cart'] = request.POST.get('cart', None)
 
     if request.session.get('cart') != None:
         cart = json.loads(request.session.get('cart'))
         cart = json.loads(cart)
 
+    print("new cart")
     results = []
     toppingColumns = ""
     if cart != None:

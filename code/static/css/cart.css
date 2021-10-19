@@ -10,6 +10,82 @@
     object-fit: cover;
 }
 
+.no-item-container {
+    margin-top: 10.7%;
+    margin-bottom: 13%;
+    width: 40%;
+}
+
+.no-item-container {
+    margin-top: 13%;
+    margin-bottom: 13%;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-item-container {
+        margin-top: 52%;
+        margin-bottom: 52%;
+        width: 60%;
+    }
+
+    .footer {
+        position: relative;
+        bottom: -1%;
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-item-container {
+        margin-top: 52%;
+        margin-bottom: 52%;
+        width: 60%;
+    }
+
+    .footer {
+        position: relative;
+        bottom: -1%;
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+    .no-item-container {
+        margin-top: 60%;
+        margin-bottom: 60%;
+        width: 60%;
+    }
+
+    .footer {
+        position: relative;
+        bottom: -12%;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-item-container {
+        margin-top: 27%;
+        margin-bottom: 27%;
+        width: 60%;
+    }
+
+    .footer {
+        position: relative;
+        bottom: -8%;
+    }
+}
+
+@media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-item-container {
+        margin-top: 25%;
+        margin-bottom: 25%;
+        width: 60%;
+    }
+
+    .footer {
+        position: relative;
+        bottom: -8%;
+    }
+}
+
 [class^="quantity-input-"] {
     width: 55px;
 }
@@ -35,7 +111,6 @@
     color: white;
     border-color: #008d9b;
     height: 35px;
-    width: 12%;
 }
 
 .btn-outline-danger {

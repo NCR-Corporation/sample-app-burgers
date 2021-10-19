@@ -34,9 +34,6 @@ function getCookie(name) {
 function goToCartPage() {
     let csrftoken = getCookie("csrftoken");
     var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
-    console.log(csrftoken);
-    console.log(csrftoken == null);
-    console.log(userCart);
 
     if (csrftoken == null || cart == null) {
         if (userCart == null) {
