@@ -129,10 +129,7 @@ function deleteItem(itemId) {
             "X-CSRFToken": csrftoken,
         },
         type: "POST",
-        data: {
-            cart: cart,
-            item-request: 'REMOVE'
-        },
+        data: { cart: cart },
         complete: function () {
             window.location.href = "/Peachtree-Burger/ViewCart";
         },
