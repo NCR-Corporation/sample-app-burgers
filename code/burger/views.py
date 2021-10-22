@@ -168,17 +168,19 @@ def payment(request):
 def viewCart(request):
     location = request.session.get('location')
     time = request.session.get('time')
+    total = request.session.get('Total')
+
     cart = None
 
-    print(request.POST.get('cart', None))
     if request.is_ajax() and request.POST.get('cart', None) != None:
         request.session['cart'] = request.POST.get('cart', None)
 
-    if request.session.get('cart') != None:
+    if request.session.get('cart') == "":
+        cart = None
+    elif request.session.get('cart') != None:
         cart = json.loads(request.session.get('cart'))
         cart = json.loads(cart)
 
-    print("new cart")
     results = []
     toppingColumns = ""
     if cart != None:
@@ -207,12 +209,15 @@ def viewCart(request):
     context = {
         'locations': MATCHES,
         'cart': results,
+        'total': total,
         'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
     }
     return render(request, 'viewCart.html', context)
 
 
 def confirmation(request):
+    request.session['cart'] = ""
+    request.session['total'] = ""
 
     return render(request, 'confirmation.html')
 

@@ -1,3 +1,9 @@
+if (window.location.pathname == "/Peachtree-Burger/") {
+    sessionStorage.setItem("Copy-Cart", JSON.stringify([]));
+    sessionStorage.setItem("Copy-Total", JSON.stringify([]));
+    sessionStorage.setItem("removedItemId", JSON.stringify([]));
+}
+
 let map;
 
 function initMap() {

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
 
 <body>
-  <span>
+  <span class="back-to-home-link">
     <a href="{{menuLink}}">
       <div class="back-to-home ml-5">
         <i class="fas fa-chevron-left my-3"></i>
@@ -10,126 +10,118 @@
       </div>
     </a>
   </span>
+  <div class="cart-container">
+    {% if cart %}
+    <div class="container mt-2">
+      <p class="h1 mb-5">Cart</p>
+      {% for items in cart %}
+      <div class="container mb-5 d-flex">
+        <div class="col-3">
+          <img class="mw-100 cart-image"
+               src="{{items.image}}"
+               alt="{{items.displayName}}" />
+        </div>
+        <div class="col-6">
+          <p class="h4 font-weight-bold">{{ items.displayName }}</p>
+          <p class="h5 font-weight-light">{{ items.price }}</p>
+          <p class="h6 font-weight-bold">Modifications</p>
 
-  {% if cart %}
-  <div class="container mt-2">
-    <p class="h1 mb-5">Cart</p>
-    {% for items in cart %}
-    <div class="container mb-5 d-flex">
-      <div class="col-3">
-        <img
-          class="mw-100 cart-image"
-          src="{{items.image}}"
-          alt="{{items.displayName}}"
-        />
-      </div>
-      <div class="col-7">
-        <p class="h4 font-weight-bold">{{ items.displayName }}</p>
-        <p class="h5 font-weight-light">{{ items.price }}</p>
-        <p class="h6 font-weight-bold">Modifications</p>
-
-        <div class="row pl-3">
-          {% for i in items.toppingColumns %}
-          <div class="col-3 px-0">
-            {% for toppings in items.toppings %}
+          <div class="row pl-3">
+            {% for i in items.toppingColumns %}
+            <div class="col-3 px-0">
+              {% for toppings in items.toppings %}
               {% if forloop.parentloop.counter == toppings.colNumber %}
               <p class="h6 font-weight-light">{{ toppings.displayName}}</p>
               {% endif %}
-            {% endfor %}
+              {% endfor %}
+            </div>
+            {% endfor%}
           </div>
-          {% endfor%}
+        </div>
+        <div class="col-3">
+          <div class="d-flex ">
+            <button type="button"
+                    class="btn quantity-button justify-content-center"
+                    onclick="decreaseQuantity('{{forloop.counter}}')">
+              <span class="pr-2">-</span>
+            </button>
+            <div class="col-xs-1">
+              <input class="form-control quantity-input-{{forloop.counter}}"
+                     id="quantity-input-{{forloop.counter}}"
+                     onkeydown="return false"
+                     placeholder="{{items.quantity}}"
+                     min="0"
+                     max="9"
+                     data-bind="value:replyNumber"
+                     type="number" />
+            </div>
+            <button type="button"
+                    class="btn quantity-button justify-content-center"
+                    onclick="increaseQuantity('{{forloop.counter}}')">
+              <span class="pr-2">+</span>
+            </button>
+          </div>
+          <button type="button"
+                  class="btn edit-button mt-2 d-flex justify-content-center"
+                  onclick="editCart('{{forloop.counter}}')">
+            <span class=""><i class="far fa-edit pr-1"></i> Edit</span>
+          </button>
+          <button type="button"
+                  class="btn btn-outline-danger mt-2 d-flex justify-content-center"
+                  onclick="deleteItem('{{forloop.counter}}')">
+            <div class="justify-content-center">
+              <i class="fas fa-times pr-2"></i>Remove
+            </div>
+          </button>
         </div>
       </div>
-      <div class="col-2">
-        <div class="d-flex">
-          <button
-            type="button"
-            class="btn quantity-button justify-content-center"
-            onclick="decreaseQuantity('{{forloop.counter}}')"
-          >
-            <span class="pr-2">-</span>
-          </button>
-          <div class="col-xs-1">
-            <input
-              class="form-control quantity-input-{{forloop.counter}}"
-              id="quantity-input-{{forloop.counter}}"
-              onkeydown="return false"
-              placeholder="{{items.quantity}}"
-              min="0"
-              max="9"
-              data-bind="value:replyNumber"
-              type="number"
-            />
-          </div>
-          <button
-            type="button"
-            class="btn quantity-button justify-content-center"
-            onclick="increaseQuantity('{{forloop.counter}}')"
-          >
-            <span class="pr-2">+</span>
-          </button>
-        </div>
-        <button
-          type="button"
-          class="btn edit-button mt-2 d-flex justify-content-center"
-        >
-          <span class=""><i class="far fa-edit pr-1"></i> Edit</span>
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-danger mt-2 d-flex justify-content-center"
-          onclick="deleteItem('{{forloop.counter}}')"
-        >
-          <div class="justify-content-center">
-            <i class="fas fa-times pr-2"></i>Remove
-          </div>
+      <hr class="mb-5" />
+      {% endfor %}
+
+      <p class="h4">Special Instructions:</p>
+      <p>
+        <textarea class="form-control"
+                  placeholder="Write your special instructions here.."
+                  id="exampleFormControlTextarea1"
+                  rows="3"></textarea>
+      </p>
+
+      <div class="container-fluid d-flex align-items-end flex-column">
+        <p class="h5" id="subtotal">subtotal</p>
+        <p class="h5" id="tax">tax</p>
+        <p class="h3" id="total">total</p>
+        <button type="button"
+                class="btn checkout-button justify-content-center"
+                onclick="checkout()">
+          Checkout
         </button>
       </div>
     </div>
-    <hr class="mb-5" />
-    {% endfor %}
 
-    <p class="h4">Special Instructions:</p>
-    <p>
-      <textarea
-        class="form-control"
-        placeholder="Write your special instructions here.."
-        id="exampleFormControlTextarea1"
-        rows="3"
-      ></textarea>
-    </p>
-
-    <div class="container-fluid d-flex align-items-end flex-column">
-      <p class="h5">Subtotal:</p>
-      <p class="h5">Georgia Tax(6.0%):</p>
-      <p class="h3">Total: $</p>
-      <button
-        type="button"
-        class="btn checkout-button justify-content-center"
-        onclick="checkout()"
-      >
-        Checkout
-      </button>
+    {% else %}
+    <div class="container no-item-container">
+      <p class="h2">
+        Your cart is currently empty. To add items, visit the Menu.
+      </p>
+      <div class="d-flex justify-content-end">
+        <button type="button"
+                class="btn checkout-button justify-content-center"
+                onclick="backToMenu('{{menuLink}}')">
+          Return to Menu
+        </button>
+      </div>
     </div>
+    {% endif %}
+    {% endblock %}
+    {% block javascript %}
+    <script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+    {% endblock %}
   </div>
-
-  {% else %}
-  <div class="container no-item-container">
-    <p class="h2">
-      Your cart is currently empty. To add items, visit the Menu.
-    </p>
-    <div class="d-flex justify-content-end">
-      <button
-        type="button"
-        class="btn checkout-button justify-content-center"
-        onclick="backToMenu('{{menuLink}}')"
-      >
-        Return to Menu
-      </button>
-    </div>
-  </div>
-  {% endif %} {% endblock %} {% block javascript %}
-  <script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
-  {% endblock %}
 </body>
-<div class="footer">{% include 'footer.html' %}</div>
+{% if cart %}
+<div class="items-footer">{% include 'footer.html' %}</div>
+
+{% else %}
+<div class="no-items-footer">{% include 'footer.html' %}</div>
+
+{% endif %}
