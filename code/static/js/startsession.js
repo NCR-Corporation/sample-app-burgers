@@ -1,3 +1,9 @@
+if (window.location.pathname == "/Peachtree-Burger/") {
+    sessionStorage.setItem("Copy-Cart", JSON.stringify([]));
+    sessionStorage.setItem("Copy-Total", JSON.stringify([]));
+    sessionStorage.setItem("removedItemId", JSON.stringify([]));
+}
+
 $(document).ready(function () {
     if (window.location.hash !== "") {
         var hash = window.location.hash;
@@ -34,9 +40,6 @@ function getCookie(name) {
 function goToCartPage() {
     let csrftoken = getCookie("csrftoken");
     var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
-    console.log(csrftoken);
-    console.log(csrftoken == null);
-    console.log(userCart);
 
     if (csrftoken == null || cart == null) {
         if (userCart == null) {
@@ -68,6 +71,9 @@ function goToCartPage() {
 }
 
 function getCart() {
+    if (cart === "") {
+        sessionStorage.setItem(JSON.stringify);
+    }
     var cart = sessionStorage.getItem("Cart");
     return JSON.parse(cart);
 }
@@ -97,6 +103,7 @@ $(document).ready(function () {
 });
 
 if (sessionStorage.getItem("Location") == null) {
+    sessionStorage.setItem("Total", 0);
     $("#dynamicModalCenter").modal({
         backdrop: "static",
         keyboard: false,
@@ -131,7 +138,7 @@ function locationChange(data, time) {
         sessionStorage.getItem("Location");
 
     if (
-        document.location.pathname.substring(0, 12) == "/Peachtree-Burger/Menu"
+        document.location.pathname.substring(0, 22) == "/Peachtree-Burger/Menu"
     ) {
         document.location.pathname =
             "Peachtree-Burger/Menu/" + shortName.trim() + "/" + time;
@@ -144,7 +151,10 @@ function loadDynamicModal() {
     $("#dynamicModalCenter").modal("show");
 }
 
-if (sessionStorage.getItem("Cart") === null) {
+if (
+    sessionStorage.getItem("Cart") === null ||
+    sessionStorage.getItem("Cart") === ""
+) {
     document.getElementById("cart-number").innerHTML = 0;
 } else {
     var cart = getCart();
