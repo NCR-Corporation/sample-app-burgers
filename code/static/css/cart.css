@@ -198,19 +198,19 @@
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
     .no-item-container {
-        margin-top: 72%;
-        margin-bottom: 72%;
+        margin-top: 75%;
+        margin-bottom: 75%;
         width: 60%;
     }
 
-    .no-item-footer {
+    .no-items-footer {
         position: relative;
-        bottom: -14%;
+        bottom: 0;
     }
 
     .cart-container {
-        margin-top: 10%;
-        margin-bottom: 25%;
+        margin-top: 20%;
+        margin-bottom: 20%;
     }
 
     .back-to-home {
@@ -247,14 +247,14 @@
 
     .items-footer {
         position: relative;
-        bottom: -24%;
+        bottom: -18%;
     }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
     .no-item-container {
-        margin-top: 27%;
-        margin-bottom: 27%;
+        margin-top: 33%;
+        margin-bottom: 33%;
         width: 60%;
     }
 
@@ -307,24 +307,19 @@
 }
 
 @media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
-    .no-item-container {
+    .no-items-container {
         margin-top: 25%;
         margin-bottom: 25%;
         width: 60%;
     }
 
-    .no-item-footer {
-        position: relative;
-        bottom: -12%;
-    }
-
     .items-footer {
         position: relative;
-        bottom: -12%;
+        bottom: -1%;
     }
 
     .cart-container {
-        margin-top: 0%;
+        margin-top: 5%;
         margin-bottom: 0%;
     }
 

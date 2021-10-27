@@ -1,11 +1,11 @@
 {% include 'base.html' %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/itemDetails.css' %}" />
 <div class="container-fluid menuLink">
-  <span>
+  <span class="back-to-home-link">
     <a href="{{menuLink}}">
-      <div class="back-to-home">
-        <i class="fas fa-chevron-left my-3"></i> 
-        <p class="h4 m-2">Back to Menu</p>
+      <div class="back-to-home mt-3 ml-5">
+        <i class="fas fa-chevron-left my-2"></i>
+        <p class="h5 font-weight-light my-1 ml-2">Back to Menu</p>
       </div>
     </a>
   </span>
@@ -23,14 +23,14 @@
         <h3 class="h5 text-body">{{item.price}}</h3>
         <h6 class="h6 text-body">{{item.description}}</h6>
         <button type="button" class="btn order-button px-4 mt-2" data-toggle="modal" data-target="#menuModal"
-          onclick="addItemToCart()">
+                onclick="addItemToCart()">
           Add to Order
         </button>
       </div>
     </div>
 
     <div class="modal fade" data-backdrop="static" data-keyboard="false" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
+         aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body">
@@ -39,17 +39,17 @@
               Your item has been added to your order
             </p>
             <div class="container-fluid d-flex justify-content-center">
-                <div class="col-6">
-                  <button class="btn order-button" onclick="continueOrdering('{{menuLink}}')">
-                   Continue Ordering?
-                  </button>
-                </div>
-                <div class="col-6">
-                  <button class="btn order-button" onclick="checkout()">
-                    Checkout
-                  </button>
-                </div>
-              
+              <div class="col-6">
+                <button class="btn order-button" onclick="continueOrdering('{{menuLink}}')">
+                  Continue Ordering?
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="btn order-button" onclick="checkout()">
+                  Checkout
+                </button>
+              </div>
+
             </div>
           </div>
         </div>
