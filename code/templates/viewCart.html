@@ -2,20 +2,20 @@
 <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
 
 <body>
-  <span class="back-to-home-link">
+  <span>
     <a href="{{menuLink}}">
-      <div class="back-to-home ml-5">
-        <i class="fas fa-chevron-left my-3"></i>
-        <p class="h4 m-2">Back to Menu</p>
+      <div class="back-to-home mt-3 ml-5">
+        <i class="fas fa-chevron-left my-2"></i>
+        <p class="h5 font-weight-light my-1 ml-2">Back to Menu</p>
       </div>
     </a>
   </span>
   <div class="cart-container">
     {% if cart %}
-    <div class="container mt-2">
+    <div class="container mt-5 mt-lg-2">
       <p class="h1 mb-5">Cart</p>
       {% for items in cart %}
-      <div class="container mb-5 d-flex">
+      <div class="container my-sm-5 my-md-5 mb-lg-2 d-flex">
         <div class="col-3">
           <img class="mw-100 cart-image"
                src="{{items.image}}"
@@ -78,20 +78,22 @@
       <hr class="mb-5" />
       {% endfor %}
 
-      <p class="h4">Special Instructions:</p>
-      <p>
-        <textarea class="form-control"
-                  placeholder="Write your special instructions here.."
-                  id="exampleFormControlTextarea1"
-                  rows="3"></textarea>
-      </p>
+      <div class="my-5 my-lg-0 ">
+        <p class="h4 my-3">Special Instructions:</p>
+        <p>
+          <textarea class="form-control"
+                    placeholder="Write your special instructions here.."
+                    id="exampleFormControlTextarea1"
+                    rows="3"></textarea>
+        </p>
+      </div>
 
-      <div class="container-fluid d-flex align-items-end flex-column">
-        <p class="h5" id="subtotal">subtotal</p>
-        <p class="h5" id="tax">tax</p>
-        <p class="h3" id="total">total</p>
+      <div class="container-fluid  my-2 d-flex align-items-end flex-column">
+        <p class="h5 my-2" id="subtotal">subtotal</p>
+        <p class="h5 my-2" id="tax">tax</p>
+        <p class="h3 my-2" id="total">total</p>
         <button type="button"
-                class="btn checkout-button justify-content-center"
+                class="btn checkout-button my-2 justify-content-center"
                 onclick="checkout()">
           Checkout
         </button>
