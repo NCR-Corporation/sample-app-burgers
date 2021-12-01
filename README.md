@@ -6,11 +6,6 @@ This repository contains sample code for a fictitious burger restaurant chain to
 
 In future updates, we aim to:
 
-- Visually capture API calls made by the server
-- Visually capture errors from any failed requests made to the APIs
-- Link together the user registration system and order system
-- Implement a customer loyalty system
-
 ## Table of Contents
 
 - **[Installation](#installation)**
@@ -28,25 +23,24 @@ You will need to have the following:
 1. Python 3.0 version or [higher](https://www.python.org/downloads/).
 2. A Python IDE, we chose [PyCharm](https://www.jetbrains.com/pycharm/download/#section=mac).
 3. Django latest version.
-   - Open PyCharm terminal and type `$ python3 -m pip install Django`
+   - Open PyCharm terminal and type `$ python -m pip install Django`
 4. Python Requests module.
-   - Open PyCharm terminal and type `$ python3 -m pip install requests`
+   - Open PyCharm terminal and type `$ python -m pip install requests`
 5. Django packages. Run the following commands in PyCharm terminal.
-   - [Django Compressor](https://django-compressor.readthedocs.io/en/stable/) `$ python3 -m pip install django_compressor`
-   - [Django REST framework](https://www.django-rest-framework.org/) `$ python3 -m pip install djangorestframework`
-   - [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/) `$ python3 -m pip install django-debug-toolbar`
-   - [django-requests-debug-toolbar](https://github.com/marceltschoppch/django-requests-debug-toolbar) `$ python3 -m pip install django-requests-debug-toolbar`
-   - [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) `$ python3 -m pip install django-crispy-forms`
-   - [django-web-profiler](https://github.com/MicroPyramid/django-web-profiler) `$ python3 -m pip install django-web-profiler`
+   - [Django Compressor](https://django-compressor.readthedocs.io/en/stable/) `$ python -m pip install django_compressor`
+   - [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/) `$ python -m pip install django-debug-toolbar`
+   - [django-requests-debug-toolbar](https://github.com/marceltschoppch/django-requests-debug-toolbar) `$ python -m pip install django-requests-debug-toolbar`
+   - [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) `$ python -m pip install django-crispy-forms`
+   - [django-web-profiler](https://github.com/MicroPyramid/django-web-profiler) `$ python -m pip install django-web-profiler`
 
 ## Setting up the Developer Environment
 
 Ensure that you have access to your Shared Key, Secret Key, NEP Application Key, and NEP Organization. Inside of the Settings file ( found in _/ncr-burgers-demo/code/BugersUnlimited_), fill in those values with your credentials. Once the values have been filled in, you will need to create your sites and catalog.
 
 1. Creating Sites
-   - As part of the initial configuration, you will need to set up at least two sites. Instructions for doing so can be found under [Site documentation](https://developer.ncr.com/portals/dev-portal/api-explorer/details/15/documentation?version=1.99&path=post_sites_import) in the DevEx portal and in the [reference material](https://burgersdemo.ncrcloud.com/burger/about#Sites_Quick_Start) on the application demo site.
-2. Creating a Catalog
-   - You will also need to set up your catalog at this time. This will serve as your menu. Instructions can be found in the [Catalog documentation](https://developer.ncr.com/portals/dev-portal/api-explorer/details/8/documentation?version=2.99) in the DevEx portal and in the [reference material](https://burgersdemo.ncrcloud.com/burger/about#Tutorial_Catalog) on the application demo site.
+   - As part of the initial configuration, you will need to set up at least two sites. Instructions for doing so can be found under [Site documentation](https://developer.ncr.com/portals/dev-portal/api-explorer/details/645/documentation?proxy=bsp-site-site-v1&path=get_extensions) in the DevEx portal and in the [reference material](https://developer.ncr.com/portals/dev-portal/api-explorer/details/645/how-to?howToId=142) on the application demo site.
+2. Creating a Menu
+   - You will also need to set up your menu at this time. Instructions can be found in the [Menu documentation](https://developer.ncr.com/portals/dev-portal/api-explorer/details/441/documentation?proxy=bsp-items-menu-v2&path=get_menu-details_menuId) in the DevEx portal and in the [reference material](https://developer.ncr.com/portals/dev-portal/api-explorer/details/441/how-to?howToId=44) on the application demo site.
 
 Once your developer environment has been installed and configured using the steps above, you will be ready to use the sample app.
 
@@ -61,30 +55,27 @@ $ python3 manage.py migrate
 $ python3 manage.py runserver
 ```
 
-The sample app should open to the main page, where the user can input an address into the search box and choose a search radius (in miles).
+The sample app should open to the main page, where the user can select which restaurant they would like to load in.
 
-- If results are found, the user will be able to select a restaurant.
-  - If no results are found, the user will be prompted to return to the home screen.
-- If the user selects a restaurant, they will be directed to that restaurant’s menu, where they can add available items to their cart.
-  - Once the user has finished adding items to the cart, or if they wish to edit its contents, they can click the “View Cart | Edit Cart” button.
-- The user will then be taken to a page where they may update their cart as desired.
+- If the user selects a restaurant, the restaurant’s menu will be used in order to load they menus, where they can add available items to their cart.
+  - Once the user has finished adding items to the cart, or if they wish to edit its contents, they can click the Cart icon and be brought to a screen where the user can add, remove, or choose to edit an item.
 - Once satisfied with the contents of their cart, the user can place their order by clicking the “Checkout” button.
 - The payment page in the demo is disabled for safety reasons.
-- Users should next navigate to the documentation page to learn which APIs were used and how they were implemented in the above processes.
+- Users orders will then be processed and the user will be greeted by a finish line screen thanking them for taking the time to use the app.
+- The user will then choose to press the "Get Started" button and be directed back to the home page as well as the browser will launch a new tab leading to the Devex Knowlege Hub.
 
 ## Notes
 
 The following APIs from the Business Services Platform are used in the NCR Burger Demo app. You can learn more each by clicking on it in the list below.
 
 - [Sites](https://developer.ncr.com/portals/dev-portal/api-explorer/details/645/overview)
-- [Catalog](https://developer.ncr.com/portals/dev-portal/api-explorer/details/453/overview)
-- [Order](https://developer.ncr.com/portals/dev-portal/api-explorer/details/374/overview)
+- [Menu](https://developer.ncr.com/portals/dev-portal/api-explorer/details/441/overview)
 
-_Please note that if you don’t set up your sites and catalog, your sample app will not function correctly._
+_Please note that if you don’t set up your sites and menu, your sample app will not function correctly._
 
 If you are using the sample app to learn more about the Business Services Platform’s HMAC algorithm, you should review the following documentation:
 
-- [Burger Demo reference material](https://burgersdemo.ncrcloud.com/burger/about#Authentication_HMAC)
+- [Burger Demo reference material](https://developer.ncr.com/portals/dev-portal/help-center/documentation/hmac-authentication)
 - [HMACAuth file](code/HMACAuth.py) (in the _/ncr-burger-demo/code_ folder)
 
 ## Troubleshooting
