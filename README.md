@@ -18,20 +18,20 @@ In future updates, we aim to:
 - **[Usage](#usage)**
 - **[Notes](#notes)**
 - **[Troubleshooting](#troubleshooting)**
-- **[Contributin](#contributing)**
+- **[Contributing](#contributing)**
 - **[License](#license)**
 
 ## Installation
 
 You will need to have the following:
 
-1. Python 3.0 version or [higher](https://www.python.org/downloads/).
-2. A Python IDE, we chose [PyCharm](https://www.jetbrains.com/pycharm/download/#section=mac).
-3. Django latest version.
+1. Python 3.0 version or [higher](https://www.python.org/downloads/)
+2. A Python IDE; we chose [PyCharm](https://www.jetbrains.com/pycharm/download/#section=mac)
+3. Django latest version
    - Open PyCharm terminal and type `$ python3 -m pip install Django`
-4. Python Requests module.
+4. Python Requests module
    - Open PyCharm terminal and type `$ python3 -m pip install requests`
-5. Django packages. Run the following commands in PyCharm terminal.
+5. Django packages. Run the following commands in PyCharm terminal
    - [Django Compressor](https://django-compressor.readthedocs.io/en/stable/) `$ python3 -m pip install django_compressor`
    - [Django REST framework](https://www.django-rest-framework.org/) `$ python3 -m pip install djangorestframework`
    - [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/) `$ python3 -m pip install django-debug-toolbar`
@@ -66,15 +66,15 @@ The sample app should open to the main page, where the user can input an address
 - If results are found, the user will be able to select a restaurant.
   - If no results are found, the user will be prompted to return to the home screen.
 - If the user selects a restaurant, they will be directed to that restaurant’s menu, where they can add available items to their cart.
-  - Once the user has finished adding items to the cart, or if they wish to edit its contents, they can click the “View Cart | Edit Cart” button.
+  - Once the user has finished adding items to the cart, or if they wish to edit its contents, they can click the **View Cart | Edit Cart** button.
 - The user will then be taken to a page where they may update their cart as desired.
-- Once satisfied with the contents of their cart, the user can place their order by clicking the “Checkout” button.
+- Once satisfied with the contents of their cart, the user can place their order by clicking the **Checkout** button.
 - The payment page in the demo is disabled for safety reasons.
 - Users should next navigate to the documentation page to learn which APIs were used and how they were implemented in the above processes.
 
 ## Notes
 
-The following APIs from the Business Services Platform are used in the NCR Burger Demo app. You can learn more each by clicking on it in the list below.
+The following APIs from the Business Services Platform are used in the NCR Burger Demo app. You can learn more about each by clicking on an item in the list below.
 
 - [Sites](https://developer.ncr.com/portals/dev-portal/api-explorer/details/645/overview)
 - [Catalog](https://developer.ncr.com/portals/dev-portal/api-explorer/details/453/overview)
@@ -95,13 +95,13 @@ If the **Profiler** tab is missing in the application, check the browser inspect
 
 The issue may have been caused by improper content mapping with Django's `runserver` command. For additional troubleshooting information, please reference [this article](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#troubleshooting).
 
-Any other problems? Feel free to open an issue.
+If you experience any other problems, please feel free to open an issue.
 
 ## Contributing
 
-Thank you for contributing to this repository to help it become even better.
+Thank you for contributing to this repository to help it become even better!
 
-If you are looking to add a new feature, be sure to create a new issue (either feature or bug) to track the changes. From there, create a PR onto the repository and confirm all workflows run successfully.
+If you're looking to add a new feature, be sure to create a new issue (either feature or bug) to track the changes. From there, create a PR onto the repository and confirm all workflows run successfully.
 
 ## License
 
