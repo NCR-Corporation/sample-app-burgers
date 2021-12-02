@@ -1,7 +1,5 @@
 var cartValue = sessionStorage.getItem("Cart");
 
-console.log(cartValue);
-
 if (window.location.pathname == "/Peachtree-Burger/ViewCart" && cartValue) {
     sessionStorage.setItem("Copy-Cart", JSON.stringify([]));
     sessionStorage.setItem("Copy-Total", JSON.stringify([]));
@@ -95,7 +93,6 @@ function addItemToCart() {
     copyCart = sessionStorage.getItem("Copy-Cart");
 
     if (sessionStorage.getItem("Copy-Cart") != "[]") {
-        console.log("In here 102");
         let toppings = [];
 
         $("#item-uniqueToppings--list")
@@ -125,8 +122,6 @@ function addItemToCart() {
         sessionStorage.setItem("Copy-Total", JSON.stringify([]));
         sessionStorage.setItem("removedItemId", JSON.stringify([]));
     } else {
-        console.log("In here 102");
-
         let menuItem = JSON.parse(document.getElementById("item").textContent);
         total += parseFloat(menuItem.price.substring(1));
 
