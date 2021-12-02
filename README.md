@@ -4,8 +4,6 @@ The NCR Burger Demo serves as an example of how individual APIs in the Business 
 
 This repository contains sample code for a fictitious burger restaurant chain to demonstrate how some of NCR's available APIs can be used to facilitate a traditional hospitality ordering experience. It can also be used to understand the HMAC (hash-based message authentication code) algorithm used within BSP.
 
-In future updates, we aim to:
-
 ## Table of Contents
 
 - **[Installation](#installation)**
