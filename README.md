@@ -57,16 +57,16 @@ $ python3 manage.py runserver
 
 The sample app should open to the main page, where the user can select which restaurant they would like to load in.
 
-- If the user selects a restaurant, the restaurant’s menu will be used in order to load they menus, where they can add available items to their cart.
+- If the user selects a restaurant, the restaurant’s menu will be used in order to load their menus, where they can add available items to their cart.
   - Once the user has finished adding items to the cart, or if they wish to edit its contents, they can click the Cart icon and be brought to a screen where the user can add, remove, or choose to edit an item.
 - Once satisfied with the contents of their cart, the user can place their order by clicking the “Checkout” button.
 - The payment page in the demo is disabled for safety reasons.
 - Users orders will then be processed and the user will be greeted by a finish line screen thanking them for taking the time to use the app.
-- The user will then choose to press the "Get Started" button and be directed back to the home page as well as the browser will launch a new tab leading to the Devex Knowlege Hub.
+- The user can then choose to press the "Get Started" button to be directed back to the hom page. The browser wil also launch a new tab leading to the Developer Experience Knowlege Hub.
 
 ## Notes
 
-The following APIs from the Business Services Platform are used in the NCR Burger Demo app. You can learn more each by clicking on it in the list below.
+The following APIs from the Business Services Platform are used in the NCR Burger Demo Application. You can learn more about each API by clicking on it in the list below.
 
 - [Sites](https://developer.ncr.com/portals/dev-portal/api-explorer/details/645/overview)
 - [Menu](https://developer.ncr.com/portals/dev-portal/api-explorer/details/441/overview)
