@@ -84,13 +84,13 @@ If the **Profiler** tab is missing in the application, check the browser inspect
 
 The issue may have been caused by improper content mapping with Django's `runserver` command. For additional troubleshooting information, please reference [this article](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#troubleshooting).
 
-Any other problems? Feel free to open an issue.
+If you experience any other problems, please feel free to open an issue.
 
 ## Contributing
 
-Thank you for contributing to this repository to help it become even better.
+Thank you for contributing to this repository to help it become even better!
 
-If you are looking to add a new feature, be sure to create a new issue (either feature or bug) to track the changes. From there, create a PR onto the repository and confirm all workflows run successfully.
+If you're looking to add a new feature, be sure to create a new issue (either feature or bug) to track the changes. From there, create a PR onto the repository and confirm all workflows run successfully.
 
 ## License
 
