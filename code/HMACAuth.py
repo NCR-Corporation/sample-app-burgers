@@ -21,7 +21,7 @@ class HMACAuth(requests.auth.AuthBase):
         self.enterprise_unit = enterprise_unit
         self.hmac_shared_key = HMAC_SHARED_KEY
         self.hmac_secret_key = HMAC_SECRET_KEY
-        self.nep_application_key = NEP_APPLICATION_KEY
+        self.organization = NEP_ORGANIZATION
 
     def __call__(self, request):
         """
@@ -45,16 +45,13 @@ class HMACAuth(requests.auth.AuthBase):
 
         # Get data from the request headers to sign in the HMAC string
         request.headers['Date'] = utcDate
-        request.headers['Content-Type'] = 'application/json'
+        request.headers['Content-Type'] = 'application/javascript'
 
         if self.enterprise_unit != '0':
             request.headers['nep-enterprise-unit'] = self.enterprise_unit
 
-        if 'site' not in parsedUrl.path:
-            request.headers['nep-application-key'] = self.nep_application_key
-
         request.headers['nep-correlation-id'] = '2020-0708'
-        request.headers['nep-organization'] = 'burgers-unlimited'
+        request.headers['nep-organization'] = self.organization
 
         # Add the request data to the sign-able content
         self.addAuthorization(request, key)
@@ -88,9 +85,6 @@ class HMACAuth(requests.auth.AuthBase):
 
         # Add the HTTP header values to the sign-able content
         values.append(request.headers['Content-Type'])
-
-        if 'site' not in pathAndQuery:
-            values.append(request.headers['nep-application-key'])
 
         if 'nep-correlation-id' in request.headers:
             values.append(request.headers['nep-correlation-id'])

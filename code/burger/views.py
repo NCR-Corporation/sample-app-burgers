@@ -1,104 +1,225 @@
+from django.http.response import HttpResponseNotAllowed
+from menuParser import menuParsing
+from HMACAuth import HMACAuth
 from django.shortcuts import render
-
-# Create your views here.
-
-import http.client
-import requests
-from requests.auth import HTTPBasicAuth
-from django.http import HttpResponse
-from django.http import JsonResponse
-from django.conf import settings
-import auxMethods
-import catalogMaker
-from rest_framework.views import APIView
-from rest_framework.decorators import api_view
+import datetime
 import json
+import requests
+from django.http import HttpResponse
+from django.conf import settings
+import datetime
+import json
+import auxMethods
 
-HIGHLANDS = settings.LOCATIONS['Burgers Unlimited Highlands']
-SOUTHLAND = settings.LOCATIONS['Burgers Unlimited Southland']
-MIDTOWN = settings.LOCATIONS['Burgers Unlimited Midtown']
+HIGHLAND = settings.LOCATIONS['Peachtree Burger Highland']
+SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
+MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
+
+MENUMAPPINGS = {
+    'highlandLunch': '1631732419306',
+    'highlandDinner': '1631649497940',
+    'midtownLunch': '1631732484915',
+    'midtownDinner': '1631732451617',
+    'southlandLunch': '1631732514361',
+    'southlandDinner': '1631732546628'
+}
+
+RESULTS = auxMethods.findResturantsInRange(
+    {'x': -84.38879, 'y': 33.777714}, 20)
+MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
+
+MENULINK = '/Peachtree-Burger/menu/'
+site = ''
 
 
 def index(request):
-    return render(request, 'index.html')
+    request.session['location'] = 'Midtown'
+    site = request.session['location']
+    context = {
+        'locations': MATCHES,
+        'site': site
+    }
+
+    time = datetime.datetime.now().hour
+    if time > 14:
+        request.session['time'] = 'Dinner'
+    else:
+        request.session['time'] = 'Lunch'
+
+    return render(request, 'index.html', context)
 
 
-def findRestaurant(request):
-    address = request.POST['address']
-    radius = int(request.POST['radius'])
+def lunchMenu(request, location):
+    request.session['location'] = location
 
-    coordinates = auxMethods.geoCodeAddress(address)
+    time = "Lunch"
+    request.session['time'] = "Lunch"
+    site = request.session.get('location')
 
-    if coordinates is None:
-        return render(request, 'addressNotFound.html')
+    menustring = site.lower()+time
 
-    results = auxMethods.findResturantsInRange(coordinates, radius)
-    context = {'address': address, "radius": radius,
-               'coordinates': coordinates, 'results': results}
-
-    return render(request, 'findRestaurant.html', context)
-
-
-def midtownMenu(request):
-    try:
-        items = catalogMaker.getStoreItems('BurgersUnlimitedMidtown')
-        items_prices = catalogMaker.getAllPrices(items, MIDTOWN)
-    except:
+    if menustring in MENUMAPPINGS:
+        menuMapping = MENUMAPPINGS[menustring]
+    else:
         return render(request, 'error.html')
-    context = {'items': items_prices}
 
-    return render(request, 'midtownMenu.html', context)
+    url = 'https://api.ncr.com/menu/v2/menu-details/' + menuMapping
+
+    if site == 'Highland':
+        conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))
+    elif site == 'Midtown':
+        conn = requests.get(url, auth=(HMACAuth(MIDTOWN)))
+    elif site == 'Southland':
+        conn = requests.get(url, auth=(HMACAuth(SOUTHLAND)))
+
+    results = menuParsing(conn.json())
+
+    request.session[menustring] = results
+
+    context = {'items': results, 'time': time,
+               'site': site, 'locations': MATCHES}
+
+    return render(request, 'menu.html', context)
 
 
-def southlandMenu(request):
-    try:
-        items = catalogMaker.getStoreItems('BurgersUnlimitedSouthland')
-        items_prices = catalogMaker.getAllPrices(items, SOUTHLAND)
-    except:
+def dinnerMenu(request, location):
+    request.session['location'] = location
+
+    time = "Dinner"
+    request.session['time'] = "Dinner"
+    site = request.session.get('location')
+
+    menustring = site.lower()+time
+
+    if menustring in MENUMAPPINGS:
+        menuMapping = MENUMAPPINGS[menustring]
+    else:
         return render(request, 'error.html')
-    context = {'items': items_prices}
 
-    return render(request, 'southlandMenu.html', context)
+    url = 'https://api.ncr.com/menu/v2/menu-details/' + menuMapping
+
+    if site == 'Highland':
+        conn = requests.get(url, auth=(HMACAuth(HIGHLAND)))
+    elif site == 'Midtown':
+        conn = requests.get(url, auth=(HMACAuth(MIDTOWN)))
+    elif site == 'Southland':
+        conn = requests.get(url, auth=(HMACAuth(SOUTHLAND)))
+
+    results = menuParsing(conn.json())
+
+    request.session[menustring] = results
+
+    context = {'items': results, 'time': time,
+               'site': site, 'locations': MATCHES}
+
+    return render(request, 'menu.html', context)
 
 
-def highlandsMenu(request):
-    try:
-        items = catalogMaker.getStoreItems('BurgersUnlimitedHighlands')
-        items_prices = catalogMaker.getAllPrices(items, HIGHLANDS)
-    except:
-        return render(request, 'error.html')
-    context = {'items': items_prices}
+def location(request):
+    if request.method == 'POST':
+        global site
+        body = json.loads(request.body)
+        site = body['Site']
 
-    return render(request, 'highlandsMenu.html', context)
+    return HttpResponse()
+
+
+def itemDetails(request, itemId, tag):
+    menu = None
+    context = None
+
+    location = request.session.get('location').lower()
+    time = request.session.get('time')
+
+    if time == 'Lunch':
+        if location == 'highland':
+            menu = request.session.get('highlandLunch')
+        elif location == 'midtown':
+            menu = request.session.get('midtownLunch')
+        else:
+            menu = request.session.get('southlandLunch')
+    else:
+        if location == 'highland':
+            menu = request.session.get('highlandDinner')
+        elif request.session.get('location').lower() == 'midtown':
+            menu = request.session.get('midtownDinner')
+        else:
+            menu = request.session.get('southlandDinner')
+
+    length = len(menu[tag])
+
+    for item in range(length):
+        if menu[tag][item]['id'] == int(itemId):
+            context = {
+                'item': menu[tag][item],
+                'locations': MATCHES,
+                'menu': menu,
+                'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
+            }
+
+    return render(request, 'itemDetails.html', context)
 
 
 def payment(request):
-    return render(request, 'payment.html')
+    context = {'locations': MATCHES}
+    return render(request, 'payment.html', context)
 
 
 def viewCart(request):
-    return render(request, 'viewCart.html')
+    location = request.session.get('location')
+    time = request.session.get('time')
+    total = request.session.get('Total')
+
+    cart = None
+
+    if request.is_ajax() and request.POST.get('cart', None) != None:
+        request.session['cart'] = request.POST.get('cart', None)
+
+    if request.session.get('cart') == "":
+        cart = None
+    elif request.session.get('cart') != None:
+        cart = json.loads(request.session.get('cart'))
+        cart = json.loads(cart)
+
+    results = []
+    toppingColumns = ""
+    if cart != None:
+        for items in cart:
+            if len(items['toppings']) % 4 == 0:
+                for numCols in range(int(len(items['toppings']) / 4)):
+                    toppingColumns += "a"
+            else:
+                for numCols in range(int(len(items['toppings']) / 4 + 1)):
+                    toppingColumns += "a"
+
+            iteminfo = {
+                'id': items['id'],
+                'image': items['image'],
+                'displayName': items['displayName'],
+                'description': items['description'],
+                'price': items['price'],
+                'tags': items['tags'],
+                'toppings': items['toppings'],
+                'quantity': items['quantity'],
+                'toppingColumns': toppingColumns
+            }
+            toppingColumns = ""
+            results.append(iteminfo)
+
+    context = {
+        'locations': MATCHES,
+        'cart': results,
+        'total': total,
+        'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
+    }
+    return render(request, 'viewCart.html', context)
 
 
 def confirmation(request):
+    request.session['cart'] = ""
+    request.session['total'] = ""
 
-    userCart = request.POST.getlist('cart')
-
-    # print(cart)
-    print(userCart)
-    print(type(userCart))
-    # print(request.body)
-
-    #dict = json.loads(request.POST.get("cart"))
-    # print(dict)
-
-    context = {'cart': userCart}
-
-    return render(request, 'confirmation.html', context)
-
-
-def about(request):
-    return render(request, 'about.html')
+    return render(request, 'confirmation.html')
 
 
 def liveliness(request):

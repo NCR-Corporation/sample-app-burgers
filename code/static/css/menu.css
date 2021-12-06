@@ -1,0 +1,44 @@
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+.item-card {
+    box-shadow: 1px 4px 4px rgb(0 0 0 / 25%);
+}
+
+@media (min-width: 1200px) {
+    .item-card {
+        min-height: 250px;
+        max-height: 250px;
+    }
+}
+
+.food-image {
+    object-fit: cover;
+    max-height: 350px;
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .food-image {
+        min-height: 250px;
+        max-height: 250px;
+    }
+}
+
+.order-button {
+    width: 93%;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+    .order-button {
+        width: 85%;
+    }
+}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import mimetypes
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,6 +26,7 @@ SECRET_KEY = '+=ey4af%pw@67a!knl6t44e)$ms=6uq7x)btzilz4yl$2c7!2v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+mimetypes.add_type("application/javascript", ".js", True)
 
 ALLOWED_HOSTS = ['*']
 
@@ -176,15 +178,12 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 DEBUG_TOOLBAR_PANELS = ['requests_panel.panel.RequestsDebugPanel']
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # DO NOT COMMIT THESE VALUES
-NEP_USERNAME = ''
-NEP_PASSWORD = ''
-NEP_APPLICATION_KEY = ''
 NEP_ORGANIZATION = ''
-NEP_SHARED_KEY = ''
 HMAC_SHARED_KEY = ''
 HMAC_SECRET_KEY = ''
-CENSUS_API_KEY = ''
 
 # Locations of the restaurants saved in a id, site name pattern
 LOCATIONS = {}

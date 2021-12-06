@@ -25,7 +25,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('burger/', include('burger.urls'), name='main-burger'),
-    path('', RedirectView.as_view(url='burger/')),
+    path('Peachtree-Burger/', include('burger.urls'), name='main-burger'),
+    path('', RedirectView.as_view(url='Peachtree-Burger/')),
     path('__debug__/', include(debug_toolbar.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
