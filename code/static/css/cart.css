@@ -308,6 +308,7 @@
 
 [class^="quantity-input-"] {
     width: 55px;
+    height: 40px;
 }
 
 hr {
