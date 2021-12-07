@@ -21,7 +21,7 @@
                src="{{items.image}}"
                alt="{{items.displayName}}" />
         </div>
-        <div class="col-6">
+        <div class="col-6 mx-1">
           <p class="h4 font-weight-bold">{{ items.displayName }}</p>
           <p class="h5 font-weight-light">{{ items.price }}</p>
           <p class="h6 font-weight-bold">Modifications</p>
@@ -38,7 +38,7 @@
             {% endfor%}
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-3 mx-1 my-1">
           <div class="d-flex ">
             <button type="button"
                     class="btn quantity-button justify-content-center"
@@ -46,7 +46,7 @@
               <span class="pr-2">-</span>
             </button>
             <div class="col-xs-1">
-              <input class="form-control quantity-input-{{forloop.counter}}"
+              <input class="quantity-input-{{forloop.counter}}"
                      id="quantity-input-{{forloop.counter}}"
                      onkeydown="return false"
                      placeholder="{{items.quantity}}"
