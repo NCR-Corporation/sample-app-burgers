@@ -1,35 +1,38 @@
-{% extends 'base.html' %} {% load static %} {% block title %}<title>
-  The End
-</title>
-{% endblock %} {% block content %}
-<div class="container mt-4">
-  <div class="jumbotron">
-    <h1 class="display-4">
-      The End <i class="fa fa-heart" style="color: #7ed957"></i>
-    </h1>
-    <p class="lead">
-      Thanks for checking out our demo! We hope to improve on it and make it
-      better. If you have any questions about the APIs used within the demo,
-      head over the documentation tab it has in-depth information about how to
-      get stared and how things are linked together.
-    </p>
-    <hr class="my-4" />
-    <p>
-      If you are more of the adventurous type head over to the Devex portal and
-      check out the APIs, if you ever feel intimidated, we will be right here
-      for you. We promise, they pay us to help you.<i>
-        Oh yeah! We got your food order. Working on that, 100%!</i
-      >
-    </p>
+{% include 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/confirmation.css' %}" />
 
-    <p class="lead">
-      <a
-        class="btn btn-custom btn-lg"
-        href="https://developer.ncr.com/portals/dev-portal/api-explorer"
-        role="button"
-        >Onward to Adventure</a
-      >
-    </p>
+<div
+  class="message-container my-2 mt-md-5 mb-md-3 d-flex justify-content-center"
+>
+  <div class="col-10 col-xl-7 my-3 align-middle content-container">
+    <div class="jumbotron">
+      <span class="h1 font-weight-bold">Order Successfully Placed!</span>
+      <i class="fa fa-heart heart-icon"></i>
+      <p class="h3 my-5 my-lg-4 font-weight-light">
+        Thanks for checking out our interactive sample app! Visit the
+        documentation tab to view in-depth information about the APIs used in
+        this demo as well as instructions for getting started using them in your
+        own projects.
+      </p>
+      <hr class="my-4" />
+      <p class="h2 my-5 my-lg-4 font-weight-normal">
+        Want to see more of the APIs that NCR has to offer? Visit the Developer
+        Experience Portal to learn how to get started with NCR APIs.
+      </p>
+      <p class="lead d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn finish-button justify-content-center mt-3"
+          onclick="finish()"
+        >
+          <span class="h3">Get Started</span>
+        </button>
+      </p>
+    </div>
   </div>
 </div>
+
+{% endblock %} {% block javascript %}
+<script src="{% static 'js/confirmation.js' %}" type="text/javascript"></script>
 {% endblock %}
+<div class="footer">{% include 'footer.html' %}</div>

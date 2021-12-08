@@ -1,0 +1,335 @@
+.back-to-home {
+    text-decoration: none;
+    color: black;
+    display: flex;
+}
+
+.cart-image {
+    min-height: 175px;
+    max-height: 175px;
+    object-fit: cover;
+}
+
+.no-item-container {
+    margin-top: 10.7%;
+    margin-bottom: 13%;
+    width: 40%;
+}
+
+.no-item-container {
+    margin-top: 13%;
+    margin-bottom: 13%;
+}
+
+.quantity-button {
+    width: 12%;
+    height: 40px;
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+}
+
+.edit-button {
+    width: 47%;
+    height: 40px;
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+}
+
+.checkout-button {
+    background-color: #008d9b;
+    color: white;
+    border-color: #008d9b;
+    height: 35px;
+}
+
+.btn-outline-danger {
+    width: 47%;
+    height: 40px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-item-container {
+        margin-top: 52%;
+        margin-bottom: 52%;
+        width: 60%;
+    }
+
+    .item-container {
+        margin-top: 11%;
+        margin-bottom: 10%;
+    }
+
+    .no-items-footer {
+        position: relative;
+        bottom: -4%;
+    }
+
+    .items-footer {
+        position: relative;
+        bottom: -12%;
+    }
+
+    .quantity-button {
+        width: 23%;
+        height: 12%;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .edit-button {
+        width: 87%;
+        height: 40px;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .checkout-button {
+        background-color: #008d9b;
+        color: white;
+        border-color: #008d9b;
+        height: 35px;
+    }
+
+    .btn-outline-danger {
+        width: 87%;
+        height: 40px;
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-item-container {
+        margin-top: 52%;
+        margin-bottom: 52%;
+        width: 60%;
+    }
+
+    .no-items-footer {
+        position: relative;
+        bottom: -4%;
+    }
+
+    .items-footer {
+        position: relative;
+        bottom: -12%;
+    }
+
+    .quantity-button {
+        width: 23%;
+        height: 12%;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .edit-button {
+        width: 87%;
+        height: 40px;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .checkout-button {
+        background-color: #008d9b;
+        color: white;
+        border-color: #008d9b;
+        height: 35px;
+    }
+
+    .btn-outline-danger {
+        width: 87%;
+        height: 40px;
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+    .no-item-container {
+        margin-top: 75%;
+        margin-bottom: 75%;
+        width: 60%;
+    }
+
+    .no-items-footer {
+        position: relative;
+        bottom: 0;
+    }
+
+    .item-container {
+        margin-top: 21%;
+        margin-bottom: 21%;
+    }
+
+    .back-to-home {
+        margin-top: 5%;
+    }
+
+    .quantity-button {
+        width: 23%;
+        height: 12%;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .edit-button {
+        width: 87%;
+        height: 40px;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .checkout-button {
+        background-color: #008d9b;
+        color: white;
+        border-color: #008d9b;
+        height: 35px;
+    }
+
+    .btn-outline-danger {
+        width: 87%;
+        height: 40px;
+    }
+
+    .items-footer {
+        position: relative;
+        bottom: -18%;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-item-container {
+        margin-top: 33%;
+        margin-bottom: 33%;
+        width: 60%;
+    }
+
+    .no-item-footer {
+        position: relative;
+        bottom: -14%;
+    }
+
+    .items-footer {
+        position: relative;
+        bottom: -12%;
+    }
+
+    .cart-container {
+        margin-top: 0%;
+        margin-bottom: 0%;
+    }
+
+    .back-to-home {
+        margin-top: 0%;
+    }
+
+    .quantity-button {
+        width: 23%;
+        height: 12%;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .edit-button {
+        width: 87%;
+        height: 40px;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .checkout-button {
+        background-color: #008d9b;
+        color: white;
+        border-color: #008d9b;
+        height: 35px;
+    }
+
+    .btn-outline-danger {
+        width: 87%;
+        height: 40px;
+    }
+}
+
+@media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
+    .no-items-container {
+        margin-top: 25%;
+        margin-bottom: 25%;
+        width: 60%;
+    }
+
+    .items-footer {
+        position: relative;
+        bottom: -1%;
+    }
+
+    .cart-container {
+        margin-top: 5%;
+        margin-bottom: 0%;
+    }
+
+    .back-to-home {
+        margin-top: 0%;
+    }
+
+    .quantity-button {
+        width: 14%;
+        height: 38px;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .edit-button {
+        width: 56%;
+        height: 40px;
+        background-color: #008d9b;
+        border-color: #008d9b;
+        color: white;
+    }
+
+    .checkout-button {
+        background-color: #008d9b;
+        color: white;
+        border-color: #008d9b;
+        height: 35px;
+    }
+
+    .btn-outline-danger {
+        width: 56%;
+        height: 40px;
+    }
+}
+
+[class^="quantity-input-"] {
+    width: 55px;
+    height: 40px;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+a:link {
+    text-decoration: none;
+}

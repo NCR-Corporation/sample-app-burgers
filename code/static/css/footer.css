@@ -1,0 +1,14 @@
+.menu-footer-button {
+    background-color: #66c15d;
+    border: 0px;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-footer-button:hover {
+    font-weight: bold;
+}
+
+.footer-button-text:hover {
+    font-weight: bold;
+}
