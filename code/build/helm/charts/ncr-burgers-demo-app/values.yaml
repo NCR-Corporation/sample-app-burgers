@@ -35,4 +35,7 @@ Burgers:
   Locations:
 Ingress:
   Annotations: {}
-  Burgers: {}
+  Burgers:
+      Host:
+      TlsSecret:
+      IpName:
