@@ -34,24 +34,12 @@ spec:
           env:
             - name: URL_BASE
               value: {{ quote .Values.Ingress.Burgers.Host }}
-            - name: SECRET_KEY
-              value: {{ quote .Values.Burgers.SecretKey }}
-            - name: NEP_USERNAME
-              value: {{ quote .Values.Burgers.NepUsername }}
-            - name: NEP_PASSWORD
-              value: {{ quote .Values.Burgers.NepPassword }}
-            - name: NEP_APPLICATION_KEY
-              value: {{ quote .Values.Burgers.NepApplicationKey }}
             - name: NEP_ORGANIZATION
               value: {{ quote .Values.Burgers.NepOrganization }}
-            - name: NEP_SHARED_KEY
-              value: {{ quote .Values.Burgers.NepSharedKey }}
             - name: HMAC_SHARED_KEY
               value: {{ quote .Values.Burgers.HmacSharedKey }}
             - name: HMAC_SECRET_KEY
               value: {{ quote .Values.Burgers.HmacSecretKey }}
-            - name: CENSUS_API_KEY
-              value: {{ quote .Values.Burgers.CensusApiKey }}
             - name: LOCATIONS
               value: {{ quote .Values.Burgers.Locations }}
           ports:
