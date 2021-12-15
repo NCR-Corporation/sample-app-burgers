@@ -33,7 +33,7 @@ spec:
           imagePullPolicy: {{ .Values.Master.ImagePullPolicy }}
           env:
             - name: URL_BASE
-              value: {{ quote .Values.Ingress.Burgers.Host }}
+              value: {{ quote .Values.Ingress.Host }}
             - name: NEP_ORGANIZATION
               value: {{ quote .Values.Burgers.NepOrganization }}
             - name: HMAC_SHARED_KEY
@@ -85,13 +85,12 @@ spec:
             timeoutSeconds: 1
             successThreshold: 1
             failureThreshold: 3
-          {{- if .Values.Scaling.Burgers.Enabled }}
+          {{- if .Values.Scaling.Enabled }}
           resources:
             requests:
-              cpu: {{ .Values.Resources.Burgers.MinCpu | quote }}
-              memory: {{ .Values.Resources.Burgers.MinMemory | quote }}
+              cpu: {{ .Values.Resources.MinCpu | quote }}
+              memory: {{ .Values.Resources.MinMemory | quote }}
             limits:
-              cpu: {{ .Values.Resources.Burgers.MaxCpu | quote }}
-              memory: {{ .Values.Resources.Burgers.MaxMemory | quote }}
+              cpu: {{ .Values.Resources.MaxCpu | quote }}
+              memory: {{ .Values.Resources.MaxMemory | quote }}
           {{- end }}
-status: {}

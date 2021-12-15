@@ -1,4 +1,4 @@
-{{- if .Values.Scaling.Burgers.Enabled }}
+{{- if .Values.Scaling.Enabled }}
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
@@ -12,15 +12,15 @@ spec:
     apiVersion: apps/v1beta1
     kind: Deployment
     name: {{ $.Release.Name }}
-  minReplicas: {{ .Values.Scaling.Burgers.MinReplicas }}
-  maxReplicas: {{ .Values.Scaling.Burgers.MaxReplicas }}
+  minReplicas: {{ .Values.Scaling.MinReplicas }}
+  maxReplicas: {{ .Values.Scaling.MaxReplicas }}
   metrics:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: {{ .Values.Scaling.Burgers.TargetCpuUtilization }}
+        targetAverageUtilization: {{ .Values.Scaling.TargetCpuUtilization }}
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: {{ .Values.Scaling.Burgers.TargetMemoryUtilization }}
+        targetAverageUtilization: {{ .Values.Scaling.TargetMemoryUtilization }}
 {{- end }}

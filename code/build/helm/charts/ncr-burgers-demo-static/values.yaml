@@ -5,9 +5,8 @@ Master:
     ReleaseName:
 Ingress:
   Annotations: {}
-  Burgers:
-      Host:
-      TlsSecret:
-      IpName:
+  Host:
+  TlsSecret:
+  IpName:
 CloudArmor:
   HospDemoSecurityPolicyName:
