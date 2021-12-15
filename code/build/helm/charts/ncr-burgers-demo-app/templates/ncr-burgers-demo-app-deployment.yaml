@@ -48,11 +48,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /Peachtree-Burger
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /Peachtree-Burger
               port: http
           volumeMounts:
             - name: shared-data
