@@ -6,3 +6,5 @@ Master:
 Ingress:
   Annotations: {}
   Burgers: {}
+CloudArmor:
+  HospDemoSecurityPolicyName:
