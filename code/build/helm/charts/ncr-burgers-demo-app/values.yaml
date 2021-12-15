@@ -1,38 +1,32 @@
 Master:
-  App:
-    Name: ncr-burgers-demo-app
-    Prefix: ncr-burgers-demo
-    ReleaseVersion:
-  ImagePullPolicy: Always
+    App:
+        Name: ncr-burgers-demo-app
+        Prefix: ncr-burgers-demo
+        ReleaseVersion:
+    ImagePullPolicy: Always
 Image:
-  Domain: us.gcr.io
-  Project:
-  PullPolicy: Always
+    Domain: us.gcr.io
+    Project:
+    PullPolicy: Always
 Scaling:
-  Burgers:
-    Enabled:
-    DefaultReplicas:
-    MinReplicas:
-    MaxReplicas:
-    TargetCpuUtilization:
-    TargetMemoryUtilization:
+    Burgers:
+        Enabled:
+        DefaultReplicas:
+        MinReplicas:
+        MaxReplicas:
+        TargetCpuUtilization:
+        TargetMemoryUtilization:
 Resources:
-  Burgers:
-    MinCpu:
-    MaxCpu:
-    MinMemory:
-    MaxMemory:
+    Burgers:
+        MinCpu:
+        MaxCpu:
+        MinMemory:
+        MaxMemory:
 Burgers:
-  SecretKey:
-  NepUsername:
-  NepPassword:
-  NepApplicationKey:
-  NepOrganization:
-  NepSharedKey:
-  HmacSharedKey:
-  HmacSecretKey:
-  CensusApiKey:
-  Locations:
+    NepOrganization:
+    HmacSharedKey:
+    HmacSecretKey:
+    Locations:
 Ingress:
-  Annotations: {}
-  Burgers: {}
+    Annotations: {}
+    Burgers: {}
