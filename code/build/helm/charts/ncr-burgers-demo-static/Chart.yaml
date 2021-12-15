@@ -2,4 +2,4 @@ apiVersion: v1
 appVersion: "1.0"
 description: NCR Burgers Demo Application (Static)
 name: ncr-burgers-demo-static
-version: "0.1"
+version: "1.0.0"
