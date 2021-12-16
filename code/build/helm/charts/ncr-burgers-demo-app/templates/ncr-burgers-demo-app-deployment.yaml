@@ -46,14 +46,6 @@ spec:
             - name: http
               containerPort: 8000
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /Peachtree-Burger
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /Peachtree-Burger
-              port: http
           volumeMounts:
             - name: shared-data
               mountPath: /app/dist
