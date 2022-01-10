@@ -1,7 +1,7 @@
 NAME="burgers_app"                                   # Name of the application
 DJANGO_DIR=/app                                      # Django project directory
 DJANGO_BUILD_DIR=$DJANGO_DIR/build/cloudbuild/django # Django project directory
-BIND_ADDRESS=:8000                                   # we will communicte using this unix socket
+BIND_ADDRESS=:8000                                   # we will communicate using this unix socket
 NUM_WORKERS=3                                        # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=BurgersUnlimited.settings     # which settings file should Django use
 DJANGO_WSGI_MODULE=BurgersUnlimited.wsgi             # WSGI module name
@@ -9,7 +9,7 @@ DJANGO_WSGI_MODULE=BurgersUnlimited.wsgi             # WSGI module name
 echo "Starting $NAME as $(whoami)"
 
 # Activate the virtual environment
-cd $DJANGO_DIR
+cd $DJANGO_DIR || exit
 source $DJANGO_BUILD_DIR/activate.sh
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGO_DIR:$PYTHONPATH
