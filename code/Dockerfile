@@ -6,7 +6,6 @@ WORKDIR /app
 COPY . /app
 
 RUN pip install -r requirements.txt && \
-    python manage.py migrate && \
     python manage.py collectstatic --noinput && \
     chmod -R 777 /app
 
