@@ -22,11 +22,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'dist', 'static')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+=ey4af%pw@67a!knl6t44e)$ms=6uq7x)btzilz4yl$2c7!2v'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-mimetypes.add_type("application/javascript", ".js", True)
+DEBUG = False
+mimetypes.add_type("application/javascript", ".js", False)
 
 ALLOWED_HOSTS = ['*']
 
