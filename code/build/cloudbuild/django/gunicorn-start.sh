@@ -14,6 +14,7 @@ source $DJANGO_BUILD_DIR/activate.sh
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGO_DIR:$PYTHONPATH
 
+python manage.py migrate
 python manage.py collectstatic --noinput
 
 # Start your Django Unicorn
