@@ -19,7 +19,10 @@ spec:
     - host: {{ .Values.Ingress.Burgers.Host }}
       http:
         paths:
-          - backend:
-              serviceName: {{ $.Release.Namespace }}
-              servicePort: 80
+          - pathType: ImplementationSpecific
+            path: /*
+            backend:
+              name: {{ $.Release.Namespace }}
+              port:
+                number: 80
 {{- end}}
