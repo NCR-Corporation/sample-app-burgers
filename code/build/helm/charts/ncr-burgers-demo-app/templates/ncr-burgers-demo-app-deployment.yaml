@@ -25,8 +25,8 @@ spec:
     spec:
       restartPolicy: Always
       volumes:
-      - name: shared-data
-        emptyDir: {}
+        - name: shared-data
+          emptyDir: {}
       containers:
         - name: {{ $.Release.Name }}-django
           image: {{ .Values.Image.Domain }}/{{ .Values.Image.Project }}/{{ .Values.Master.App.Prefix }}-django:{{ $.Chart.Version }}
