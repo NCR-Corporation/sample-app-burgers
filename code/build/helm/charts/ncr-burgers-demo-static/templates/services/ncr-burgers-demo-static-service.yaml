@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ $.Release.Namespace }}
   labels:
-    app: {{ .Values.Master.App.Prefix }}-app
+    app: {{ .Values.Master.App.Prefix }}
     version: {{ $.Chart.Version }}
     release: {{ $.Release.Name }}
   annotations:
@@ -11,7 +11,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: {{ .Values.Master.App.Prefix }}-app
+    app: {{ .Values.Master.App.Prefix }}
     release: {{ .Values.Master.App.ReleaseName }}
   ports:
     - port: 80

@@ -1,6 +1,6 @@
 Master:
     App:
-        Name: ncr-burgers-demo-app
+        Name: ncr-burgers-demo
         Prefix: ncr-burgers-demo
         ReleaseVersion:
     ImagePullPolicy: Always

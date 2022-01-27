@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ $.Release.Name }}-app
+  name: {{ $.Release.Name }}
   labels:
-    app: {{ .Values.Master.App.Prefix }}-app
+    app: {{ .Values.Master.App.Prefix }}
     version: {{ $.Chart.Version }}
     release: {{ $.Release.Name }}
 spec:
@@ -12,14 +12,14 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      app: {{ .Values.Master.App.Prefix }}-app
+      app: {{ .Values.Master.App.Prefix }}
       version: {{ $.Chart.Version }}
       release: {{ $.Release.Name }}
   strategy: {}
   template:
     metadata:
       labels:
-        app: {{ .Values.Master.App.Prefix }}-app
+        app: {{ .Values.Master.App.Prefix }}
         version: {{ $.Chart.Version }}
         release: {{ $.Release.Name }}
     spec:
