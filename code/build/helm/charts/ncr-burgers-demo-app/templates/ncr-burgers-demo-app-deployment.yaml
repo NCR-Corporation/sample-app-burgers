@@ -29,7 +29,7 @@ spec:
           emptyDir: {}
       containers:
         - name: {{ $.Release.Name }}-django
-          image: {{ .Values.Image.Domain }}/{{ .Values.Image.Project }}/{{ .Values.Master.App.Prefix }}-django: {{ $.Chart.Version }}
+          image: {{ .Values.Image.Domain }}/{{ .Values.Image.Project }}/{{ .Values.Master.App.Prefix }}-django:{{ $.Chart.Version }}
           imagePullPolicy: {{ .Values.Master.ImagePullPolicy }}
           env:
             - name: URL_BASE
@@ -50,7 +50,7 @@ spec:
             - name: shared-data
               mountPath: /app/dist
         - name: {{ $.Release.Name }}-nginx
-          image: {{ .Values.Image.Domain }}/{{ .Values.Image.Project }}/{{ .Values.Master.App.Prefix }}-nginx: {{ $.Chart.Version }}
+          image: {{ .Values.Image.Domain }}/{{ .Values.Image.Project }}/{{ .Values.Master.App.Prefix }}-nginx:{{ $.Chart.Version }}
           imagePullPolicy: {{ .Values.Master.ImagePullPolicy }}
           ports:
             - name: http
