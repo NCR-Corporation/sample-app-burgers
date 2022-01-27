@@ -23,7 +23,7 @@ spec:
             path: /*
             backend:
               service:
-                name: {{ $.Release.Namespace }}
+                name: {{ $.Release.Namespace }}-app
                 port:
                   number: 80
 {{- end}}
