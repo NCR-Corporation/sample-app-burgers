@@ -15,7 +15,7 @@ spec:
             app: {{ .Values.Master.App.Prefix }}-app
             version: {{ $.Chart.Version }}
             release: {{ $.Release.Name }}
-    strategy: { }
+    strategy: {}
     template:
         metadata:
             labels:
@@ -26,7 +26,7 @@ spec:
             restartPolicy: Always
             volumes:
                 -   name: shared-data
-                    emptyDir: { }
+                    emptyDir: {}
             containers:
                 -   name: {{ $.Release.Name }}-django
                     image: {{ .Values.Image.Domain }}/{{ .Values.Image.Project }}/{{ .Values.Master.App.Prefix }}-django: {{ $.Chart.Version }}
