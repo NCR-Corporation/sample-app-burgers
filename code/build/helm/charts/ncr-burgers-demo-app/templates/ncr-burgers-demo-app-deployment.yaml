@@ -34,6 +34,8 @@ spec:
           env:
             - name: URL_BASE
               value: {{ quote .Values.Ingress.Host }}
+            - name: SECRET_KEY
+              value: {{ quote .Values.Burgers.SecretKey }}
             - name: NEP_ORGANIZATION
               value: {{ quote .Values.Burgers.NepOrganization }}
             - name: HMAC_SHARED_KEY
