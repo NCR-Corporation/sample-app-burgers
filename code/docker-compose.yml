@@ -4,6 +4,7 @@ services:
   django:
     environment:
       URL_BASE: localhost
+      SECRET_KEY:
       NEP_ORGANIZATION:
       HMAC_SHARED_KEY:
       HMAC_SECRET_KEY:
