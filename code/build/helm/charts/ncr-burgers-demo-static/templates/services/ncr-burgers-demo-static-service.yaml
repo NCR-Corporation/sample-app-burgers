@@ -7,13 +7,16 @@ metadata:
     version: {{ $.Chart.Version }}
     release: {{ $.Release.Name }}
   annotations:
-    cloud.google.com/backend-config: '{"ports": {"80":"cloud-armor-backend-config-{{ .Release.Namespace }}-static" }}'
+    cloud.google.com/backend-config: '{"ports": {"80":"cloud-armor-backend-config-{{ .Release.Namespace }}" }}'
 spec:
   type: NodePort
   selector:
     app: {{ .Values.Master.App.Prefix }}
     release: {{ .Values.Master.App.ReleaseName }}
   ports:
-    - port: 80
+    - name: http
+      port: 80
       protocol: TCP
       targetPort: 8080
+status:
+  loadBalancer: {}

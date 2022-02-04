@@ -1,4 +1,3 @@
-{{- if .Values.Ingress }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -9,12 +8,10 @@ metadata:
     kubernetes.io/ingress.allow-http: "true"
     networking.gke.io/v1beta1.FrontendConfig: frontend-config-http-to-https-redirect-{{ .Release.Namespace }}
 spec:
-  {{- if .Values.Ingress.TlsSecret }}
   tls:
     - hosts:
         - {{ .Values.Ingress.Host }}
       secretName: {{ .Values.Ingress.TlsSecret }}
-  {{- end}}
   rules:
     - host: {{ .Values.Ingress.Host }}
       http:
@@ -26,4 +23,3 @@ spec:
                 name: {{ $.Release.Namespace }}
                 port:
                   number: 80
-{{- end}}

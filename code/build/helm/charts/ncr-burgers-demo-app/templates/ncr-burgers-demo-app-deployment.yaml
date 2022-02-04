@@ -88,3 +88,4 @@ spec:
               cpu: {{ .Values.Resources.MaxCpu | quote }}
               memory: {{ .Values.Resources.MaxMemory | quote }}
           {{- end }}
+status: {}

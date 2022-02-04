@@ -7,7 +7,7 @@ metadata:
     version: {{ $.Chart.Version }}
     release: {{ $.Release.Name }}
   annotations:
-    cloud.google.com/backend-config: '{"ports": {"80":"cloud-armor-backend-config-{{ .Release.Namespace }}-static" }}'
+    cloud.google.com/backend-config: '{"ports": {"80":"cloud-armor-backend-config-{{ .Release.Namespace }}" }}'
 spec:
   type: NodePort
   selector:
