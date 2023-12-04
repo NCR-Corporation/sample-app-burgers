@@ -42,9 +42,9 @@ function continueOrdering(menuLink) {
         error: function (xhr, textStatus, thrownError) {
             alert(
                 "Could not send URL to Django. Error: " +
-                    xhr.status +
-                    ": " +
-                    xhr.responseText
+                xhr.status +
+                ": " +
+                xhr.responseText
             );
         },
     });
@@ -67,9 +67,9 @@ function checkout() {
         error: function (xhr, textStatus, thrownError) {
             alert(
                 "Could not send URL to Django. Error: " +
-                    xhr.status +
-                    ": " +
-                    xhr.responseText
+                xhr.status +
+                ": " +
+                xhr.responseText
             );
         },
     });
@@ -90,7 +90,7 @@ function initialize(menuItem) {
 
     let includedItems = [...uniqueToppings];
 
-    if (includedItems.length) {
+    if (includedItems.length > 0) {
         includedItems.forEach((item, index) => {
             createItemCard({
                 item,
@@ -101,9 +101,12 @@ function initialize(menuItem) {
         });
         let defaultCard = createDefaultCard();
         $(defaultCard).appendTo("#item-uniqueToppings--list-optional");
+    } else {
+        $("#item-uniqueToppings--title-optional").parent().hide();
+        $("#item-uniqueToppings--title").parent().hide();
     }
 
-    if (sharedToppings.length) {
+    if (sharedToppings.length > 0) {
         sharedToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -112,9 +115,11 @@ function initialize(menuItem) {
                 type: "sharedToppings",
             });
         });
+    } else {
+        $("#item-sharedToppings--title-optional").parent().hide();
     }
 
-    if (groupToppings.length) {
+    if (groupToppings.length > 0) {
         groupToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -123,6 +128,8 @@ function initialize(menuItem) {
                 type: "groupToppings",
             });
         });
+    } else {
+        $("#item-groupToppings--title-optional").parent().hide();
     }
 }
 
@@ -147,21 +154,21 @@ function createItemCard({ item, included, container, type }) {
     }" data-item-price="${item.price}">
         <div class='card shadow-sm h-100'>
             <div class='d-flex justify-content-end pt-1' onclick='removeItem({ displayName: "${
-                item.displayName
-            }", container: "${container}", type: "${type}" })'>
+        item.displayName
+    }", container: "${container}", type: "${type}" })'>
                 <span class='fa-stack fa-lg'>
                     <i class='fas fa-circle fa-stack-2x' style='${
-                        included ? "color: #ff3b30" : "color: #54b948"
-                    }'></i>
+        included ? "color: #ff3b30" : "color: #54b948"
+    }'></i>
                     <i class="fas ${
-                        included ? "fa-minus" : "fa-plus"
-                    } fa-stack-1x" style="color: white; font-size: 1em"></i>
+        included ? "fa-minus" : "fa-plus"
+    } fa-stack-1x" style="color: white; font-size: 1em"></i>
                 </span>
             </div>
             <div class='card-body py-0'>
                 <img src="${
-                    item.image
-                }" class="card-img-top my-1" style="object-fit: cover; max-height: 150px; min-height:150px"/>
+        item.image
+    }" class="card-img-top my-1" style="object-fit: cover; max-height: 150px; min-height:150px"/>
                 <p class="h5 text-center">${item.displayName}</p>
                 <p class="h6 text-center">${price}</p>
                 <p class="h6 text-center">${item.colNumber}</p>

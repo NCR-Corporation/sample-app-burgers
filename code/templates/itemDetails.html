@@ -1,5 +1,5 @@
 {% include 'base.html' %} {% load static %} {% block content %}
-<link rel="stylesheet" href="{% static 'css/itemDetails.css' %}" />
+<link rel="stylesheet" href="{% static 'css/itemDetails.css' %}"/>
 <div class="container-fluid menuLink">
   <span class="back-to-home-link">
     <a href="{{menuLink}}">
@@ -14,7 +14,7 @@
     <!--Image/Item/Details-->
     <div class="row mb-2">
       <div class="col-12 col-md-4">
-        <img class="mw-100 item-image" src="{{item.image}}" alt="{{item.displayName}}" />
+        <img class="mw-100 item-image" src="{{item.image}}" alt="{{item.displayName}}"/>
       </div>
 
       <div class="col-12 col-md-8 my-4 my-xl-2">
@@ -29,7 +29,8 @@
       </div>
     </div>
 
-    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="menuModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
          aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -98,7 +99,6 @@
 </div>
 
 {% endblock content %}
-</body>
 <div class="footer">
   {% include 'footer.html' %}
 </div>
