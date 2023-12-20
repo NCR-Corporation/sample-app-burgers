@@ -25,7 +25,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'dist', 'static')
 SECRET_KEY = '$SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 mimetypes.add_type("application/javascript", ".js", True)
 
 ALLOWED_HOSTS = ['*']
