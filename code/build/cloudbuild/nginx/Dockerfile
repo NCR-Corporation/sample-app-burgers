@@ -1,7 +1,7 @@
 ARG NGINX_VERSION
 ARG NGINX_VARIANT
 
-FROM nginx:${NGINX_VERSION}-${NGINX_VARIANT}
+FROM nginx:1.15-alpine
 
 WORKDIR /etc/nginx/
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
