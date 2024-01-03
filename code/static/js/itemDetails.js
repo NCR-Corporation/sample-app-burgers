@@ -90,7 +90,7 @@ function initialize(menuItem) {
 
     let includedItems = [...uniqueToppings];
 
-    if (includedItems.length > 0) {
+    if (includedItems.length) {
         includedItems.forEach((item, index) => {
             createItemCard({
                 item,
@@ -102,11 +102,11 @@ function initialize(menuItem) {
         let defaultCard = createDefaultCard();
         $(defaultCard).appendTo("#item-uniqueToppings--list-optional");
     } else {
-        $("#item-uniqueToppings--title-optional").parent().hide();
-        $("#item-uniqueToppings--title").parent().hide();
+        // $("#item-uniqueToppings--title-optional").parent().hide();
+        // $("#item-uniqueToppings--title").parent().hide();
     }
 
-    if (sharedToppings.length > 0) {
+    if (sharedToppings.length) {
         sharedToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -116,10 +116,10 @@ function initialize(menuItem) {
             });
         });
     } else {
-        $("#item-sharedToppings--title-optional").parent().hide();
+        // $("#item-sharedToppings--title-optional").parent().hide();
     }
 
-    if (groupToppings.length > 0) {
+    if (groupToppings.length) {
         groupToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -129,7 +129,7 @@ function initialize(menuItem) {
             });
         });
     } else {
-        $("#item-groupToppings--title-optional").parent().hide();
+        // $("#item-groupToppings--title-optional").parent().hide();
     }
 }
 
