@@ -6,6 +6,7 @@ function removeFromUniqueToppings(item, topping) {
 
 $(function () {
     menuItem = JSON.parse(document.getElementById("item").textContent);
+    console.log("menuItem1",menuItem)
     initialize(menuItem);
 });
 
@@ -88,7 +89,11 @@ function initialize(menuItem) {
         uniqueToppings,
     } = menuItem;
 
+    console.log("menuItem2",menuItem)
+
     let includedItems = [...uniqueToppings];
+
+    console.log("includedItems",includedItems)
 
     if (includedItems.length) {
         includedItems.forEach((item, index) => {
