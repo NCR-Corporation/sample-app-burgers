@@ -17,7 +17,6 @@ import mimetypes
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATIC_ROOT = os.path.join(BASE_DIR, 'dist', 'static')
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -25,7 +24,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'dist', 'static')
 SECRET_KEY = '$SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 mimetypes.add_type("application/javascript", ".js", True)
 
 ALLOWED_HOSTS = ['*']
