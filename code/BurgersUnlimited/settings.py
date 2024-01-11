@@ -187,8 +187,4 @@ HMAC_SHARED_KEY = ''
 HMAC_SECRET_KEY = ''
 
 # Locations of the restaurants saved in a site name: id pattern
-LOCATIONS = {
-    'Peachtree Burger Midtown': '4a11814528394b83b2680057d10b6ba5',
-    'Peachtree Burger Southland': 'b7571743fb7d4eeabc0c63573869b390',
-    'Peachtree Burger Highland': 'c9eeb9bf887c49aa800df09dd3af2fb6'
-}
+LOCATIONS = {}

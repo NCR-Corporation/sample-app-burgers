@@ -106,9 +106,6 @@ function initialize(menuItem) {
         });
         let defaultCard = createDefaultCard();
         $(defaultCard).appendTo("#item-uniqueToppings--list-optional");
-    } else {
-        // $("#item-uniqueToppings--title-optional").parent().hide();
-        // $("#item-uniqueToppings--title").parent().hide();
     }
 
     if (sharedToppings.length) {
@@ -120,8 +117,6 @@ function initialize(menuItem) {
                 type: "sharedToppings",
             });
         });
-    } else {
-        // $("#item-sharedToppings--title-optional").parent().hide();
     }
 
     if (groupToppings.length) {
@@ -133,8 +128,6 @@ function initialize(menuItem) {
                 type: "groupToppings",
             });
         });
-    } else {
-        // $("#item-groupToppings--title-optional").parent().hide();
     }
 }
 
@@ -157,7 +150,7 @@ function createItemCard({ item, included, container, type }) {
     $(`<div class='col-6 col-lg-2 my-2' data-display-name="${
         item.displayName
     }" data-item-price="${item.price}">
-        <div class='card shadow-sm h-100'>
+      <div class='card shadow-sm h-100'>
             <div class='d-flex justify-content-end pt-1' onclick='removeItem({ displayName: "${
         item.displayName
     }", container: "${container}", type: "${type}" })'>
