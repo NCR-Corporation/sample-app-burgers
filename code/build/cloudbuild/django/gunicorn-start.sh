@@ -10,7 +10,7 @@ echo "Starting $NAME as $(whoami)"
 
 # Activate the virtual environment
 cd $DJANGO_DIR || exit
-source $DJANGO_BUILD_DIR/activate.sh
+./build/cloudbuild/django/activate.sh
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGO_DIR:$PYTHONPATH
 
