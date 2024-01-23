@@ -6,7 +6,6 @@ function removeFromUniqueToppings(item, topping) {
 
 $(function () {
     menuItem = JSON.parse(document.getElementById("item").textContent);
-    console.log("menuItem1",menuItem)
     initialize(menuItem);
 });
 
@@ -95,7 +94,7 @@ function initialize(menuItem) {
 
     console.log("includedItems",includedItems)
 
-    if (includedItems.length) {
+    if (includedItems.length > 0) {
         includedItems.forEach((item, index) => {
             createItemCard({
                 item,
@@ -106,9 +105,12 @@ function initialize(menuItem) {
         });
         let defaultCard = createDefaultCard();
         $(defaultCard).appendTo("#item-uniqueToppings--list-optional");
+    } else {
+        $("#item-uniqueToppings--title-optional").parent().hide();
+        $("#item-uniqueToppings--title").parent().hide();
     }
 
-    if (sharedToppings.length) {
+    if (sharedToppings.length > 0) {
         sharedToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -117,9 +119,11 @@ function initialize(menuItem) {
                 type: "sharedToppings",
             });
         });
+    } else {
+        $("#item-sharedToppings--title-optional").parent().hide();
     }
 
-    if (groupToppings.length) {
+    if (groupToppings.length > 0) {
         groupToppings.forEach((item, index) => {
             createItemCard({
                 item,
@@ -128,6 +132,8 @@ function initialize(menuItem) {
                 type: "groupToppings",
             });
         });
+    } else {
+        $("#item-groupToppings--title-optional").parent().hide();
     }
 }
 
