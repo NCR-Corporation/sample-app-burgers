@@ -51,8 +51,11 @@ function continueOrdering(menuLink) {
 }
 
 function checkout() {
+    console.log("sessionStorage.getItem(\"Cart\")", sessionStorage.getItem("Cart"))
     var userCart = JSON.stringify(sessionStorage.getItem("Cart"));
     var csrftoken = getCookie("csrftoken");
+
+    console.log("userCart", userCart)
 
     $.ajax({
         url: "/Peachtree-Burger/ViewCart",

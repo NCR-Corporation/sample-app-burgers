@@ -15,6 +15,10 @@ HIGHLAND = settings.LOCATIONS['Peachtree Burger Highland']
 SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
 MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
 
+print("HIGHLAND",HIGHLAND)
+print("SOUTHLAND",SOUTHLAND)
+print("MIDTOWN",MIDTOWN)
+
 MENUMAPPINGS = {
     'highlandLunch': '1631732419306',
     'highlandDinner': '1631649497940',
@@ -116,6 +120,7 @@ def dinnerMenu(request, location):
 
 
 def location(request):
+    console.log("locationRequest", request)
     if request.method == 'POST':
         global site
         body = json.loads(request.body)
@@ -128,8 +133,14 @@ def itemDetails(request, itemId, tag):
     menu = None
     context = None
 
+    print("request", request)
+    print("itemId", itemId)
+    print("tag", tag)
+
     location = request.session.get('location').lower()
     time = request.session.get('time')
+
+    print("location", location)
 
     if time == 'Lunch':
         if location == 'highland':
@@ -157,6 +168,9 @@ def itemDetails(request, itemId, tag):
                 'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
             }
 
+    print("request2", request)
+    print("context", context)
+
     return render(request, 'itemDetails.html', context)
 
 
@@ -169,6 +183,8 @@ def viewCart(request):
     location = request.session.get('location')
     time = request.session.get('time')
     total = request.session.get('Total')
+
+    print("viewCart", location)
 
     cart = None
 
@@ -212,6 +228,10 @@ def viewCart(request):
         'total': total,
         'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
     }
+
+    print("Cartrequest2", request)
+    print("Cartcontext", context)
+
     return render(request, 'viewCart.html', context)
 
 
