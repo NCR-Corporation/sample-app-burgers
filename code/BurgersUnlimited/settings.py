@@ -186,3 +186,6 @@ HMAC_SECRET_KEY = ''
 
 # Locations of the restaurants saved in a site name: id pattern
 LOCATIONS = {}
+
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_PATH = '/'
