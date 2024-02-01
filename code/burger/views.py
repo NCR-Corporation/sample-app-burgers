@@ -143,18 +143,21 @@ def itemDetails(request, itemId, tag):
     menu = None
     context = None
 
-    print('ItemrequestSession', request.session.get('location'))
     print('request', request)
     print('itemId', itemId)
     print('tag', tag)
 
-    loc = request.COOKIE.get('location')
-    print('loc', loc)
+    location_cookie = request.COOKIES.get('location')
+    print('location_cookie', location_cookie)
 
-    location = request.session.get('location').lower()
+    location_session = request.session.get('location')
+    print('location_session', location_session)
+
+    location = request.COOKIES.get('location').lower()
     time = request.session.get('time')
 
     print('location', location)
+    print('time', time)
 
     if time == 'Lunch':
         if location == 'highland':
@@ -181,9 +184,6 @@ def itemDetails(request, itemId, tag):
                 'menu': menu,
                 'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
             }
-
-    print('request2', request)
-    print('context', context)
 
     return render(request, 'itemDetails.html', context)
 
