@@ -54,6 +54,8 @@ def index(request):
 
 
 def lunchMenu(request, location):
+    print('lunchRequest', request)
+    print('lunchLocation', location)
     request.session['location'] = location
 
     time = "Lunch"
@@ -83,10 +85,14 @@ def lunchMenu(request, location):
     context = {'items': results, 'time': time,
                'site': site, 'locations': MATCHES}
 
+    request.session.save()
     return render(request, 'menu.html', context)
 
 
 def dinnerMenu(request, location):
+    print('dinnerRequest', request)
+    print('DinnerRequestSession0',request.session)
+    print('dinnerLocation', location)
     request.session['location'] = location
 
     time = "Dinner"
@@ -116,6 +122,9 @@ def dinnerMenu(request, location):
     context = {'items': results, 'time': time,
                'site': site, 'locations': MATCHES}
 
+    print('DinnerRequestSession1',request.session)
+    request.session.save()
+    print('DinnerRequestSession2',request.session)
     return render(request, 'menu.html', context)
 
 
@@ -132,6 +141,7 @@ def itemDetails(request, itemId, tag):
     menu = None
     context = None
 
+    print('requestSession', request.session)
     print('request', request)
     print('itemId', itemId)
     print('tag', tag)
