@@ -189,3 +189,4 @@ LOCATIONS = {}
 
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_COOKIE_PATH = '/'
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
