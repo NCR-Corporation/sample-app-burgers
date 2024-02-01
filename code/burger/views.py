@@ -123,10 +123,11 @@ def dinnerMenu(request, location):
                'site': site, 'locations': MATCHES}
 
     print('DinnerRequestSession1',request.session.get('location'))
-    request.session.modified = True
-    request.session.save()
     print('DinnerRequestSession2',request.session.get('location'))
-    return render(request, 'menu.html', context)
+
+    response = render(request, 'menu.html', context)
+    response.set_cookie('location', location, 300)
+    return response
 
 
 def location(request):
@@ -146,6 +147,9 @@ def itemDetails(request, itemId, tag):
     print('request', request)
     print('itemId', itemId)
     print('tag', tag)
+
+    loc = request.COOKIE.get('location')
+    print('loc', loc)
 
     location = request.session.get('location').lower()
     time = request.session.get('time')
