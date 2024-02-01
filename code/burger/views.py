@@ -91,7 +91,7 @@ def lunchMenu(request, location):
 
 def dinnerMenu(request, location):
     print('dinnerRequest', request)
-    print('DinnerRequestSession0',request.session)
+    print('DinnerRequestSession0',request.session.get('location'))
     print('dinnerLocation', location)
     request.session['location'] = location
 
@@ -122,9 +122,10 @@ def dinnerMenu(request, location):
     context = {'items': results, 'time': time,
                'site': site, 'locations': MATCHES}
 
-    print('DinnerRequestSession1',request.session)
+    print('DinnerRequestSession1',request.session.get('location'))
+    request.session.modified = True
     request.session.save()
-    print('DinnerRequestSession2',request.session)
+    print('DinnerRequestSession2',request.session.get('location'))
     return render(request, 'menu.html', context)
 
 
@@ -141,7 +142,7 @@ def itemDetails(request, itemId, tag):
     menu = None
     context = None
 
-    print('requestSession', request.session)
+    print('ItemrequestSession', request.session.get('location'))
     print('request', request)
     print('itemId', itemId)
     print('tag', tag)
