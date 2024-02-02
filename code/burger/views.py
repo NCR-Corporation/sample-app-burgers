@@ -143,17 +143,7 @@ def itemDetails(request, itemId, tag):
     menu = None
     context = None
 
-    print('request', request)
-    print('itemId', itemId)
-    print('tag', tag)
-
-    location_cookie = request.COOKIES.get('location')
-    print('location_cookie', location_cookie)
-
-    location_session = request.session.get('location')
-    print('location_session', location_session)
-
-    location = request.COOKIES.get('location').lower()
+    location =  request.session.get('location').lower()
     time = request.session.get('time')
 
     print('location', location)

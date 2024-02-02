@@ -187,6 +187,5 @@ HMAC_SECRET_KEY = ''
 # Locations of the restaurants saved in a site name: id pattern
 LOCATIONS = {}
 
-SESSION_SAVE_EVERY_REQUEST = True
-SESSION_COOKIE_PATH = '/'
-SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SESSION_COOKIE_SECURE = True
