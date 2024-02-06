@@ -80,13 +80,6 @@ TEMPLATES = [
     },
 ]
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": "/sample-app-burgers/_cache"
-    }
-}
-
 WSGI_APPLICATION = 'BurgersUnlimited.wsgi.application'
 
 # Database
@@ -193,3 +186,6 @@ HMAC_SECRET_KEY = ''
 
 # Locations of the restaurants saved in a site name: id pattern
 LOCATIONS = {}
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_SAVE_EVERY_REQUEST  = True
