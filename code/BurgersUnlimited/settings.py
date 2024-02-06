@@ -82,7 +82,8 @@ TEMPLATES = [
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/sample-app-burgers/_cache"
     }
 }
 
