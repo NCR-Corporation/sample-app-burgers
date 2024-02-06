@@ -80,6 +80,12 @@ TEMPLATES = [
     },
 ]
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+    }
+}
+
 WSGI_APPLICATION = 'BurgersUnlimited.wsgi.application'
 
 # Database
@@ -186,6 +192,3 @@ HMAC_SECRET_KEY = ''
 
 # Locations of the restaurants saved in a site name: id pattern
 LOCATIONS = {}
-
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-SESSION_COOKIE_SECURE = True
