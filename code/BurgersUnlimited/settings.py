@@ -189,5 +189,3 @@ LOCATIONS = {}
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_SAVE_EVERY_REQUEST  = True
-SESSION_COOKIE_NAME  = 'usersessionid'
-SESSION_COOKIE_DOMAIN = '.burgersdemo.ncrcloud.com'
