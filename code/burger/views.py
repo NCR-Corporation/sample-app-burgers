@@ -90,8 +90,11 @@ def lunchMenu(request, location):
 
 
 def dinnerMenu(request, location):
-    print('DinnerRequestSession0',request.session.get('location'))
     print('dinnerMenu.session_key0', request.session.session_key)
+    print('request.session.items()', request.session.items())
+
+    if not request.session.session_key:
+        request.session.save()
 
     request.session['location'] = location
 
