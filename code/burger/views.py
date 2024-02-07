@@ -1,3 +1,4 @@
+from django.contrib.sessions.backends.db import SessionStore
 from django.http.response import HttpResponseNotAllowed
 from menuParser import menuParsing
 from HMACAuth import HMACAuth
@@ -34,7 +35,6 @@ MATCHES = auxMethods.getPeachtreeRestaurants(RESULTS)
 
 MENULINK = '/Peachtree-Burger/menu/'
 site = ''
-
 
 def index(request):
     request.session['location'] = 'Midtown'
@@ -90,9 +90,9 @@ def lunchMenu(request, location):
 
 
 def dinnerMenu(request, location):
-    print('dinnerRequest', request)
     print('DinnerRequestSession0',request.session.get('location'))
-    print('dinnerLocation', location)
+    print('dinnerMenu.session_key0', request.session.session_key)
+
     request.session['location'] = location
 
     time = "Dinner"
@@ -122,8 +122,7 @@ def dinnerMenu(request, location):
     context = {'items': results, 'time': time,
                'site': site, 'locations': MATCHES}
 
-    print('DinnerRequestSession1',request.session.get('location'))
-    print('DinnerRequestSession2',request.session.get('location'))
+    print('dinnerMenu.session_key1', request.session.session_key)
 
     response = render(request, 'menu.html', context)
     response.set_cookie('location', location, 300)
@@ -143,6 +142,8 @@ def itemDetails(request, itemId, tag):
     menu = None
     context = None
 
+    print('itemDetail.session_key', request.session.session_key)
+    print('request.session.items()', request.session.items())
     location =  request.session.get('location').lower()
     time = request.session.get('time')
 
