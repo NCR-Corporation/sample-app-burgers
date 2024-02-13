@@ -9,7 +9,8 @@ RUN chmod +x /app
 RUN pip install -r requirements.txt && \
     python manage.py collectstatic --noinput
 
-RUN apk add --no-cache sqlite3
+RUN apt-get update && \
+    apt-get install -y sqlite3
 
 RUN cd ..
 RUN chmod -R 777 /app
