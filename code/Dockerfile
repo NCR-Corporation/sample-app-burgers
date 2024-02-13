@@ -9,6 +9,8 @@ RUN chmod +x /app
 RUN pip install -r requirements.txt && \
     python manage.py collectstatic --noinput
 
+RUN apk add --no-cache sqlite3
+
 RUN cd ..
 RUN chmod -R 777 /app
 EXPOSE 8000/tcp
