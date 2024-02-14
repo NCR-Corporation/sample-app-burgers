@@ -91,11 +91,7 @@ function initialize(menuItem) {
         uniqueToppings,
     } = menuItem;
 
-    console.log("menuItem2",menuItem)
-
     let includedItems = [...uniqueToppings];
-
-    console.log("includedItems",includedItems)
 
     if (includedItems.length > 0) {
         includedItems.forEach((item, index) => {

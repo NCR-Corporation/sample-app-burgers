@@ -16,10 +16,6 @@ HIGHLAND = settings.LOCATIONS['Peachtree Burger Highland']
 SOUTHLAND = settings.LOCATIONS['Peachtree Burger Southland']
 MIDTOWN = settings.LOCATIONS['Peachtree Burger Midtown']
 
-print('HIGHLAND',HIGHLAND)
-print('SOUTHLAND',SOUTHLAND)
-print('MIDTOWN',MIDTOWN)
-
 MENUMAPPINGS = {
     'highlandLunch': '1631732419306',
     'highlandDinner': '1631649497940',
@@ -54,8 +50,6 @@ def index(request):
 
 
 def lunchMenu(request, location):
-    print('lunchRequest', request)
-    print('lunchLocation', location)
     request.session['location'] = location
 
     time = "Lunch"
@@ -90,9 +84,6 @@ def lunchMenu(request, location):
 
 
 def dinnerMenu(request, location):
-    print('dinnerMenu.session_key0', request.session.session_key)
-    print('request.session.items()', request.session.items())
-
     if not request.session.session_key:
         request.session.save()
 
@@ -125,11 +116,7 @@ def dinnerMenu(request, location):
     context = {'items': results, 'time': time,
                'site': site, 'locations': MATCHES}
 
-    print('dinnerMenu.session_key1', request.session.session_key)
-
-    response = render(request, 'menu.html', context)
-    response.set_cookie('location', location, 300)
-    return response
+    return render(request, 'menu.html', context)
 
 
 def location(request):
@@ -144,14 +131,8 @@ def location(request):
 def itemDetails(request, itemId, tag):
     menu = None
     context = None
-
-    print('itemDetail.session_key', request.session.session_key)
-    print('request.session.items()', request.session.items())
     location =  request.session.get('location').lower()
     time = request.session.get('time')
-
-    print('location', location)
-    print('time', time)
 
     if time == 'Lunch':
         if location == 'highland':
@@ -191,8 +172,6 @@ def viewCart(request):
     location = request.session.get('location')
     time = request.session.get('time')
     total = request.session.get('Total')
-
-    print('viewCart', location)
 
     cart = None
 
@@ -236,9 +215,6 @@ def viewCart(request):
         'total': total,
         'menuLink': '/Peachtree-Burger/Menu/' + location.capitalize() + '/' + time
     }
-
-    print('Cartrequest2', request)
-    print('Cartcontext', context)
 
     return render(request, 'viewCart.html', context)
 
