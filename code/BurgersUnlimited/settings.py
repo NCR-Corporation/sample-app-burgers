@@ -189,3 +189,5 @@ LOCATIONS = {}
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_SAVE_EVERY_REQUEST  = True
+
+
