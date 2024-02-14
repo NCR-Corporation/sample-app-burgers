@@ -116,9 +116,7 @@ def dinnerMenu(request, location):
     context = {'items': results, 'time': time,
                'site': site, 'locations': MATCHES}
 
-    response = render(request, 'menu.html', context)
-    response.set_cookie('location', location, 300)
-    return response
+    return render(request, 'menu.html', context)
 
 
 def location(request):
