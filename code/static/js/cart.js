@@ -130,6 +130,9 @@ function addItemToCart() {
         $("#item-uniqueToppings--list")
             .children()
             .each((index, item) => {
+                if (item.dataset.itemPrice === undefined) {
+                    return;
+                }
                 total += +item.dataset.itemPrice;
                 toppings.push({
                     displayName: item.dataset.displayName,
