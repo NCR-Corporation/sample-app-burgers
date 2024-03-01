@@ -20,8 +20,8 @@ python manage.py collectstatic --noinput
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
 exec gunicorn ${DJANGO_WSGI_MODULE}:application \
-    --name $NAME \
-    --workers $NUM_WORKERS \
-    --bind=$BIND_ADDRESS \
-    --log-level=debug \
-    --log-file=-
+--name $NAME \
+--workers $NUM_WORKERS \
+--bind=$BIND_ADDRESS \
+--log-level=debug \
+--log-file=-
