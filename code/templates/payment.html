@@ -1,0 +1,153 @@
+{% extends 'base.html' %} {% load static %} {% block title %}<title>
+  Payment
+</title>
+{% endblock %} {% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/pay.css' %}" />
+{% endblock %} {% block content %}
+<div class="myModal">
+  <!-- Central Modal Medium Danger -->
+  <div
+    class="modal fade"
+    id="centralModalDanger"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+      <!--Content-->
+      <div
+        class="modal-content"
+        style="background-color: Crimson; color: white; width: 700px"
+      >
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading lead" style="text-align: center">
+            Please read carefully
+          </p>
+
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+
+        <!--Body-->
+        <div class="modal-body">
+          <div class="text-center">
+            <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+            <p>Do not enter your real private information on here!</p>
+          </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+          <button
+            class="btn btn-custom"
+            data-dismiss="modal"
+            style="background-color: black"
+          >
+            I understand this is only a demo, and will not enter any real or
+            private information <i class="far fa-gem ml-1 text-white"></i>
+          </button>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!-- Central Modal Medium Danger-->
+</div>
+<br /><br />
+<h3 class="text-center"><i class="fa fa-credit-card"></i> Payment</h3>
+<form id="form1" method="POST" action="{% url 'confirmation' %}">
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-50">
+        <br />
+        <label for="cname">Name on Card</label>
+        <input
+          type="text"
+          id="cname"
+          name="cardname"
+          placeholder="Enter cardholder name"
+          disabled
+        />
+        <label for="ccnum">Credit Card Number</label>
+        <input
+          type="text"
+          id="ccnum"
+          name="cardnumber"
+          placeholder="Enter card number"
+          disabled
+        />
+
+        <div class="row">
+          <div class="col-50">
+            <label for="expmonth">Card Expiration</label>
+            <input
+              type="text"
+              id="expmonth"
+              name="expmonth"
+              placeholder="MM/YYYY"
+              disabled
+            />
+          </div>
+          <div class="col-50">
+            <label for="cvv">CVV</label>
+            <input
+              type="text"
+              id="cvv"
+              name="cvv"
+              placeholder="Three digits on back of card"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="zip">Zipcode</label>
+            <input
+              type="text"
+              id="zip"
+              name="zip"
+              placeholder="Enter zipcode"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart">Your Total is $<span id="total">0.00</span></div>
+    <div class="row">
+      <div class="col-50">
+        <a href="{% url 'viewCart' %}" class="btn btn-custom">Go Back</a>
+      </div>
+      <div class="col-50">
+        <input type="submit" value="Checkout" class="btn btn-custom" />
+      </div>
+    </div>
+  </div>
+
+  {% csrf_token %}
+</form>
+{% endblock %} {% block javascript %}
+<script>
+  $(document).ready(function () {
+    $("#centralModalDanger").modal("show");
+  });
+
+  tholder = document.getElementById("total");
+  var total = sessionStorage.getItem("Total");
+  if (!total.includes(".")) {
+    tholder.innerHTML = total + ".00";
+  } else {
+    tholder.innerHTML = sessionStorage.getItem("Total");
+  }
+</script>
+{% endblock %}

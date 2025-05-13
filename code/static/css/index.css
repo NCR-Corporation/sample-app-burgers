@@ -1,0 +1,204 @@
+.container-row {
+    padding: 0px 5% 0px 5%;
+}
+
+.home-page-fluid-container {
+    padding: 0px;
+}
+
+.p-home-text {
+    color: black;
+    align-items: center;
+    width: 50%;
+}
+
+.row-card {
+    margin-bottom: 20px;
+}
+
+.p-text {
+    color: white;
+    text-align: left;
+}
+
+.about-info-header {
+    color: black;
+    font-size: 35pt;
+    font-weight: bold;
+}
+
+.about-info-text {
+    color: black;
+    font-weight: 400;
+}
+
+.card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-icon {
+    font-size: 50px;
+}
+
+.about-card-body {
+    display: flex;
+    padding: 0px 1.25rem 0px 1.25rem;
+    justify-content: center;
+    background-color: #efeff4;
+    box-shadow: 1px 4px 4px rgb(0, 0, 0, 0.25);
+}
+
+.about-text {
+    width: 95%;
+}
+
+.about-cards {
+    display: flex;
+    margin-top: 24px;
+}
+
+.about-card {
+    margin-top: 24px;
+    width: 95%;
+    height: 100%;
+}
+
+.p-text-header {
+    font-weight: bold;
+    font-size: 75pt;
+    color: white;
+}
+
+.p-text-home {
+    color: white;
+    font-size: 20pt;
+}
+
+.start-order {
+    font-weight: bold;
+}
+
+.home-container {
+    margin-left: 5%;
+    align-items: center;
+}
+
+.about-card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.about-card-text {
+    font-size: 16px;
+}
+
+.map-block {
+    padding-left: 3%;
+}
+
+.map-title-text {
+    font-size: 48px;
+}
+
+.store-header-text {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.store-card {
+    width: 100%;
+}
+
+.homepage-jumbotron {
+    background-image: url(../images/HomePageImage.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 600px;
+    font-family: "Open Sans", sans-serif;
+    align-items: center;
+    display: flex;
+}
+
+@media (min-width: 1300px) {
+    .homepage-jumbotron {
+        height: 100vh;
+    }
+}
+
+.map-container {
+    padding-top: 5%;
+}
+
+.card-info {
+    font-family: "Open Sans", sans-serif;
+    display: block;
+}
+
+.address-text {
+    font-size: 16px;
+}
+
+.store-name {
+    font-size: 24px;
+}
+
+.hours-text {
+    font-size: 16px;
+}
+
+.store-header {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+}
+
+@media (min-width: 1200px) {
+    .address-text {
+        font-size: 12px;
+    }
+
+    .store-name {
+        font-size: 24px;
+    }
+
+    .hours-text {
+        font-size: 12px;
+    }
+
+    .about-card-text {
+        font-size: 12px;
+    }
+
+    .store-header {
+        font-weight: bold;
+        font-size: 12px;
+        font-family: "Open Sans", sans-serif;
+    }
+}
+
+.store-info-text {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 15px 0px 15px;
+}
+
+.order-button {
+    width: 100%;
+    height: 60px;
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+}
+
+@media (min-width: 1300px) {
+    .order-button {
+        width: 80%;
+    }
+}
+
+.burger-icon-image {
+    height: 350px;
+    width: 350px;
+}

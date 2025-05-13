@@ -1,0 +1,51 @@
+.heart-icon {
+    color: #7ed957;
+    font-size: 35px;
+}
+
+.jumbotron {
+    height: 90%;
+}
+
+.finish-button {
+    width: 35%;
+    height: 70px;
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+    font-size: 1.3rem;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 4px solid rgba(0, 0, 0, 0.1);
+    width: 90%;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+    .jumbotron {
+        height: 50%;
+    }
+    .message-container {
+        height: 72%;
+        padding-top: 30%;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 520px) and (-webkit-min-device-pixel-ratio: 2) {
+    .jumbotron {
+        height: 87%;
+    }
+
+    .message-container {
+        height: 67%;
+        padding-top: 25%;
+    }
+
+    .footer {
+        position: relative;
+        bottom: -5%;
+    }
+}

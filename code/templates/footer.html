@@ -1,0 +1,78 @@
+<footer class="mt-3 py-5 footer-container">
+  <div class="container-fluid">
+    <div class="row mx-xl-5">
+      <div class="text-white col-12 col-xl-6">
+        <div class="pt-1 pl-3 pl-xl-4 pb-md-3">
+          <a
+            class="
+              text-white text-decoration-none
+              h2
+              pl-xl-5 pl-lg-2 pl-md-3
+              footer-title-text
+            "
+            href="{% url 'index' %}"
+          >
+            Peachtree Burger
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-xl-3 ml-5 ml-md-0 pl-md-5 text-white">
+        <div class="pt-xl-3 pt-lg-4">
+          <p class="h3 pb-1 font-weight-bold">SITE</p>
+          <ul class="list-unstyled">
+            <li class="h5">
+              <a
+                class="text-decoration-none text-white"
+                href="{% url 'index' %}#map-content"
+                >Our Burger Joints</a
+              >
+            </li>
+            <li class="h5">
+              <button
+                type="button"
+                class="menu-footer-button pl-0"
+                id="lunchFooterButton"
+                onclick="setToLunch('{{site}}')"
+              >
+                <span class="footer-button-text">Lunch Menu</span>
+              </button>
+            </li>
+            <li class="h5">
+              <button
+                type="button"
+                class="menu-footer-button pl-0"
+                id="dinnerFooterButton"
+                onclick="setToDinner('{{site}}')"
+              >
+                <span class="footer-button-text">Dinner Menu</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-xl-3 ml-5 ml-md-0 pl-md-5 text-white">
+        <div class="pt-xl-3 pt-lg-4 pb-lg-4">
+          <p class="h3 pb-1 font-weight-bold">HELP</p>
+          <ul class="list-unstyled">
+            <li class="h5">
+              <a
+                class="text-decoration-none text-white"
+                href="https://developer.ncr.com/portals/dev-portal/help-center/search"
+                target="_blank"
+                >Documentation</a
+              >
+            </li>
+            <li class="h5">
+              <a
+                class="text-decoration-none text-white"
+                href="https://github.com/NCR-Corporation/sample-app-burgers"
+                target="_blank"
+                >Github</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

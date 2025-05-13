@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/itemDetails.css' %}" />
+<div class="container-fluid menuLink">
+  <span class="back-to-home-link">
+    <a href="{{menuLink}}">
+      <div class="back-to-home mt-3 ml-5">
+        <i class="fas fa-chevron-left my-2"></i>
+        <p class="h5 font-weight-light my-1 ml-2">Back to Menu</p>
+      </div>
+    </a>
+  </span>
+
+  <div class="container my-5 my-xl-3" id="item-details-container">
+    <!--Image/Item/Details-->
+    <div class="row mb-2">
+      <div class="col-12 col-md-4">
+        <img class="mw-100 item-image" src="{{item.image}}" alt="{{item.displayName}}" />
+      </div>
+
+      <div class="col-12 col-md-8 my-4 my-xl-2">
+        {% csrf_token %}
+        <h2>{{item.displayName}}</h2>
+        <h3 class="h5 text-body">{{item.price}}</h3>
+        <h6 class="h6 text-body">{{item.description}}</h6>
+        <button type="button" class="btn order-button px-4 mt-2" data-toggle="modal" data-target="#menuModal"
+                onclick="addItemToCart()">
+          Add to Order
+        </button>
+      </div>
+    </div>
+
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="d-flex justify-content-center success-text h2">Success!</p>
+            <p class="d-flex h4 font-weight-light justify-content-center">
+              Your item has been added to your order
+            </p>
+            <div class="container-fluid d-flex justify-content-center">
+              <div class="col-6">
+                <button class="btn order-button" onclick="continueOrdering('{{menuLink}}')">
+                  Continue Ordering?
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="btn order-button" onclick="checkout()">
+                  Checkout
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="item-uniqueToppings--container" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-uniqueToppings--title">Includes: </h4>
+      </div>
+      <div class="col-12">
+
+        <div class="row" id="item-uniqueToppings--list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid toppings-container my-3 py-2">
+  <div class="container">
+    <div id="item-uniqueToppings--container-optional" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-uniqueToppings--title-optional">Removed Default Toppings</h4>
+      </div>
+      <div class="col-12 mt-5 mt-xl-0">
+        <div class="row" id="item-uniqueToppings--list-optional"></div>
+      </div>
+    </div>
+    <div id="item-groupToppings--container-optional" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-groupToppings--title-optional">Addons</h4>
+      </div>
+      <div class="col-12 mt-5 mt-xl-0">
+        <div class="row" id="item-groupToppings--list-optional"></div>
+      </div>
+    </div>
+    <div id="item-sharedToppings--container-optional" class="row py-2">
+      <div class="col-12 mt-5 mt-xl-0">
+        <h4 id="item-sharedToppings--title-optional">Extras</h4>
+      </div>
+      <div class="col-12 mt-5 mt-xl-0">
+        <div class="row" id="item-sharedToppings--list-optional"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+<div class="footer">
+  {% include 'footer.html' %}
+</div>
+{% block javascript %} {{ item|json_script:"item" }}
+<script src="{% static 'js/itemDetails.js' %}" type="text/javascript"></script>
+{% endblock javascript %}

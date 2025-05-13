@@ -1,0 +1,57 @@
+.fa-stack {
+    font-size: 0.66em;
+}
+
+i {
+    vertical-align: middle;
+}
+
+.success-text {
+    font-weight: 600;
+}
+
+.item-image {
+    min-height: 225px;
+    max-height: 225px;
+    object-fit: cover;
+}
+
+.back-to-home {
+    display: flex;
+}
+
+.footer {
+    position: relative;
+    bottom: -33%;
+}
+
+@media (min-width: 1200px) {
+    .footer {
+        position: relative;
+        bottom: 0%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .item-image {
+        min-height: 350px;
+        max-height: 350px;
+        object-fit: cover;
+    }
+}
+
+.toppings-container {
+    background-color: #f4f4f5;
+}
+
+.menuLink a {
+    text-decoration: none;
+    color: black;
+}
+
+.order-button {
+    background-color: #008d9b;
+    border-color: #008d9b;
+    color: white;
+    width: 180px;
+}

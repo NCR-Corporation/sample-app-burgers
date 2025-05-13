@@ -1,0 +1,175 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+<body>
+  <div class="homepage-jumbotron jumbotron-fluid">
+    <div class="home-container">
+      <div class="p-home-text">
+        <h1 class="p-text-header pb-4">Peachtree Burger</h1>
+        <p class="p-text-home h4 pb-4">The #1 burger in your belly.1</p>
+        <button
+          type="button"
+          class="btn btn-warning start-order"
+          onclick="setLocation('{{site}}')"
+        >
+          Start your order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-4 mt-xl-5" id="about">
+    <div class="row pb-5 container-row">
+      <div class="col-12 col-lg-12 col-xl-3 mb-4" align="center">
+        <img
+          class="burger-icon-image"
+          src="{% static 'images/Burger-logo.png' %}"
+        />
+      </div>
+      <div class="col-xl-8 col-lg-12 col-md-12">
+        <div class="col">
+          <div class="row">
+            <div class="about-text">
+              <p class="about-info-header h2 mb-3">About Peachtree Burger</p>
+              <p class="about-info-text h4 mb-3">
+                This open-source, interactive demo showcases how to build a
+                digital purchasing flow for your business that's backed entirely
+                by NCR platform APIs.
+              </p>
+              <p class="about-info-text h4">
+                Browse the sample app to see the Catalog, Order, Menu, and Sites
+                APIs in action.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-4 mt-3">
+            <div class="card about-card">
+              <div class="card-body about-card-body">
+                <div class="col-3 card-icon pb-3">
+                  <i class="fas fa-project-diagram about-icon"></i>
+                </div>
+                <div class="col-9">
+                  <p class="card-title h5 about-card-title pt-4">
+                    Built with NCR APIs
+                  </p>
+                  <p class="about-card-text">
+                    Integrated with Catalog, Sites, Order, Selling,
+                    Provisioning, Security, and more.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 mt-3">
+            <div class="card justify-content-center about-card">
+              <div class="card-body about-card-body">
+                <div class="col-3 card-icon pb-3">
+                  <i class="fas fa-code about-icon"></i>
+                </div>
+                <div class="col-9">
+                  <p class="card-title h5 about-card-title pt-4">
+                    Open Sourced
+                  </p>
+                  <p class="about-card-text">
+                    View the code, clone the repository, and get started on your
+                    own.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 mt-3">
+            <div class="card justify-content-end about-card">
+              <div class="card-body about-card-body">
+                <div class="col-3 card-icon pb-3">
+                  <i class="fas fa-user-alt about-icon"></i>
+                </div>
+                <div class="col-9">
+                  <p class="card-title about-card-title h5 pt-4">
+                    Customer Focused
+                  </p>
+                  <p class="about-card-text">
+                    Built to showcase real examples of what NCR customers can do
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pt-5 mb-5 container-row" id="map-content">
+      <div class="col-6 col-xl-4 card-column">
+        <div class="row">
+          <h2 class="map-title-text pl-3">Our Burger Joints</h2>
+        </div>
+        {% for instance in locations %}
+        <div class="row row-card">
+          <div class="col">
+            <div class="card store-card">
+              <div class="card-body">
+                <div class="store-header-text pl-2">
+                  <p class="card-title h5 pl-1 store-name">
+                    {{instance.siteName}}
+                  </p>
+                </div>
+                <div class="store-info-text">
+                  <div class="col-5 col-xl-6 pr-1">
+                    <div class="store-address-block">
+                      <p class="address-text">
+                        <span class="store-header">Address</span>
+                        <span class="card-info"
+                          >{{instance.address.street}},</span
+                        >
+                        <span class="card-info"
+                          >{{instance.address.city}}, {{instance.address.state}}
+                          {{instance.address.postalCode}}</span
+                        >
+                      </p>
+                      <button
+                        type="button"
+                        class="btn order-button mt-3"
+                        onclick="setLocation('{{instance.siteName}}')"
+                      >
+                        View Menu
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-7 col-xl-6">
+                    <div class="store-hours-block">
+                      <p class="hours-text">
+                        <span class="store-header">Hours</span>
+                        <span class="card-info">Monday - 11AM-10PM</span>
+                        <span class="card-info">Tuesday - 11AM-10PM</span>
+                        <span class="card-info">Wednesday - 11AM-10PM</span>
+                        <span class="card-info">Thursday - 11AM-10PM</span>
+                        <span class="card-info">Friday - 11AM-10PM</span>
+                        <span class="card-info">Saturday - 11AM-10PM</span>
+                        <span class="card-info">Sunday - 11AM-10PM</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-6 col-xl-8 map-block">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %} {% include 'footer.html' %}
+</body>
+{% block javascript %}
+<script src="{% static 'js/index.js' %}" type="text/javascript"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD0jNBZriOaCs0K1q9ckADfEr3WaIA894&callback=initMap&libraries=&v=weekly"
+  async
+></script>
+{% endblock %}

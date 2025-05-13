@@ -1,0 +1,283 @@
+/* Index Page Styles */
+body,
+html {
+    font-family: "Open Sans", sans-serif;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+.navbar {
+    box-shadow: 0px 2px 4px rgb(0, 0, 0, 0.25);
+}
+
+.custom-navbar a {
+    font-weight: 400;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.custom-navbar a:hover {
+    font-weight: bold;
+    border-bottom: 2px solid #7ed957;
+}
+
+.active a {
+    border-bottom: 2px solid #7ed957;
+}
+
+.cart-icon {
+    position: relative;
+    color: #008d9b;
+}
+
+.badge {
+    position: absolute;
+    right: -10px;
+    bottom: 10px;
+    font-size: 12px;
+}
+
+.default-blue-button {
+    background-color: #008d9b;
+    border-color: #008d9b;
+    width: 100%;
+    color: white;
+}
+
+.cart-text {
+    color: #008d9b;
+}
+
+.menu-dropdown:focus {
+    box-shadow: 0 0 0 0.125rem #7ed957;
+}
+
+.location-card {
+    box-shadow: 1px 4px 4px rgb(0, 0, 0, 0.25);
+}
+
+.footer-container {
+    background-color: #66c15d;
+}
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .footer-container {
+        background-color: #66c15d;
+        height: 24%;
+    }
+}
+
+.footer-header {
+    font-weight: bold;
+}
+
+.footer-title-text {
+    font-weight: 400;
+}
+
+.dynamicNavModal {
+    max-width: 40%;
+}
+
+.navbar-burger-icon {
+    height: 45px;
+    width: 45px;
+}
+
+a {
+    font-weight: normal;
+}
+
+a:hover {
+    font-weight: 600;
+}
+
+.location-box {
+    display: flex;
+}
+
+.nav-burger-icon {
+    height: 33.15px;
+    width: 24px;
+}
+
+.change-text {
+    color: #008d9b;
+    font-weight: 200;
+}
+
+/* Button Styles */
+
+.btn-custom:hover,
+.btn-custom-round:hover {
+    color: white;
+}
+
+.btn-custom {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-custom-round {
+    border-radius: 15px;
+    background-color: #343a40;
+    color: white;
+}
+
+nav .navbar-nav li a {
+    color: black !important;
+}
+
+.nav-btn-container {
+    margin-top: 18rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-btn-container-tight {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-btn-container-long {
+    margin-top: 28rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dropdown-item:hover {
+    background-color: #008d9b;
+    color: #ffffff;
+}
+
+#map {
+    height: 100%;
+    width: 92%;
+}
+
+@media (min-width: 1300px) {
+    #map {
+        height: 100%;
+        width: 85%;
+    }
+}
+
+/* General Styles */
+hr {
+    border-top: 2px dashed #000000;
+}
+
+.section-header {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+    color: #333333;
+}
+
+.sub-section-header {
+    padding-bottom: 0.25rem;
+    font-weight: 600;
+    color: #333333;
+}
+
+@media (min-width: 1200px) {
+    .card-column {
+        padding-left: 3%;
+    }
+}
+
+.round {
+    border-radius: 50%;
+    background: #7ed957;
+}
+
+.list {
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    list-style-type: none;
+}
+
+.list-section {
+    display: flex;
+    flex-flow: column nowrap;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.list-section-item {
+    padding: 0.5rem 1.25rem 0.5rem 4.25rem;
+    color: #333333;
+}
+
+.list-section-item:hover {
+    font-weight: 600;
+    color: #333333;
+}
+
+.list-section-item:first-child {
+    padding-left: 2.75rem;
+}
+
+@media (max-width: 1200px) {
+    .sidebar {
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+.make-me-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 0 15px;
+}
+
+pre code {
+    background-color: #fff;
+    border: 1px solid #999;
+    display: block;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: pre-wrap; /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.just-padding {
+    padding: 15px;
+}
+
+.list-group.list-group-root {
+    padding: 0;
+    overflow: hidden;
+}
+
+.list-group.list-group-root .list-group {
+    margin-bottom: 0;
+}
+
+.list-group.list-group-root .list-group-item {
+    border-radius: 0;
+    border-width: 1px 0 0 0;
+}
+
+.list-group.list-group-root > .list-group-item:first-child {
+    border-top-width: 0;
+}
+
+.list-group.list-group-root > .list-group > .list-group-item {
+    padding-left: 30px;
+}
+
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+    padding-left: 45px;
+}
+
+.invalid {
+    border: 3px #7ed957 solid;
+}

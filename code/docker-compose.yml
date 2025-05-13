@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  django:
+    environment:
+      URL_BASE: localhost
+      SECRET_KEY:
+      NEP_ORGANIZATION:
+      HMAC_SHARED_KEY:
+      HMAC_SECRET_KEY:
+      LOCATIONS:
+    build:
+      context: .
+    volumes:
+      - shared-data:/app/dist/
+  nginx:
+    build:
+      context: ./build/cloudbuild/nginx/
+      args:
+        NGINX_VERSION: "1.15"
+        NGINX_VARIANT: "alpine"
+    ports:
+      - "8080:8080"
+    volumes:
+      - shared-data:/app/dist/
+
+volumes:
+  shared-data:
