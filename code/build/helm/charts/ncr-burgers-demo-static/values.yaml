@@ -1,0 +1,12 @@
+Master:
+  App:
+    Name: ncr-burgers-demo-static
+    Prefix: ncr-burgers-demo
+    ReleaseName:
+Ingress:
+  Annotations: {}
+  Host:
+  TlsSecret:
+  IpName:
+CloudArmor:
+  HospDemoSecurityPolicyName:

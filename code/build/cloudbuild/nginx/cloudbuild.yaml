@@ -1,0 +1,16 @@
+steps:
+  - id: 'docker'
+    name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '--build-arg', 'NGINX_VERSION=${_NGINX_VERSION}',
+      '--build-arg', 'NGINX_VARIANT=alpine',
+      '--tag', 'us.gcr.io/$PROJECT_ID/ncr-burgers-demo${_VERSION_SUFFIX}-nginx:${TAG_NAME}',
+      '--label', 'ncr-burgers-demo${_VERSION_SUFFIX}-artifact=${TAG_NAME}',
+      '.'
+    ]
+images: [
+  'us.gcr.io/$PROJECT_ID/ncr-burgers-demo${_VERSION_SUFFIX}-nginx:${TAG_NAME}'
+]
+substitutions:
+  _NGINX_VERSION: '1.15'

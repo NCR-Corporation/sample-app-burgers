@@ -1,0 +1,63 @@
+steps:
+
+# Django Build
+  - id: 'django-docker'
+    name: 'gcr.io/cloud-builders/docker'
+    waitFor: ['-']
+    args: [
+      'build',
+      '--tag', 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-django:${TAG_NAME}',
+      '--label', 'ncr-burgers-demo${_VERSION_SUFFIX}-artifact=${TAG_NAME}',
+      'code'
+    ]
+
+# nginx Build
+  - id: 'nginx-docker'
+    name: 'gcr.io/cloud-builders/docker'
+    waitFor: ['-']
+    args: [
+      'build',
+      '--build-arg', 'NGINX_VERSION=${_NGINX_VERSION}',
+      '--build-arg', 'NGINX_VARIANT=alpine',
+      '--tag', 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-nginx:${TAG_NAME}',
+      '--label', 'ncr-burgers-demo${_VERSION_SUFFIX}-artifact=${TAG_NAME}',
+      'code/build/cloudbuild/nginx'
+    ]
+
+# Helm Charts
+
+  - id: 'publish-helm'
+    name: 'us.gcr.io/odsp-management/helm:latest'
+    waitFor:
+      - django-docker
+      - nginx-docker
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        cd code/build/helm/charts
+
+        export HOME="$(cat /etc/passwd | grep "^$(id -un):" | cut -d ":" -f 6)"
+
+        helm gcs init "gs://${_HELM_STORAGE_BUCKET}"
+        helm repo add gs-repository "gs://${_HELM_STORAGE_BUCKET}"
+
+        for app_path in */; do
+          app="$( echo "$(basename "$app_path")" | awk '{print tolower($0)}' )"
+
+          echo "Publish Helm charts for ${app}"
+
+          helm lint "$app"
+          helm package "$app" --version "$TAG_NAME"
+          helm gcs push "${app}-${TAG_NAME}.tgz" gs-repository --retry --force
+        done
+
+images:
+  - 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-django:${TAG_NAME}'
+  - 'us.gcr.io/${PROJECT_ID}/ncr-burgers-demo${_VERSION_SUFFIX}-nginx:${TAG_NAME}'
+
+substitutions:
+  _HELM_GCS_VERSION: '0.3.9'
+  _HELM_STORAGE_BUCKET: ''
+  _HELM_VERSION: '3.5.3'
+  _NGINX_VERSION: '1.15'
