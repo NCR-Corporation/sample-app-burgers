@@ -100,3 +100,4 @@ If you're looking to add a new feature, be sure to create a new issue (either fe
 
 This sample app project was released under the [Apache 2.0 license](https://github.com/NCR-Corporation/sample-app-burgers/blob/main/LICENSE)
 .
+
