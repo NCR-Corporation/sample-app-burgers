@@ -1,0 +1,33 @@
+Master:
+  App:
+    Name: ncr-burgers-demo
+    Prefix: ncr-burgers-demo
+    ReleaseVersion:
+  ImagePullPolicy: Always
+Image:
+  Domain: us.gcr.io
+  Project:
+  PullPolicy: Always
+Scaling:
+  Enabled:
+  DefaultReplicas:
+  MinReplicas:
+  MaxReplicas:
+  TargetCpuUtilization:
+  TargetMemoryUtilization:
+Resources:
+  MinCpu:
+  MaxCpu:
+  MinMemory:
+  MaxMemory:
+Burgers:
+  SecretKey:
+  NepOrganization:
+  HmacSharedKey:
+  HmacSecretKey:
+  Locations:
+Ingress:
+  Annotations: { }
+  Host:
+  TlsSecret:
+  IpName:

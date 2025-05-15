@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.Master.App.Prefix }}-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: {{ .Values.Ingress.IpName }}
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.allow-http: "true"
+    networking.gke.io/v1beta1.FrontendConfig: frontend-config-http-to-https-redirect-{{ .Release.Namespace }}
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.Ingress.Host }}
+      secretName: {{ .Values.Ingress.TlsSecret }}
+  rules:
+    - host: {{ .Values.Ingress.Host }}
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: /*
+            backend:
+              service:
+                name: {{ $.Release.Namespace }}
+                port:
+                  number: 80
