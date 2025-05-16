@@ -35,8 +35,6 @@ MENULINK = '/Peachtree-Burger/menu/'
 site = ''
 
 def index(request):
-    auxMethods.findResturantsInRange(
-        {'x': -84.38879, 'y': 33.777714}, 20)
     request.session['location'] = 'Midtown'
     site = request.session['location']
     context = {
