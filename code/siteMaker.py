@@ -4,7 +4,7 @@ from BurgersUnlimited.settings import *
 from HMACAuth import HMACAuth
 
 """
-Description: This function creates new sites on the NCR Platform
+Description: This function creates new sites on the NCR Voyix Platform
 Parameters: (In Progress) A dictionary of the values that a user would like to be added to a new site
 Returns: Nothing. (In Future) A Json confirming the creation of the site. Currently using print statements.
 
@@ -20,7 +20,7 @@ def create(siteName, enterpriseUnitName):
 
 
 """
-Description: This function allows a user to query the NCR Platform to locate all the sites for the given nep-organization.
+Description: This function allows a user to query the NCR Voyix Platform to locate all the sites for the given nep-organization.
 Parameters: None
 Returns: A json of the nep-organization data
 """
@@ -34,7 +34,7 @@ def queryAll():
 
 
 """
-Description: This function allows a user to query the NCR Platform to locate a particular site,
+Description: This function allows a user to query the NCR Voyix Platform to locate a particular site,
 Parameters: [string] siteId- the alphanumeric string representing the site. NOT the name of the site.
 Returns: A json containing the information about the request statement. Currently using print statements.
 """
@@ -47,7 +47,7 @@ def queryById(id):
 
 
 """
-Description: This function allows a user to update a particular site on the NCR Platform.
+Description: This function allows a user to update a particular site on the NCR Voyix Platform.
 Parameters: [string] siteId- the alphanumeric string representing the site. NOT the name of the site.
             [string] name - the new name of the site
 Returns: A json containing the information about the updated site.
