@@ -6,7 +6,7 @@ sessionStorage.setItem("removedItemId", JSON.stringify([]));
 function finish() {
     window
         .open(
-            "https://developer.ncr.com/portals/dev-portal/getting-started",
+            "https://developer.ncrvoyix.com/portals/dev-portal/getting-started",
             "_blank"
         )
         .focus();

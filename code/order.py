@@ -39,7 +39,7 @@ def createOrder(cart):
     modified_results = doubleQ(results)
 
     customer = {
-        "email": "test@ncr.com",
+        "email": "test@ncrvoyix.com",
         "firstName": "Testy",
         "lastName": "McTest Test"
     }
@@ -72,7 +72,7 @@ cart = [{'item': 'SmallFries', 'price': 9.00, 'qty': 2}, {'item': 'Tunaburger',
 def getOrders():
     url = 'https://api.ncr.com/order/3/orders/1/find?pageNumber=0&pageSize=10'
 
-    payload = "{\"customerEmail\":\"test@ncr.com\",\"returnFullOrders\":true}"
+    payload = "{\"customerEmail\":\"test@ncrvoyix.com\",\"returnFullOrders\":true}"
 
     res = requests.post(url, payload, auth=(HMACAuth()))
     result = res.json()
@@ -114,7 +114,7 @@ def create_order_from_cart(cart, location):
         "channel": "Web",
         "comments": "Created from online checkout",
         "customer": {
-            "email": "test@ncr.com",
+            "email": "test@ncrvoyix.com",
             "firstName": "Test",
             "lastName": "Demo"
         },
