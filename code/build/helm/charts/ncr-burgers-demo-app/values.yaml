@@ -26,6 +26,7 @@ Burgers:
   HmacSharedKey:
   HmacSecretKey:
   Locations:
+  GoogleMapsApiKey:
 Ingress:
   Annotations: { }
   Host:

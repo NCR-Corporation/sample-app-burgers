@@ -200,6 +200,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 NEP_ORGANIZATION = ''
 HMAC_SHARED_KEY = ''
 HMAC_SECRET_KEY = ''
+GOOGLE_MAPS_API_KEY = ''
 
 # Locations of the restaurants saved in a site name: id pattern
 LOCATIONS = {}
