@@ -9,6 +9,7 @@ services:
       HMAC_SHARED_KEY:
       HMAC_SECRET_KEY:
       LOCATIONS:
+      GOOGLE_MAPS_API_KEY:
     build:
       context: .
     volumes:

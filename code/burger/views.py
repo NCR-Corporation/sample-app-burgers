@@ -39,7 +39,8 @@ def index(request):
     site = request.session['location']
     context = {
         'locations': MATCHES,
-        'site': site
+        'site': site,
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
     }
 
     time = datetime.datetime.now().hour

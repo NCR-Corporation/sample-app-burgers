@@ -44,6 +44,8 @@ spec:
               value: {{ quote .Values.Burgers.HmacSecretKey }}
             - name: LOCATIONS
               value: {{ quote .Values.Burgers.Locations }}
+            - name: GOOGLE_MAPS_API_KEY
+              value: {{ quote .Values.Burgers.GoogleMapsApiKey }}
           ports:
             - name: http
               containerPort: 8000
