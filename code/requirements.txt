@@ -4,6 +4,5 @@ requests>=2.25.1,<3
 django-crispy-forms>=1.13,<2
 django-compressor>=2.4.1
 django-debug-toolbar>=3.2.2
-django-requests-debug-toolbar>=0.0.2
 django-web-profiler>=0.1.4
 contextvars>=2.4
