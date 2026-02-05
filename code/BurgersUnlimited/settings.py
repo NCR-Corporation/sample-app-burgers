@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'compressor',
     'debug_toolbar',
     'django_web_profiler',
-    'requests_panel',
 ]
 
 MIDDLEWARE = [
@@ -187,12 +186,8 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.timer.TimerPanel',
-    'requests_panel.panel.RequestsDebugPanel']
-
-REQUESTS_PANEL_SETTINGS = {
-    'SHOW_STACKTRACE': False,
-    'SHOW_TRACEBACKS': False,
-}
+    'debug_toolbar.panels.request.RequestPanel',
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
